@@ -1,0 +1,42 @@
+root = true
+
+[*]
+end_of_line              = lf
+charset                  = utf-8
+trim_trailing_whitespace = true
+indent_brace_style       = K&R
+curly_bracket_next_line  = false
+spaces_around_operators  = true
+max_line_length          = 120
+tab_width                = 2
+indent_size              = 2
+continuation_indent_size = 4
+indent_style             = tab
+insert_final_newline     = true
+
+[*.py]
+indent_style             = space
+indent_size              = 4
+continuation_indent_size = ignore
+max_line_length          = off
+
+[*.{vue,html,md,mustache,jsp,tag}]
+tab_width=4
+indent_size=4
+max_line_length = off
+
+[*.{vue,ts,js}]
+quote_type = single
+
+[*.{vue,ts,js,php,md,less,scss,saas,css,tsx,jsx}]
+indent_style = space
+
+
+[*.min.*]
+indent_style             = ignore
+trim_trailing_whitespace = false
+insert_final_newline     = ignore
+max_line_length          = 6000
+
+[*.{php,md,vue,html,mustache,jsp,tag,tsx,jsx}]
+trim_trailing_whitespace = false

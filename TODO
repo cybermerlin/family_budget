@@ -1,0 +1,14 @@
+[ ] find Grid components and to get choice
+    [ ] let's make some choice to use
+[ ] find Math components
+[ ] integrate Grid into this project
+[ ] let's start 1st view with the Grid
+[ ] studying events in cells and try to use it to integrate Math component to calculate 
+[ ] create in GitHub this proj and pub all files as a 1st branch
+
+[ ] try to use console Git commands
+[ ] find some chart components
+[ ] make choice and integrate some diagram into our Excel app
+
+[ ] npm i immutability-helper react-contenteditable
+[ ] npm i clsx

@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import logo from "./logo.svg";
+// import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type GreetProps = typeof App.defaultProps & {
+  age: number;
+};
+
+type GreetState = {
+  name: string;
+};
+
+class App extends React.Component<GreetProps, GreetState> {
+  static defaultProps = {
+    age: 21,
+  };
+  state = { name: "Mike" };
+
+  render() {
+    return (
+      <div>
+        {this.props.age} {this.state.name}
+      </div>
+    );
+  }
 }
-
 export default App;
