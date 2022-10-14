@@ -1,6 +1,23 @@
 import React from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
+import logo from "./logo.svg";
+import "./App.css";
+import EditableGrid from "./lib/editableGrid/EditableGrid";
+
+
+
+// declare global {
+//   interface Console {
+//     log: ILog;
+//   }
+
+//   interface ILog {
+//     colors: boolean;
+//     (...data: any []): any;
+//   }
+// }
+// console.log = <ILog>function(...args){};
+// console.log.colors = true;
+
 
 type GreetProps = typeof App.defaultProps & {
   age: number;
@@ -9,6 +26,7 @@ type GreetProps = typeof App.defaultProps & {
 type GreetState = {
   name: string;
 };
+
 
 class App extends React.Component<GreetProps, GreetState> {
   static defaultProps = {
@@ -20,6 +38,7 @@ class App extends React.Component<GreetProps, GreetState> {
     return (
       <div>
         {this.props.age} {this.state.name}
+        <EditableGrid />
       </div>
     );
   }

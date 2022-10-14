@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
-import './style.css';
 import Table from './Table';
+import "./style.css";
 import {
   randomColor,
   shortId,

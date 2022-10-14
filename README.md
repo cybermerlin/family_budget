@@ -44,3 +44,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+## TypeScript Definitions
+
+Я сейчас не буду подробно останавливаться на описании TypeScript Definitions, об этом написано много классных статей. Скажу лишь, что для того чтобы можно было использовать библиотеки написанные на JS для них нужно использовать эти самые TypeScript Definitions. И есть даже целый опенсорсный проект в котором народ пишет такие дефинишены для популярных проектов. Их можно искать и скачивать на сайте, а можно поставить консольную утилиту которая этот процесс упростит:
+
+npm install -g tsd
+
+С помощью этой утилиты мы скачаем definitions для React и сохраним в файл tsd.json запись о TypeScript Definition:
+
+tsd query react --action install --save
