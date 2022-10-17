@@ -10,6 +10,7 @@ import {
 } from './utils';
 import update from 'immutability-helper';
 
+
 function reducer(state, action) {
   switch (action.type) {
     case ActionTypes.ADD_OPTION_TO_COLUMN:
@@ -184,7 +185,7 @@ function reducer(state, action) {
   }
 }
 
-function App() {
+function EditableGrid() {
   const [state, dispatch] = useReducer(reducer, makeData(1000));
 
   useEffect(() => {
@@ -210,4 +211,4 @@ function App() {
   );
 }
 
-export default App;
+export default EditableGrid;
