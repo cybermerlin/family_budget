@@ -1,4 +1,12 @@
 Technical tasks:
+	☐ integrade redux
+	☐ find material components (Material-UI5, material,....) n make some choice
+	☐ integrade layouts component (to place Navigator, Right panel, top-head panel, foot-panel)
+	☐ just for dev skills upgrade
+		☐ creating a Service to calculate math formulas @started(22-10-16 22:23)
+		☐ studying events in cells and try to use it to integrate Math component to calculate
+		☐ find Math components
+
 	☐ add floatable scrollbar to fix broken styles between header and body columns (arranges columns) (look at EditableGrid)
 	☐ add easy import from /src/lib (tsconfig?)
 	☐ find Grid components and to get choice
@@ -14,13 +22,8 @@ Technical tasks:
 
 	☐ debugging the trouble with the TS d.ts (try console.log.colored property)
 
-	☐ just for dev skills upgrade
-		☐ creating a Service to calculate math formulas @started(22-10-16 22:23)
-		☐ studying events in cells and try to use it to integrate Math component to calculate
-		☐ find Math components
-
 	☐ find some chart components
-		☐ make choice and integrate some diagram into our Excel app
+		☐ make a choice and integrate some diagram into our Excel app
 
 
 Business tasks:
@@ -28,7 +31,6 @@ Business tasks:
 	☐ study about starting business not in RF
 
 	☐ auth plugin
-	☐ layouts (to place Navigator, Right panel, top-head panel, foot-panel)
 	☐ splitter do divide and move\resize right panel
 	☐ navigator: auth, settings, graphics, tables, total summary page (dashboard)
 	☐ widgets for dashboard
