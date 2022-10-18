@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
-import './style.css';
 import Table from './Table';
+import "./style.css";
 import {
   randomColor,
   shortId,
@@ -9,6 +9,7 @@ import {
   DataTypes,
 } from './utils';
 import update from 'immutability-helper';
+
 
 function reducer(state, action) {
   switch (action.type) {
@@ -184,7 +185,7 @@ function reducer(state, action) {
   }
 }
 
-function App() {
+function EditableGrid() {
   const [state, dispatch] = useReducer(reducer, makeData(1000));
 
   useEffect(() => {
@@ -210,4 +211,4 @@ function App() {
   );
 }
 
-export default App;
+export default EditableGrid;

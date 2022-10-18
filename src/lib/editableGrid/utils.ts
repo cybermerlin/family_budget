@@ -1,4 +1,5 @@
-import faker from 'faker';
+import { faker } from '@faker-js/faker/locale/ru';
+
 
 export function shortId() {
   return '_' + Math.random().toString(36).substr(2, 9);

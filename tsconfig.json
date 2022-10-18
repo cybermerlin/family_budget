@@ -12,20 +12,42 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+    "noEmit": true,
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
     "lib": [
-      "es2018",
-      "dom"
+      "dom",
+      "dom.iterable",
+      "es2018"
     ],
-    "skipLibCheck": true
+		"typeRoots": [
+			"./src/lib/types",
+			"./node_modules/@types"
+		],
+		"allowJs": true,
+		"esModuleInterop": true,
+    "skipLibCheck": true,
+		"jsx": "react"
   },
+	"include": [
+    "./src//*.ts",
+    "./src//*.tsx",
+    "src/lib/types/*.d.ts"
+  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,
     "strictInputAccessModifiers": false,
-    "strictTemplates": false
+    "strictTemplates": false,
+		"paths": {
+      "*": [
+        "node_modules/*",
+        "src/types/*"
+      ]
+    },
   }
 }

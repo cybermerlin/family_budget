@@ -39,8 +39,28 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Documentaions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Learn More
+
+- [how to make a Service](https://dev.to/dansolhan/simple-dependency-injection-functionality-for-react-518j)
+- You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+### TypeScript Definitions
+
+для того чтобы можно было использовать библиотеки написанные на JS для них нужно использовать эти самые TypeScript Definitions. И есть даже целый опенсорсный проект в котором народ пишет такие дефинишены для популярных проектов. Их можно искать и скачивать на сайте, а можно поставить консольную утилиту которая этот процесс упростит:
+
+```npm install -g tsd```
+
+С помощью этой утилиты мы скачаем definitions для React и сохраним в файл tsd.json запись о TypeScript Definition:
+
+```tsd query react --action install --save```
+
+### Links with documentations about libraries
+
+- [editable table example Source](https://github.com/archit-p/editable-react-table)
+- [Editable table example in Sandbox (live coding)](https://codesandbox.io/s/editable-react-table-gchwp?fontsize=14&hidenavigation=1&theme=dark)
+- [Editable table with math components Source](https://github.com/ruilisi/fortune-sheet)

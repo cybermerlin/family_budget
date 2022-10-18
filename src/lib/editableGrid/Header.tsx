@@ -189,7 +189,7 @@ export default function Header({
     if (id !== 999999) {
       return (
         <>
-          <div {...getHeaderProps()} className="th noselect d-inline-block">
+          <div key={id} {...getHeaderProps()} className="th noselect d-inline-block">
             <div
               className="th-content"
               onClick={() => setExpanded(true)}
@@ -206,7 +206,7 @@ export default function Header({
             <div className="overlay" onClick={() => setExpanded(false)} />
           )}
           {expanded && (
-            <div
+            <div key={id}
               ref={setPopperElement}
               style={{ ...styles.popper, zIndex: 3 }}
               {...attributes.popper}
@@ -249,7 +249,7 @@ export default function Header({
                     ref={setTypeReferenceElement}
                   >
                     <span className="svg-icon svg-text icon-margin">
-                      {getPropertyIcon}
+                      {propertyIcon}
                     </span>
                     <span className="text-transform-capitalize">
                       {dataType}
@@ -270,7 +270,7 @@ export default function Header({
                       }}
                     >
                       {types.map(type => (
-                        <button className="sort-button" onClick={type.onClick}>
+                        <button key={type.label} className="sort-button" onClick={type.onClick}>
                           <span className="svg-icon svg-text icon-margin">
                             {type.icon}
                           </span>
@@ -289,6 +289,7 @@ export default function Header({
                 >
                   {buttons.map(button => (
                     <button
+                      key={button.label}
                       type="button"
                       className="sort-button"
                       onMouseDown={button.onClick}

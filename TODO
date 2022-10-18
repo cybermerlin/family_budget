@@ -1,14 +1,47 @@
-[ ] find Grid components and to get choice
-    [ ] let's make some choice to use
-[ ] find Math components
-[ ] integrate Grid into this project
-[ ] let's start 1st view with the Grid
-[ ] studying events in cells and try to use it to integrate Math component to calculate 
-[ ] create in GitHub this proj and pub all files as a 1st branch
+Technical tasks:
+	☐ add floatable scrollbar to fix broken styles between header and body columns (arranges columns) (look at EditableGrid)
+	☐ add easy import from /src/lib (tsconfig?)
+	☐ find Grid components and to get choice
+		☐ let's make some choice to use
+			✔ just for dev skills upgrade @done(22-10-16 22:25)
+			☐ for production version
+	☐ integrate Grid into this project
+		✔ just for dev skills upgrade @done(22-10-16 22:25)
+		☐ for production version
+	☐ let's start 1st view with the Grid
+		☐ just for dev skills upgrade
+		☐ for production version
 
-[ ] try to use console Git commands
-[ ] find some chart components
-[ ] make choice and integrate some diagram into our Excel app
+	☐ debugging the trouble with the TS d.ts (try console.log.colored property)
 
-[ ] npm i immutability-helper react-contenteditable
-[ ] npm i clsx
+	☐ just for dev skills upgrade
+		☐ creating a Service to calculate math formulas @started(22-10-16 22:23)
+		☐ studying events in cells and try to use it to integrate Math component to calculate
+		☐ find Math components
+
+	☐ find some chart components
+		☐ make choice and integrate some diagram into our Excel app
+
+
+Business tasks:
+	☐ find a server for the private git\hg repository
+	☐ study about starting business not in RF
+
+	☐ auth plugin
+	☐ layouts (to place Navigator, Right panel, top-head panel, foot-panel)
+	☐ splitter do divide and move\resize right panel
+	☐ navigator: auth, settings, graphics, tables, total summary page (dashboard)
+	☐ widgets for dashboard
+	☐ таблица должна учитывать детальные данные по различным статьям расхода (медицина, бытовые нужды, еда, транспортные расходы,...)
+	☐ отдельная таблица учитывает суммарные расходы (данные у cyber)
+	☐ график по детальной таблице
+	☐ график по верхнеуровневой таблице (cyber)
+	☐ spider graph (cyber)
+	☐ cyber graph and math
+
+
+Completed tasks:
+	✓ create in GitHub this proj and pub all files as a 1st branch
+	✓ try to use console Git commands
+	✓ npm i immutability-helper react-contenteditable
+	✓ npm i clsx
