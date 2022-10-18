@@ -9,7 +9,7 @@ Technical tasks:
 		✔ just for dev skills upgrade @done(22-10-16 22:25)
 		☐ for production version
 	☐ let's start 1st view with the Grid
-		☐ just for dev skills upgrade
+		✔ just for dev skills upgrade (plugins/grid)
 		☐ for production version
 
 	☐ debugging the trouble with the TS d.ts (try console.log.colored property)
