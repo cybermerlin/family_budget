@@ -39,6 +39,24 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## For beginners: how to start a project
+Run only the necessary commands.
+
+- Make Fork repository from GitHub (copy all branches).
+
+- Used to target an existing repository and create a clone, or copy of the target repository.
+```git clone https://github.com/dm-rybalchenko/excel-app``` 
+
+- Go to the project folder.
+```cd ./excel-app```
+
+- Installs a package and any packages that it depends on.
+```npm install```
+
+- Runs the app in the development mode (read above "Available scripts")
+```npm start``` 
+
+And then open the browser and enter the address that the system will write in the console.
 
 ## Documentaions
 
@@ -51,11 +69,11 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ### TypeScript Definitions
 
-для того чтобы можно было использовать библиотеки написанные на JS для них нужно использовать эти самые TypeScript Definitions. И есть даже целый опенсорсный проект в котором народ пишет такие дефинишены для популярных проектов. Их можно искать и скачивать на сайте, а можно поставить консольную утилиту которая этот процесс упростит:
+To be able to use libraries written in JS, you need to use these same TypeScript Definitions for them. And there is even a whole open source project in which people write such definitions for popular projects. You can search and download them on the site, or you can put a console utility that will simplify this process:
 
 ```npm install -g tsd```
 
-С помощью этой утилиты мы скачаем definitions для React и сохраним в файл tsd.json запись о TypeScript Definition:
+With this utility, we will load the definitions for React and store the TypeScript definition entry in the tsd.json file:
 
 ```tsd query react --action install --save```
 
