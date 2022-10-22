@@ -42,7 +42,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## For beginners: how to start a project
 Run only the necessary commands.
 
-- Make Fork repository at GitHub (copy all branches).
+- Make Fork repository from GitHub (copy all branches).
 
 - Used to target an existing repository and create a clone, or copy of the target repository.
 ```git clone https://github.com/dm-rybalchenko/excel-app``` 
