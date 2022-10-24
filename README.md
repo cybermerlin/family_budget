@@ -1,3 +1,6 @@
+[![SonarCloud analysis](https://github.com/dm-rybalchenko/excel-app/actions/workflows/sonarcloud.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/sonarcloud.yml)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
