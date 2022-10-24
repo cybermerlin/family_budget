@@ -31,15 +31,11 @@ jobs:
         run: |
           docker run -t -v $PWD:/srv -w /srv local \
             npm install && npm run build && npm run test
+            
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v2
 
-  Analysis:
-    runs-on: ubuntu-latest
-    
-    steps:
       - name: Analyze with SonarCloud         
-
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a
         uses: SonarSource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a
