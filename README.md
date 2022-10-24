@@ -1,4 +1,5 @@
 [![SonarCloud analysis](https://github.com/dm-rybalchenko/excel-app/actions/workflows/sonarcloud.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/sonarcloud.yml)
+[![Dependency Review](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml)
 
 
 # Getting Started with Create React App
