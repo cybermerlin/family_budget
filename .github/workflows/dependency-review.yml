@@ -20,5 +20,16 @@ jobs:
         uses: actions/setup-node@v3.1.1
         with:
           node-version: '17'
+      - name: Test
+        run: |
+          npm install
+          npm run build
+          npm run test
+      - name: Build docker image
+        run: docker build -t local .
+      - name: Run tests on Docker
+        run: |
+          docker run -t -v $PWD:/srv -w /srv local \
+            npm install && npm run build && npm run test
       - name: 'Dependency Review'
         uses: actions/dependency-review-action@v2
