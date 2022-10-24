@@ -1,25 +1,26 @@
 import React from "react";
-// import logo from "./logo.svg";
-// import "./App.css";
+import logo from "./logo.svg";
+import { Counter } from './features/counter/Counter';
+import "./App.css";
+import GridView from "./plugins/grid/View";
 
-type GreetProps = typeof App.defaultProps & {
-  age: number;
+
+type tAppProps = typeof App.defaultProps & {
 };
 
-type GreetState = {
-  name: string;
+type tAppState = {
 };
 
-class App extends React.Component<GreetProps, GreetState> {
-  static defaultProps = {
-    age: 21,
-  };
-  state = { name: "Mike" };
+
+class App extends React.Component<tAppProps, tAppState> {
+  static defaultProps = {};
+  state = {};
 
   render() {
     return (
       <div>
-        {this.props.age} {this.state.name}
+        <Counter />
+        <GridView />
       </div>
     );
   }

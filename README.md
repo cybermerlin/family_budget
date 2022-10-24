@@ -39,8 +39,46 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## For beginners: how to start a project
+Run only the necessary commands.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Make Fork repository from GitHub (copy all branches).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Used to target an existing repository and create a clone, or copy of the target repository.
+```git clone https://github.com/dm-rybalchenko/excel-app``` 
+
+- Go to the project folder.
+```cd ./excel-app```
+
+- Installs a package and any packages that it depends on.
+```npm install```
+
+- Runs the app in the development mode (read above "Available scripts")
+```npm start``` 
+
+And then open the browser and enter the address that the system will write in the console.
+
+## Documentaions
+
+### Learn More
+
+- [how to make a Service](https://dev.to/dansolhan/simple-dependency-injection-functionality-for-react-518j)
+- You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+### TypeScript Definitions
+
+To be able to use libraries written in JS, you need to use these same TypeScript Definitions for them. And there is even a whole open source project in which people write such definitions for popular projects. You can search and download them on the site, or you can put a console utility that will simplify this process:
+
+```npm install -g tsd```
+
+With this utility, we will load the definitions for React and store the TypeScript definition entry in the tsd.json file:
+
+```tsd query react --action install --save```
+
+### Links with documentations about libraries
+
+- [editable table example Source](https://github.com/archit-p/editable-react-table)
+- [Editable table example in Sandbox (live coding)](https://codesandbox.io/s/editable-react-table-gchwp?fontsize=14&hidenavigation=1&theme=dark)
+- [Editable table with math components Source](https://github.com/ruilisi/fortune-sheet)

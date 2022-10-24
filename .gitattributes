@@ -18,6 +18,7 @@
 *.jsp eol=lf
 *.json eol=lf
 
+TODO text eol=lf
 .babelrc text eol=lf
 .editorconfig text eol=lf
 .eslintignore text eol=lf
