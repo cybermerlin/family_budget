@@ -1,8 +1,8 @@
 import React from "react";
 
 // import logo from "./logo.svg";
-import Counter from '../plugins/counter/Counter';
 import "./App.css";
+import Counter from '../plugins/counter/Counter';
 import GridView from "../plugins/grid/View";
 
 
