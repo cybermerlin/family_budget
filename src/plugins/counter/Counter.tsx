@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Button} from '@rmwc/button';
+import { Button } from 'antd';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -13,7 +13,7 @@ import {
 import styles from './Counter.module.css';
 
 
-export function Counter() {
+export default function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
