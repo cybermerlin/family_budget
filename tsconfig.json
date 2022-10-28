@@ -36,8 +36,10 @@
 	"include": [
     "./src//*.ts",
     "./src//*.tsx",
-    "src/lib/types/*.d.ts"
-  ],
+    "src/lib/types/*.d.ts",
+		"src/app/App.test.tsx",
+		"src/app/App.tsx"
+	],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": false,

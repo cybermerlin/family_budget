@@ -1,6 +1,7 @@
 Technical tasks:
 	✔ integrade redux @done(22-10-19 00:16)
-	☐ find material components (Material-UI5, material,....) n make some choice
+	✔ find material components (Material-UI5, material,....) n make some choice @started(22-10-23 22:12) @done(22-10-24 00:33) @lasted(2h21m17s)
+	✔ add Storybook @started(22-10-28 09:25) @done(22-10-28 10:52) @lasted(1h27m18s)
 	☐ integrade layouts component (to place Navigator, Right panel, top-head panel, foot-panel)
 	☐ just for dev skills upgrade
 		☐ creating a Service to calculate math formulas @started(22-10-16 22:23)
@@ -24,6 +25,8 @@ Technical tasks:
 
 	☐ find some chart components
 		☐ make a choice and integrate some diagram into our Excel app
+
+	☐ https://github.com/gabrielbull/react-desktop
 
 
 Business tasks:

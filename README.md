@@ -42,6 +42,11 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### npm run storybook
+
+To start on localhost:6000 a server with a storybook project - list of ui components with a documentation and some user case scenarios.
+
+
 ## For beginners: how to start a project
 Run only the necessary commands.
 
@@ -61,6 +66,7 @@ Run only the necessary commands.
 
 And then open the browser and enter the address that the system will write in the console.
 
+
 ## Documentaions
 
 ### Learn More
@@ -68,6 +74,23 @@ And then open the browser and enter the address that the system will write in th
 - [how to make a Service](https://dev.to/dansolhan/simple-dependency-injection-functionality-for-react-518j)
 - You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 - To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+### Components
+
+- [AntD components (base elements of this whole project)](https://ant.design/docs/react/introduce)
+- [Third-Party Libraries](https://ant.design/docs/react/recommendation)
+- [storybook](https://storybook.js.org/docs/react/get-started/introduction)
+    - [video instruction](https://www.youtube.com/watch?v=x-x47qHq3nY)
+    - [ru start page](https://www.conductor.com/nightlight/%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-%D1%81-%D0%B8%D1%81/)
+    - Storybook имеет ряд рекомендуемых дополнений
+        - [storyshots](https://github.com/storybooks/storybook/blob/master/addons/storyshots) — Снапшот тестинг
+        - [actions](https://github.com/storybooks/storybook/blob/master/addons/actions) — Логирование действий. Создает своего рода функцию, результат выполнения которой вы увидете в Action Logger. Это может быть удобно для логирования параметров по типу onApply или onClick.
+        - [links](https://github.com/storybooks/storybook/blob/master/addons/links) — Создание ссылок между страницами Storybook
+        - [comments](https://github.com/storybooks/storybook/blob/master/addons/comments) — Комментирование
+        - [info](https://github.com/storybooks/storybook/blob/master/addons/info) — Аннотация компонентов
+        - [knobs](https://github.com/storybooks/storybook/blob/master/addons/knobs) — Редактирование пропертей компонентов
+        - [options](https://github.com/storybooks/storybook/blob/master/addons/options) — Кастомизирование UI Storybook’а
 
 
 ### TypeScript Definitions
