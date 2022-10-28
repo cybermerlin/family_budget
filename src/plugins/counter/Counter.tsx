@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {Button} from '@rmwc/button';
 
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
@@ -11,6 +12,7 @@ import {
 } from './counterSlice';
 import styles from './Counter.module.css';
 
+
 export function Counter() {
   const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
@@ -21,21 +23,21 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
-        <button
+        <Button
           className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
-        </button>
+        </Button>
         <span className={styles.value}>{count}</span>
-        <button
+        <Button
           className={styles.button}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
-        </button>
+        </Button>
       </div>
       <div className={styles.row}>
         <input
@@ -44,24 +46,24 @@ export function Counter() {
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
-        <button
+        <Button
           className={styles.button}
           onClick={() => dispatch(incrementByAmount(incrementValue))}
         >
           Add Amount
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.asyncButton}
           onClick={() => dispatch(incrementAsync(incrementValue))}
         >
           Add Async
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.button}
           onClick={() => dispatch(incrementIfOdd(incrementValue))}
         >
           Add If Odd
-        </button>
+        </Button>
       </div>
     </div>
   );

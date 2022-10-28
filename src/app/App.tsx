@@ -1,8 +1,9 @@
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from './features/counter/Counter';
+
+// import logo from "./logo.svg";
+import { Counter } from '../plugins/counter/Counter';
 import "./App.css";
-import GridView from "./plugins/grid/View";
+import GridView from "../plugins/grid/View";
 
 
 type tAppProps = typeof App.defaultProps & {

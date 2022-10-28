@@ -58,6 +58,7 @@ Run only the necessary commands.
 
 And then open the browser and enter the address that the system will write in the console.
 
+
 ## Documentaions
 
 ### Learn More
@@ -65,6 +66,14 @@ And then open the browser and enter the address that the system will write in th
 - [how to make a Service](https://dev.to/dansolhan/simple-dependency-injection-functionality-for-react-518j)
 - You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 - To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+### Components
+
+- [AntD components (base elements of this whole project)](https://ant.design/docs/react/introduce)
+- [Third-Party Libraries](https://ant.design/docs/react/recommendation)
+- [storybook](https://storybook.js.org/docs/react/get-started/introduction)
+    - [video instruction](https://www.youtube.com/watch?v=x-x47qHq3nY)
 
 
 ### TypeScript Definitions
