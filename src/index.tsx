@@ -1,4 +1,3 @@
-import "rmwc/styles";
 import "./index.css";
 
 import React from "react";
