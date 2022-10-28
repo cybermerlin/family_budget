@@ -1,3 +1,6 @@
+[![Review](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
