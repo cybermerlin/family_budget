@@ -1,6 +1,6 @@
 import React from "react";
 import EditableGrid from "../../lib/editableGrid/EditableGrid";
-import countCellsData from "../calculationTry1/countCellsData";
+import CountCellsData from "../calculationTry1/CountCellsData";
 
 /**
  * @class plugins.grid.View
@@ -10,6 +10,6 @@ export default class View extends React.Component {
   public static defaultProps = {};
 
   render() {
-    return countCellsData(<EditableGrid />);
+    return CountCellsData(<EditableGrid />);
   }
 }
