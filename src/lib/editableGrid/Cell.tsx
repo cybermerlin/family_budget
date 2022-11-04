@@ -4,7 +4,7 @@ import Badge from './Badge';
 import { usePopper } from 'react-popper';
 import { grey } from './colors';
 import PlusIcon from './img/Plus';
-import { ActionTypes, DataTypes, randomColor } from './utils';
+import { ACTION_TYPES, DATA_TYPES, randomColor } from './utils';
 import { createPortal } from 'react-dom';
 
 export default function Cell({
@@ -28,7 +28,7 @@ export default function Cell({
     if (e.key === 'Enter') {
       if (e.target.value !== '') {
         dataDispatch({
-          type: ActionTypes.ADD_OPTION_TO_COLUMN,
+          type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
           option: e.target.value,
           backgroundColor: randomColor(),
           columnId: id,
@@ -45,7 +45,7 @@ export default function Cell({
   function handleOptionBlur(e) {
     if (e.target.value !== '') {
       dataDispatch({
-        type: ActionTypes.ADD_OPTION_TO_COLUMN,
+        type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
         option: e.target.value,
         backgroundColor: randomColor(),
         columnId: id,
@@ -70,7 +70,7 @@ export default function Cell({
 
   function getCellElement() {
     switch (dataType) {
-      case DataTypes.TEXT:
+      case DATA_TYPES.TEXT:
         return (
           <ContentEditable
             html={(value.value && value.value.toString()) || ''}
@@ -79,7 +79,7 @@ export default function Cell({
             className="data-input"
           />
         );
-      case DataTypes.NUMBER:
+      case DATA_TYPES.NUMBER:
         return (
           <ContentEditable
             html={(value.value && value.value.toString()) || ''}
@@ -88,7 +88,7 @@ export default function Cell({
             className="data-input text-align-right"
           />
         );
-      case DataTypes.SELECT:
+      case DATA_TYPES.SELECT:
         return (
           <>
             <div
@@ -123,8 +123,9 @@ export default function Cell({
                     className="d-flex flex-wrap-wrap"
                     style={{ marginTop: '-0.5rem' }}
                   >
-                    {options.map(option => (
+                    {options.map((option, io) => (
                       <div
+                        key={io}
                         className="cursor-pointer mr-5 mt-5"
                         onClick={() => handleOptionClick(option)}
                       >
@@ -188,7 +189,7 @@ export default function Cell({
   useEffect(() => {
     if (value.update) {
       dataDispatch({
-        type: ActionTypes.UPDATE_CELL,
+        type: ACTION_TYPES.UPDATE_CELL,
         columnId: id,
         rowIndex: index,
         value: value.value,

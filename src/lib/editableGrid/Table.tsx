@@ -6,12 +6,14 @@ import {
   useResizeColumns,
   useSortBy,
 } from 'react-table';
+import { FixedSizeList } from 'react-window';
+
 import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
-import { ActionTypes } from './utils';
-import { FixedSizeList } from 'react-window';
+import { ACTION_TYPES } from './utils';
 import scrollbarWidth from './scrollbarWidth';
+
 
 const defaultColumn = {
   minWidth: 50,
@@ -22,12 +24,19 @@ const defaultColumn = {
   sortType: 'alphanumericFalsyLast',
 };
 
+interface IProps {
+  columns;
+  data;
+  dispatch;
+  skipReset;
+}
+
 export default function Table({
   columns,
   data,
   dispatch: dataDispatch,
   skipReset,
-}) {
+}: IProps) {
   const sortTypes = useMemo(
     () => ({
       alphanumericFalsyLast(rowA, rowB, columnId, desc) {
@@ -77,11 +86,13 @@ export default function Table({
   const RenderRow = React.useCallback(
     ({ index, style }) => {
       const row = rows[index];
+
       prepareRow(row);
+
       return (
-        <div {...row.getRowProps({ style })} className="tr">
-          {row.cells.map(cell => (
-            <div {...cell.getCellProps()} className="td">
+        <div {...row.getRowProps({ style })} className="tr" key={crypto.randomUUID()}>
+          {row.cells.map((cell, icell) => (
+            <div {...cell.getCellProps()} className="td" key={icell}>
               {cell.render('Cell')}
             </div>
           ))}
@@ -106,17 +117,26 @@ export default function Table({
   return (
     <>
       <div
+        key={crypto.randomUUID()}
         {...getTableProps()}
         className={clsx('table', isTableResizing() && 'noselect')}
       >
-        <div>
-          {headerGroups.map(headerGroup => (
-            <div {...headerGroup.getHeaderGroupProps()} className="tr">
-              {headerGroup.headers.map(column => column.render('Header'))}
+        <div key={crypto.randomUUID()}>
+          {headerGroups.map((headerGroup, index) => (
+            <div
+              {...headerGroup.getHeaderGroupProps()}
+              className="tr"
+              key={index}
+            >
+              <>
+                {headerGroup.headers.map((column, icol) =>
+                  (<div key={icol}>{column.render('Header')}</div>))}
+              </>
             </div>
           ))}
         </div>
-        <div {...getTableBodyProps()}>
+
+        <div {...getTableBodyProps()} key={crypto.randomUUID()}>
           <FixedSizeList
             height={window.innerHeight - 100}
             itemCount={rows.length}
@@ -127,7 +147,7 @@ export default function Table({
           </FixedSizeList>
           <div
             className="tr add-row"
-            onClick={() => dataDispatch({ type: ActionTypes.ADD_ROW })}
+            onClick={() => dataDispatch({ type: ACTION_TYPES.ADD_ROW })}
           >
             <span className="svg-icon svg-gray icon-margin">
               <PlusIcon />

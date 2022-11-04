@@ -1,19 +1,14 @@
-import React from "react";
+import React from 'react';
 
-// import logo from "./logo.svg";
+// import logo from './logo.svg';
 import "./App.css";
 import Counter from '../plugins/counter/Counter';
-import GridView from "../plugins/grid/View";
+import GridView from '../plugins/grid/View';
 
 
-type tAppProps = typeof App.defaultProps & {
-};
+type tAppProps = typeof App.defaultProps & Record<string, any>;
 
-type tAppState = {
-};
-
-
-class App extends React.Component<tAppProps, tAppState> {
+class App extends React.Component<tAppProps, Record<string, any>> {
   static defaultProps = {};
   state = {};
 

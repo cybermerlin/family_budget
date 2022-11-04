@@ -1,4 +1,5 @@
 import React from "react";
+
 import EditableGrid from "../../lib/editableGrid/EditableGrid";
 
 
@@ -7,10 +8,7 @@ import EditableGrid from "../../lib/editableGrid/EditableGrid";
  * to show the Editable Grid with special parameters
  */
 export default class View extends React.Component {
-  public static defaultProps = {
-
-  };
-
+  public static defaultProps = {};
 
   render() {
     return (

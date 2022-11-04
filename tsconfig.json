@@ -17,12 +17,12 @@
 		"isolatedModules": true,
     "noEmit": true,
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
-      "es2018"
+      "ES2021"
     ],
 		"typeRoots": [
 			"./src/lib/types",

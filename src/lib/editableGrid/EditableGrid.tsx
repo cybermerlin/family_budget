@@ -1,19 +1,20 @@
 import React, { useEffect, useReducer } from 'react';
+import update from 'immutability-helper';
+
 import Table from './Table';
 import "./style.css";
 import {
   randomColor,
   shortId,
   makeData,
-  ActionTypes,
-  DataTypes,
+  ACTION_TYPES,
+  DATA_TYPES,
 } from './utils';
-import update from 'immutability-helper';
 
 
 function reducer(state, action) {
   switch (action.type) {
-    case ActionTypes.ADD_OPTION_TO_COLUMN:
+    case ACTION_TYPES.ADD_OPTION_TO_COLUMN:
       const optionIndex = state.columns.findIndex(
         column => column.id === action.columnId
       );
@@ -32,20 +33,21 @@ function reducer(state, action) {
           },
         },
       });
-    case ActionTypes.ADD_ROW:
+    case ACTION_TYPES.ADD_ROW:
       return update(state, {
         skipReset: { $set: true },
         data: { $push: [{}] },
       });
-    case ActionTypes.UPDATE_COLUMN_TYPE:
+    case ACTION_TYPES.UPDATE_COLUMN_TYPE:
       const typeIndex = state.columns.findIndex(
         column => column.id === action.columnId
       );
       switch (action.dataType) {
-        case DataTypes.NUMBER:
-          if (state.columns[typeIndex].dataType === DataTypes.NUMBER) {
+        case DATA_TYPES.NUMBER:
+          if (state.columns[typeIndex].dataType === DATA_TYPES.NUMBER) {
             return state;
-          } else {
+          }
+          else {
             return update(state, {
               skipReset: { $set: true },
               columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
@@ -60,8 +62,8 @@ function reducer(state, action) {
               },
             });
           }
-        case DataTypes.SELECT:
-          if (state.columns[typeIndex].dataType === DataTypes.SELECT) {
+        case DATA_TYPES.SELECT:
+          if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
             return state;
           } else {
             let options = [];
@@ -83,15 +85,17 @@ function reducer(state, action) {
               },
             });
           }
-        case DataTypes.TEXT:
-          if (state.columns[typeIndex].dataType === DataTypes.TEXT) {
+        case DATA_TYPES.TEXT:
+          if (state.columns[typeIndex].dataType === DATA_TYPES.TEXT) {
             return state;
-          } else if (state.columns[typeIndex].dataType === DataTypes.SELECT) {
+          }
+          else if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
             return update(state, {
               skipReset: { $set: true },
               columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
             });
-          } else {
+          }
+          else {
             return update(state, {
               skipReset: { $set: true },
               columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
@@ -107,7 +111,7 @@ function reducer(state, action) {
         default:
           return state;
       }
-    case ActionTypes.UPDATE_COLUMN_HEADER:
+    case ACTION_TYPES.UPDATE_COLUMN_HEADER:
       const index = state.columns.findIndex(
         column => column.id === action.columnId
       );
@@ -115,14 +119,14 @@ function reducer(state, action) {
         skipReset: { $set: true },
         columns: { [index]: { label: { $set: action.label } } },
       });
-    case ActionTypes.UPDATE_CELL:
+    case ACTION_TYPES.UPDATE_CELL:
       return update(state, {
         skipReset: { $set: true },
         data: {
           [action.rowIndex]: { [action.columnId]: { $set: action.value } },
         },
       });
-    case ActionTypes.ADD_COLUMN_TO_LEFT:
+    case ACTION_TYPES.ADD_COLUMN_TO_LEFT:
       const leftIndex = state.columns.findIndex(
         column => column.id === action.columnId
       );
@@ -138,7 +142,7 @@ function reducer(state, action) {
                 id: leftId,
                 label: 'Column',
                 accessor: leftId,
-                dataType: DataTypes.TEXT,
+                dataType: DATA_TYPES.TEXT,
                 created: action.focus && true,
                 options: [],
               },
@@ -146,7 +150,7 @@ function reducer(state, action) {
           ],
         },
       });
-    case ActionTypes.ADD_COLUMN_TO_RIGHT:
+    case ACTION_TYPES.ADD_COLUMN_TO_RIGHT:
       const rightIndex = state.columns.findIndex(
         column => column.id === action.columnId
       );
@@ -162,7 +166,7 @@ function reducer(state, action) {
                 id: rightId,
                 label: 'Column',
                 accessor: rightId,
-                dataType: DataTypes.TEXT,
+                dataType: DATA_TYPES.TEXT,
                 created: action.focus && true,
                 options: [],
               },
@@ -170,7 +174,7 @@ function reducer(state, action) {
           ],
         },
       });
-    case ActionTypes.DELETE_COLUMN:
+    case ACTION_TYPES.DELETE_COLUMN:
       const deleteIndex = state.columns.findIndex(
         column => column.id === action.columnId
       );
@@ -178,7 +182,7 @@ function reducer(state, action) {
         skipReset: { $set: true },
         columns: { $splice: [[deleteIndex, 1]] },
       });
-    case ActionTypes.ENABLE_RESET:
+    case ACTION_TYPES.ENABLE_RESET:
       return update(state, { skipReset: { $set: true } });
     default:
       return state;
@@ -189,7 +193,7 @@ function EditableGrid() {
   const [state, dispatch] = useReducer(reducer, makeData(1000));
 
   useEffect(() => {
-    dispatch({ type: ActionTypes.ENABLE_RESET });
+    dispatch({ type: ACTION_TYPES.ENABLE_RESET });
   }, [state.data, state.columns]);
 
   return (

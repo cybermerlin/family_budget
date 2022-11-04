@@ -1,6 +1,12 @@
 import React from 'react';
 
-export default function Badge({ value, backgroundColor }) {
+
+interface IProps {
+  value;
+  backgroundColor;
+}
+
+export default function Badge({ value, backgroundColor }: IProps) {
   return (
     <span
       className="font-weight-400 d-inline-block color-grey-800 border-radius-sm text-transform-capitalize"

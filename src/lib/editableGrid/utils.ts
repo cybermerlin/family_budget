@@ -32,7 +32,7 @@ export function makeData(count) {
       label: 'First Name',
       accessor: 'firstName',
       minWidth: 100,
-      dataType: DataTypes.TEXT,
+      dataType: DATA_TYPES.TEXT,
       options: [],
     },
     {
@@ -40,7 +40,7 @@ export function makeData(count) {
       label: 'Last Name',
       accessor: 'lastName',
       minWidth: 100,
-      dataType: DataTypes.TEXT,
+      dataType: DATA_TYPES.TEXT,
       options: [],
     },
     {
@@ -48,7 +48,7 @@ export function makeData(count) {
       label: 'Age',
       accessor: 'age',
       width: 80,
-      dataType: DataTypes.NUMBER,
+      dataType: DATA_TYPES.NUMBER,
       options: [],
     },
     {
@@ -56,14 +56,14 @@ export function makeData(count) {
       label: 'E-Mail',
       accessor: 'email',
       width: 300,
-      dataType: DataTypes.TEXT,
+      dataType: DATA_TYPES.TEXT,
       options: [],
     },
     {
       id: 'music',
       label: 'Music Preference',
       accessor: 'music',
-      dataType: DataTypes.SELECT,
+      dataType: DATA_TYPES.SELECT,
       width: 200,
       options: options,
     },
@@ -78,7 +78,7 @@ export function makeData(count) {
   return { columns: columns, data: data, skipReset: false };
 }
 
-export const ActionTypes = Object.freeze({
+export const ACTION_TYPES = Object.freeze({
   ADD_OPTION_TO_COLUMN: 'add_option_to_column',
   ADD_ROW: 'add_row',
   UPDATE_COLUMN_TYPE: 'update_column_type',
@@ -90,7 +90,7 @@ export const ActionTypes = Object.freeze({
   ENABLE_RESET: 'enable_reset',
 });
 
-export const DataTypes = Object.freeze({
+export const DATA_TYPES = Object.freeze({
   NUMBER: 'number',
   TEXT: 'text',
   SELECT: 'select',

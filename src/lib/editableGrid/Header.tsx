@@ -10,15 +10,16 @@ import TextIcon from './img/Text';
 import MultiIcon from './img/Multi';
 import HashIcon from './img/Hash';
 import PlusIcon from './img/Plus';
-import { ActionTypes, DataTypes, shortId } from './utils';
+import { ACTION_TYPES, DATA_TYPES, shortId } from './utils';
 
-function getPropertyIcon(dataType) {
+
+function getPropertyIcon(dataType: any) {
   switch (dataType) {
-    case DataTypes.NUMBER:
+    case DATA_TYPES.NUMBER:
       return <HashIcon />;
-    case DataTypes.TEXT:
+    case DATA_TYPES.TEXT:
       return <TextIcon />;
-    case DataTypes.SELECT:
+    case DATA_TYPES.SELECT:
       return <MultiIcon />;
     default:
       return null;
@@ -48,9 +49,9 @@ export default function Header({
   const [showType, setShowType] = useState(false);
   const buttons = [
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
-          type: ActionTypes.UPDATE_COLUMN_HEADER,
+          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header,
         });
@@ -61,9 +62,9 @@ export default function Header({
       label: 'Sort ascending',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
-          type: ActionTypes.UPDATE_COLUMN_HEADER,
+          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header,
         });
@@ -74,14 +75,14 @@ export default function Header({
       label: 'Sort descending',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
-          type: ActionTypes.UPDATE_COLUMN_HEADER,
+          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header,
         });
         dataDispatch({
-          type: ActionTypes.ADD_COLUMN_TO_LEFT,
+          type: ACTION_TYPES.ADD_COLUMN_TO_LEFT,
           columnId: id,
           focus: false,
         });
@@ -91,14 +92,14 @@ export default function Header({
       label: 'Insert left',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
-          type: ActionTypes.UPDATE_COLUMN_HEADER,
+          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header,
         });
         dataDispatch({
-          type: ActionTypes.ADD_COLUMN_TO_RIGHT,
+          type: ACTION_TYPES.ADD_COLUMN_TO_RIGHT,
           columnId: id,
           focus: false,
         });
@@ -108,13 +109,13 @@ export default function Header({
       label: 'Insert right',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
-          type: ActionTypes.UPDATE_COLUMN_HEADER,
+          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header,
         });
-        dataDispatch({ type: ActionTypes.DELETE_COLUMN, columnId: id });
+        dataDispatch({ type: ACTION_TYPES.DELETE_COLUMN, columnId: id });
         setExpanded(false);
       },
       icon: <TrashIcon />,
@@ -125,11 +126,11 @@ export default function Header({
 
   const types = [
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DataTypes.SELECT,
+          dataType: DATA_TYPES.SELECT,
         });
         setShowType(false);
         setExpanded(false);
@@ -138,11 +139,11 @@ export default function Header({
       label: 'Select',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DataTypes.TEXT,
+          dataType: DATA_TYPES.TEXT,
         });
         setShowType(false);
         setExpanded(false);
@@ -151,11 +152,11 @@ export default function Header({
       label: 'Text',
     },
     {
-      onClick: e => {
+      onClick: (e: any) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DataTypes.NUMBER,
+          dataType: DATA_TYPES.NUMBER,
         });
         setShowType(false);
         setExpanded(false);
@@ -165,7 +166,8 @@ export default function Header({
     },
   ];
 
-  function handleKeyDown(e) {
+
+  function handleKeyDown(e: { key: string; }) {
     if (e.key === 'Enter') {
       dataDispatch({
         type: 'update_column_header',
@@ -176,11 +178,11 @@ export default function Header({
     }
   }
 
-  function handleChange(e) {
+  function handleChange(e: { target: { value: any; }; }) {
     setHeader(e.target.value);
   }
 
-  function handleBlur(e) {
+  function handleBlur(e: { preventDefault: () => void; }) {
     e.preventDefault();
     dataDispatch({ type: 'update_column_header', columnId: id, label: header });
   }
@@ -189,7 +191,7 @@ export default function Header({
     if (id !== 999999) {
       return (
         <>
-          <div key={id} {...getHeaderProps()} className="th noselect d-inline-block">
+          <div key={crypto.randomUUID()} {...getHeaderProps()} className="th noselect d-inline-block">
             <div
               className="th-content"
               onClick={() => setExpanded(true)}
@@ -203,10 +205,10 @@ export default function Header({
             <div {...getResizerProps()} className="resizer" />
           </div>
           {expanded && (
-            <div className="overlay" onClick={() => setExpanded(false)} />
+            <div key={crypto.randomUUID()} className="overlay" onClick={() => setExpanded(false)} />
           )}
           {expanded && (
-            <div key={id}
+            <div key={crypto.randomUUID()}
               ref={setPopperElement}
               style={{ ...styles.popper, zIndex: 3 }}
               {...attributes.popper}
@@ -307,8 +309,9 @@ export default function Header({
         </>
       );
     }
+
     return (
-      <div {...getHeaderProps()} className="th noselect d-inline-block">
+      <div {...getHeaderProps()} key={crypto.randomUUID()} className="th noselect d-inline-block">
         <div
           className="th-content d-flex justify-content-center"
           onClick={e =>
