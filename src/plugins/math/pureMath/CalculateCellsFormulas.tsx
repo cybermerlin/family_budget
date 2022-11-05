@@ -1,18 +1,18 @@
 import React from "react";
 import { handleKeyPress, handleFocus, handleBlur } from "./handlersCountCellsData";
 import HistoryFormulas from "./historyFormulas";
-import { MathService } from "./MathService";
+import { MathServiceComponent } from "./MathService";
 
 
-export default function CountCellsData(props: { children: JSX.Element }) {
+export default function CalculateCellsFormulas(props: { children: JSX.Element }) {
   return (
-    <MathService>
+    <MathServiceComponent>
       <>
         <HistoryFormulas />
         <div onFocus={handleFocus} onBlur={handleBlur} onKeyPress={handleKeyPress}>
           {props.children}
         </div>
       </>
-    </MathService>
+    </MathServiceComponent>
   );
 }

@@ -14,11 +14,11 @@ const ERROR_MESSAGES = Object.freeze({
 let historyFormulas = { history: "" };
 const MathServiceContext: React.Context<THistoryFormulas> = createContext(null);
 
-function MathService(props: { children: JSX.Element }) {
+function MathServiceComponent(props: { children: JSX.Element }) {
   return <MathServiceContext.Provider value={historyFormulas}>{props.children}</MathServiceContext.Provider>;
 }
 
-function MathCounter(formula: string): number | Error {
+function MathCalculator(formula: string): number | Error {
   let result: number | Error = new Error(ERROR_MESSAGES.symbols);
 
   if (!formula.slice(1).match(/[^0-9.+-/*()]/g)) {
@@ -39,4 +39,4 @@ function MathCounter(formula: string): number | Error {
   return result;
 }
 
-export { MathCounter, MathServiceContext, MathService };
+export { MathCalculator, MathServiceContext, MathServiceComponent };

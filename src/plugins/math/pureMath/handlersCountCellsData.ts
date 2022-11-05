@@ -1,8 +1,7 @@
 import React from 'react';
-import { MathCounter } from './MathService';
+import { MathCalculator } from './MathService';
+
 import { storeMath, add_formula } from './storeMath';
-
-
 import type { TFormulaObj } from './storeMath';
 
 
@@ -11,9 +10,9 @@ function handleKeyPress(e: React.KeyboardEvent) {
     let target = e.target;
     let formula = target.innerHTML;
 
-    if (e.key === 'Enter' && formula.startsWith('=') && target.classList.contains('data-input')) {
+    if (e.key === 'Enter' && formula.startsWith('=') && target.classList.contains('data-input-number')) {
       e.preventDefault();
-      let result = MathCounter(formula);
+      let result = MathCalculator(formula);
 
       if (Number.isInteger(result) && target.parentNode instanceof HTMLElement) {
         target.innerHTML = result.toString();
@@ -27,7 +26,7 @@ function handleKeyPress(e: React.KeyboardEvent) {
 function handleFocus(e: React.FocusEvent) {
   let target = e.target;
 
-  if (target.classList.contains('data-input') && target.parentNode instanceof HTMLElement) {
+  if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
     let result = findFormula(target.parentNode.tabIndex);
     if (result) target.innerHTML = result.formula;
   }
@@ -36,7 +35,7 @@ function handleFocus(e: React.FocusEvent) {
 function handleBlur(e: React.FocusEvent) {
   let target = e.target;
 
-  if (target.classList.contains('data-input') && target.parentNode instanceof HTMLElement) {
+  if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
     let result = findFormula(target.parentNode.tabIndex);
     if (result) target.innerHTML = result.result;
   }

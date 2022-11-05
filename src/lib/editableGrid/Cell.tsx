@@ -6,7 +6,7 @@ import { grey } from './colors';
 import PlusIcon from './img/Plus';
 import { ActionTypes, DataTypes, randomColor } from './utils';
 import { createPortal } from 'react-dom';
-import { findFormula } from "../../plugins/calculationTry1/handlersCountCellsData";
+import { findFormula } from "../../plugins/math/pureMath/handlersCountCellsData";
 
 export default function Cell({
   value: initialValue,
@@ -64,6 +64,9 @@ export default function Cell({
     setValue({ value: e.target.value, update: false });
   }
 
+  /**
+ * This function need for preventing saving unended fomulas (saves last etered formula in a cell)
+ */
   function onBlur(e) {
     let formula = findFormula(e.target.parentNode.tabIndex);
     if (formula) {
@@ -86,7 +89,7 @@ export default function Cell({
             html={(value.value && value.value.toString()) || ''}
             onChange={onChange}
             onBlur={onBlur}
-            className="data-input"
+            className="data-input data-input-text"
           />
         );
       case DataTypes.NUMBER:
@@ -95,7 +98,7 @@ export default function Cell({
             html={(value.value && value.value.toString()) || ''}
             onChange={onChange}
             onBlur={onBlur}
-            className="data-input text-align-right"
+            className="data-input data-input-number text-align-right"
           />
         );
       case DataTypes.SELECT:
