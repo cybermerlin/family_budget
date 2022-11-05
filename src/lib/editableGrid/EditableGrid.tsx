@@ -8,7 +8,7 @@ import {
   shortId,
   makeData,
   ACTION_TYPES,
-  DATA_TYPES,
+  DATA_TYPES
 } from './utils';
 
 
@@ -16,7 +16,7 @@ function reducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.ADD_OPTION_TO_COLUMN:
       const optionIndex = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       return update(state, {
         skipReset: { $set: true },
@@ -26,21 +26,21 @@ function reducer(state, action) {
               $push: [
                 {
                   label: action.option,
-                  backgroundColor: action.backgroundColor,
-                },
-              ],
-            },
-          },
-        },
+                  backgroundColor: action.backgroundColor
+                }
+              ]
+            }
+          }
+        }
       });
     case ACTION_TYPES.ADD_ROW:
       return update(state, {
         skipReset: { $set: true },
-        data: { $push: [{}] },
+        data: { $push: [{}] }
       });
     case ACTION_TYPES.UPDATE_COLUMN_TYPE:
       const typeIndex = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       switch (action.dataType) {
         case DATA_TYPES.NUMBER:
@@ -53,25 +53,26 @@ function reducer(state, action) {
               columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
               data: {
                 $apply: data =>
-                  data.map(row => ({
-                    ...row,
-                    [action.columnId]: isNaN(row[action.columnId])
-                      ? ''
-                      : Number.parseInt(row[action.columnId]),
-                  })),
-              },
+                    data.map(row => ({
+                      ...row,
+                      [action.columnId]: isNaN(row[action.columnId])
+                                         ? ''
+                                         : Number.parseInt(row[action.columnId])
+                    }))
+              }
             });
           }
         case DATA_TYPES.SELECT:
           if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
             return state;
-          } else {
+          }
+          else {
             let options = [];
             state.data.forEach(row => {
               if (row[action.columnId]) {
                 options.push({
                   label: row[action.columnId],
-                  backgroundColor: randomColor(),
+                  backgroundColor: randomColor()
                 });
               }
             });
@@ -80,9 +81,9 @@ function reducer(state, action) {
               columns: {
                 [typeIndex]: {
                   dataType: { $set: action.dataType },
-                  options: { $push: options },
-                },
-              },
+                  options: { $push: options }
+                }
+              }
             });
           }
         case DATA_TYPES.TEXT:
@@ -92,7 +93,7 @@ function reducer(state, action) {
           else if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
             return update(state, {
               skipReset: { $set: true },
-              columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
+              columns: { [typeIndex]: { dataType: { $set: action.dataType } } }
             });
           }
           else {
@@ -101,11 +102,11 @@ function reducer(state, action) {
               columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
               data: {
                 $apply: data =>
-                  data.map(row => ({
-                    ...row,
-                    [action.columnId]: row[action.columnId] + '',
-                  })),
-              },
+                    data.map(row => ({
+                      ...row,
+                      [action.columnId]: row[action.columnId] + ''
+                    }))
+              }
             });
           }
         default:
@@ -113,22 +114,22 @@ function reducer(state, action) {
       }
     case ACTION_TYPES.UPDATE_COLUMN_HEADER:
       const index = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       return update(state, {
         skipReset: { $set: true },
-        columns: { [index]: { label: { $set: action.label } } },
+        columns: { [index]: { label: { $set: action.label } } }
       });
     case ACTION_TYPES.UPDATE_CELL:
       return update(state, {
         skipReset: { $set: true },
         data: {
-          [action.rowIndex]: { [action.columnId]: { $set: action.value } },
-        },
+          [action.rowIndex]: { [action.columnId]: { $set: action.value } }
+        }
       });
     case ACTION_TYPES.ADD_COLUMN_TO_LEFT:
       const leftIndex = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       let leftId = shortId();
       return update(state, {
@@ -144,15 +145,15 @@ function reducer(state, action) {
                 accessor: leftId,
                 dataType: DATA_TYPES.TEXT,
                 created: action.focus && true,
-                options: [],
-              },
-            ],
-          ],
-        },
+                options: []
+              }
+            ]
+          ]
+        }
       });
     case ACTION_TYPES.ADD_COLUMN_TO_RIGHT:
       const rightIndex = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       const rightId = shortId();
       return update(state, {
@@ -168,19 +169,19 @@ function reducer(state, action) {
                 accessor: rightId,
                 dataType: DATA_TYPES.TEXT,
                 created: action.focus && true,
-                options: [],
-              },
-            ],
-          ],
-        },
+                options: []
+              }
+            ]
+          ]
+        }
       });
     case ACTION_TYPES.DELETE_COLUMN:
       const deleteIndex = state.columns.findIndex(
-        column => column.id === action.columnId
+          column => column.id === action.columnId
       );
       return update(state, {
         skipReset: { $set: true },
-        columns: { $splice: [[deleteIndex, 1]] },
+        columns: { $splice: [[deleteIndex, 1]] }
       });
     case ACTION_TYPES.ENABLE_RESET:
       return update(state, { skipReset: { $set: true } });
@@ -197,21 +198,21 @@ function EditableGrid() {
   }, [state.data, state.columns]);
 
   return (
-    <div
-      className="overflow-y-hidden"
-      style={{
-        width: '100vw',
-        height: '100vh',
-      }}
-    >
-      <Table
-        columns={state.columns}
-        data={state.data}
-        dispatch={dispatch}
-        skipReset={state.skipReset}
-      />
-      <div id="popper-portal"></div>
-    </div>
+      <div
+          className="overflow-y-hidden"
+          style={{
+            width: '100vw',
+            height: '100vh'
+          }}
+      >
+        <Table
+            columns={state.columns}
+            data={state.data}
+            dispatch={dispatch}
+            skipReset={state.skipReset}
+        />
+        <div id="popper-portal"></div>
+      </div>
   );
 }
 

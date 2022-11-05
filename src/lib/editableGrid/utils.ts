@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker/locale/ru';
 
 
 export function shortId() {
-  return '_' + Math.random().toString(36).substr(2, 9);
+  return `_${Math.random().toString(36).substr(2, 9)}`;
 }
 
 export function randomColor() {
@@ -19,7 +19,7 @@ export function makeData(count) {
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
       age: Math.floor(20 + Math.random() * 20),
-      music: faker.music.genre(),
+      music: faker.music.genre()
     };
     options.push({ label: row.music, backgroundColor: randomColor() });
 
@@ -33,7 +33,7 @@ export function makeData(count) {
       accessor: 'firstName',
       minWidth: 100,
       dataType: DATA_TYPES.TEXT,
-      options: [],
+      options: []
     },
     {
       id: 'lastName',
@@ -41,7 +41,7 @@ export function makeData(count) {
       accessor: 'lastName',
       minWidth: 100,
       dataType: DATA_TYPES.TEXT,
-      options: [],
+      options: []
     },
     {
       id: 'age',
@@ -49,7 +49,7 @@ export function makeData(count) {
       accessor: 'age',
       width: 80,
       dataType: DATA_TYPES.NUMBER,
-      options: [],
+      options: []
     },
     {
       id: 'email',
@@ -57,7 +57,7 @@ export function makeData(count) {
       accessor: 'email',
       width: 300,
       dataType: DATA_TYPES.TEXT,
-      options: [],
+      options: []
     },
     {
       id: 'music',
@@ -65,15 +65,15 @@ export function makeData(count) {
       accessor: 'music',
       dataType: DATA_TYPES.SELECT,
       width: 200,
-      options: options,
+      options: options
     },
     {
       id: 999999,
       width: 20,
       label: '+',
       disableResizing: true,
-      dataType: 'null',
-    },
+      dataType: 'null'
+    }
   ];
   return { columns: columns, data: data, skipReset: false };
 }
@@ -87,11 +87,11 @@ export const ACTION_TYPES = Object.freeze({
   ADD_COLUMN_TO_LEFT: 'add_column_to_left',
   ADD_COLUMN_TO_RIGHT: 'add_column_to_right',
   DELETE_COLUMN: 'delete_column',
-  ENABLE_RESET: 'enable_reset',
+  ENABLE_RESET: 'enable_reset'
 });
 
 export const DATA_TYPES = Object.freeze({
   NUMBER: 'number',
   TEXT: 'text',
-  SELECT: 'select',
+  SELECT: 'select'
 });

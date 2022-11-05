@@ -17,26 +17,17 @@ module.exports = {
   },
 
   extends: [
-    'airbnb/base',
-    'eslint:recommended',
     'prettier',
     'plugin:security/recommended',
     'plugin:jsonc/base',
 
-    'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended',
-
-    // 'plugin:@angular-eslint/recommended',
-    // 'plugin:@angular-eslint/template/process-inline-templates',
-
-    // 'prettier/vue',
-    // 'plugin:vue/essential',
-    // 'plugin:vue/vue3-recommended',
-    // 'plugin:vue/recommended',
-    // '@vue/typescript/recommended',
+    'eslint:recommended',
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
 
     'react-app',
     'react-app/jest',
+    'plugin:jest/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended'
   ],
@@ -46,20 +37,19 @@ module.exports = {
   plugins: [
     'optimize-regex',
     'prettier',
-    'import',
     '@typescript-eslint',
     // 'dollar-sign', 'jquery',
     'security',
     'no-secrets',
     'html',
     'react',
-    'react-hooks'
+    'react-hooks',
+    'jest'
   ],
 
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: 'module',
-    // ----for react
     ecmaFeatures: {
       jsx: true,
     }
@@ -199,7 +189,6 @@ module.exports = {
     'no-use-before-define': 'warn',
     'default-param-last': 'warn',
     'no-eval': 'warn',
-    'import/no-cycle': 'off',
     'optimize-regex/optimize-regex': 'warn',
     'no-unused-expressions': 'off',
     'no-nested-ternary': 'warn',
@@ -280,20 +269,22 @@ module.exports = {
 
 
     //#region ------------- react
+    'import/no-cycle': 0,
+    'react/react-in-jsx-scope': 0,
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
     'import/order': 0,
     'import/no-self-import': 0,
-    'import/no-duplicates': 0,
+    // 'import/no-duplicates': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-relative-packages': 0,
     'import/no-named-as-default': 0,
     'import/no-named-as-default-member': 0,
-    'import/no-useless-path-segments': 0,
+    // 'import/no-useless-path-segments': 0,
     //#endregion
 
 
     // "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
     'no-secrets/no-secrets': 'error',
     // 'no-secrets/no-secrets': ['error', {'tolerance': 3.2}],
     //                                    {'ignoreContent':'^ABCD'} // {'ignoreIdentifiers':['BASE64_CHARS']}
@@ -421,7 +412,7 @@ module.exports = {
     'prefer-spread': 'error',
     'prefer-template': 'error',
     'radix': 'off',
-    'space-before-function-paren': 'error',
+    'space-before-function-paren': ['error', {"anonymous": "always", "named": "never", "asyncArrow": "always"}],
     'vars-on-top': 'error',
     'yoda': 'error',
     'no-restricted-imports': [
@@ -543,27 +534,8 @@ module.exports = {
     },
     'import/resolver': {
       'typescript': {
-        'alwaysTryTypes': true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
-        // Choose from one of the 'project' configs below or omit to use <root>/tsconfig.json by default
-
-        // use <root>/path/to/folder/tsconfig.json
-        // 'project': 'path/to/folder',
-
-        // Multiple tsconfigs (Useful for monorepos)
-        // use a glob pattern
-        // 'project': 'packages/*/tsconfig.json',
-
-        // use an array
-        // 'project': [
-        // 'packages/module-a/tsconfig.json',
-        // 'packages/module-b/tsconfig.json'
-        // ],
-
-        // use an array of glob patterns
-        // 'project': [
-        // 'packages/*/tsconfig.json',
-        // 'other-packages/*/tsconfig.json'
-        // ]
+        'alwaysTryTypes': true, // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        'path': './tsconfig.json'
       }
     }
   }

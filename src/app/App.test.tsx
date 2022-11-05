@@ -19,7 +19,7 @@ global.window = window;
 
 test('Render App', () => {
   render(<Provider store={store}>
-    <App />
+    <App/>
   </Provider>);
 
   const linkElement = screen.getByText(/Add Amount/i);

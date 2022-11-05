@@ -1,7 +1,7 @@
 import "@types/faker";
 
 
-export { };
+export {};
 declare module '@faker-js/faker' {
   import faker from 'faker';
   export default faker;
@@ -13,8 +13,10 @@ declare global {
     log: ILog;
   }
 
+
   interface ILog {
     colors: boolean;
+
     (...data: any[]): any;
   }
 }

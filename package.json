@@ -32,8 +32,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-		"lint": "eslint -c .es-lintrc.js ./src",
-		"lint-fix": "eslint -c .es-lintrc.js ./src -- fix",
+    "lint": "eslint -c .eslintrc.js ./src",
+    "lint-fix": "eslint -c .es-lintrc.js ./src -- fix",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -42,8 +42,8 @@
     "extends": [
       "react-app",
       "react-app/jest",
-			"plugin:react/recommended",
-			"plugin:react-hooks/recommended"
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
     ],
     "overrides": [
       {
@@ -79,9 +79,8 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "0.0.13",
-    "@typescript-eslint/eslint-plugin": "5.29.0",
-    "@typescript-eslint/parser": "5.29.0",
-    "babel-plugin-named-exports-order": "0.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.29.0",
     "eslint": "^8.26.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
