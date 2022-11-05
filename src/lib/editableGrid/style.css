@@ -179,6 +179,10 @@
   flex-direction: column;
 }
 
+.data-input:focus {
+  background: rgba(112, 76, 182, 0.15);
+}
+
 .td-content {
   display: block;
 }

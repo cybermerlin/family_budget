@@ -10,6 +10,10 @@ export default class View extends React.Component {
   public static defaultProps = {};
 
   render() {
-    return CountCellsData(<EditableGrid />);
+    return (
+      <CountCellsData>
+        <EditableGrid />
+      </CountCellsData>
+    );
   }
 }

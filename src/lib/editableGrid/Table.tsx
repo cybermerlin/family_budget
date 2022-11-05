@@ -74,14 +74,18 @@ export default function Table({
     useSortBy
   );
 
+  let tabidexCell = 0;
+
   const RenderRow = React.useCallback(
     ({ index, style }) => {
       const row = rows[index];
+
       prepareRow(row);
+
       return (
         <div {...row.getRowProps({ style })} className="tr">
           {row.cells.map(cell => (
-            <div {...cell.getCellProps()} className="td">
+            <div {...cell.getCellProps()} tabIndex={tabidexCell++} className="td">
               {cell.render('Cell')}
             </div>
           ))}
