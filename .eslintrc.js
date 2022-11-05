@@ -269,22 +269,12 @@ module.exports = {
 
 
     //#region ------------- react
-    'import/no-cycle': 0,
     'react/react-in-jsx-scope': 0,
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-    'import/order': 0,
-    'import/no-self-import': 0,
-    // 'import/no-duplicates': 0,
-    'import/no-extraneous-dependencies': 0,
-    'import/no-relative-packages': 0,
-    'import/no-named-as-default': 0,
-    'import/no-named-as-default-member': 0,
-    // 'import/no-useless-path-segments': 0,
     //#endregion
 
 
-    // "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}],
     'no-secrets/no-secrets': 'error',
     // 'no-secrets/no-secrets': ['error', {'tolerance': 3.2}],
     //                                    {'ignoreContent':'^ABCD'} // {'ignoreIdentifiers':['BASE64_CHARS']}
@@ -310,7 +300,7 @@ module.exports = {
     ],
     'block-scoped-var': 'error',
     'block-spacing': ['error', 'always'],
-    'capitalized-comments': ['error', {'ignoreInlineComments': true, "ignoreConsecutiveComments": true}],
+    'capitalized-comments': ['error', 'always', {'ignoreInlineComments': true, 'ignoreConsecutiveComments': true}],
     'class-methods-use-this': 'off',
     'curly': ['error', 'all'],
     'dot-notation': 'error',
@@ -462,7 +452,14 @@ module.exports = {
       rules: {
         'max-lines-per-function': 0,
         'import/named': 0,
-        // 'import/order': 0
+        'import/order': 0,
+        'import/no-cycle': 0,
+        'import/order': 0,
+        'import/no-self-import': 0,
+        'import/no-extraneous-dependencies': 0,
+        'import/no-relative-packages': 0,
+        'import/no-named-as-default': 0,
+        'import/no-named-as-default-member': 0
       }
     },
     {

@@ -6,7 +6,6 @@ import { store } from './store';
 import App from './App';
 
 
-// const { window } = jsdom;
 const nodeCrypto = require('crypto');
 
 window.crypto = {

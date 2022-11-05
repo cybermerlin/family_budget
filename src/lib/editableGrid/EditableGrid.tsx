@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import update from 'immutability-helper';
 
 import Table from './Table';
@@ -15,9 +15,10 @@ import {
 function reducer(state, action) {
   switch (action.type) {
     case ACTION_TYPES.ADD_OPTION_TO_COLUMN:
-      const optionIndex = state.columns.findIndex(
+      let optionIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
+
       return update(state, {
         skipReset: { $set: true },
         columns: {
@@ -39,18 +40,19 @@ function reducer(state, action) {
         data: { $push: [{}] }
       });
     case ACTION_TYPES.UPDATE_COLUMN_TYPE:
-      const typeIndex = state.columns.findIndex(
+      const TYPE_INDEX = state.columns.findIndex(
           column => column.id === action.columnId
       );
+
       switch (action.dataType) {
         case DATA_TYPES.NUMBER:
-          if (state.columns[typeIndex].dataType === DATA_TYPES.NUMBER) {
+          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.NUMBER) {
             return state;
           }
           else {
             return update(state, {
               skipReset: { $set: true },
-              columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
+              columns: { [TYPE_INDEX]: { dataType: { $set: action.dataType } } },
               data: {
                 $apply: data =>
                     data.map(row => ({
@@ -63,11 +65,12 @@ function reducer(state, action) {
             });
           }
         case DATA_TYPES.SELECT:
-          if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
+          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.SELECT) {
             return state;
           }
           else {
             let options = [];
+
             state.data.forEach(row => {
               if (row[action.columnId]) {
                 options.push({
@@ -76,10 +79,11 @@ function reducer(state, action) {
                 });
               }
             });
+
             return update(state, {
               skipReset: { $set: true },
               columns: {
-                [typeIndex]: {
+                [TYPE_INDEX]: {
                   dataType: { $set: action.dataType },
                   options: { $push: options }
                 }
@@ -87,24 +91,24 @@ function reducer(state, action) {
             });
           }
         case DATA_TYPES.TEXT:
-          if (state.columns[typeIndex].dataType === DATA_TYPES.TEXT) {
+          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.TEXT) {
             return state;
           }
-          else if (state.columns[typeIndex].dataType === DATA_TYPES.SELECT) {
+          else if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.SELECT) {
             return update(state, {
               skipReset: { $set: true },
-              columns: { [typeIndex]: { dataType: { $set: action.dataType } } }
+              columns: { [TYPE_INDEX]: { dataType: { $set: action.dataType } } }
             });
           }
           else {
             return update(state, {
               skipReset: { $set: true },
-              columns: { [typeIndex]: { dataType: { $set: action.dataType } } },
+              columns: { [TYPE_INDEX]: { dataType: { $set: action.dataType } } },
               data: {
                 $apply: data =>
                     data.map(row => ({
                       ...row,
-                      [action.columnId]: row[action.columnId] + ''
+                      [action.columnId]: row[action.columnId].toString()
                     }))
               }
             });
@@ -116,6 +120,7 @@ function reducer(state, action) {
       const index = state.columns.findIndex(
           column => column.id === action.columnId
       );
+
       return update(state, {
         skipReset: { $set: true },
         columns: { [index]: { label: { $set: action.label } } }
@@ -132,6 +137,7 @@ function reducer(state, action) {
           column => column.id === action.columnId
       );
       let leftId = shortId();
+
       return update(state, {
         skipReset: { $set: true },
         columns: {
@@ -156,6 +162,7 @@ function reducer(state, action) {
           column => column.id === action.columnId
       );
       const rightId = shortId();
+
       return update(state, {
         skipReset: { $set: true },
         columns: {
@@ -179,6 +186,7 @@ function reducer(state, action) {
       const deleteIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
+
       return update(state, {
         skipReset: { $set: true },
         columns: { $splice: [[deleteIndex, 1]] }

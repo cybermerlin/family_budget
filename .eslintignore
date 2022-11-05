@@ -6,3 +6,4 @@
 dist
 .*
 /src/stories
+*.d.ts

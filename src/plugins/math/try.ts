@@ -1,4 +1,4 @@
-declare global {
+/* TODO: declare global {
   interface Console {
     log: ILog;
   }
@@ -11,5 +11,6 @@ declare global {
   }
 }
 
-console.log = <ILog>function (...args) {};
+// console.log = <ILog> function (...args) {};
 console.log.colors = true;
+ */

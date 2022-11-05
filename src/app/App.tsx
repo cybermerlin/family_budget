@@ -1,6 +1,5 @@
 import { Component } from 'react';
 
-// import logo from './logo.svg';
 import "./App.css";
 import Counter from '../plugins/counter/Counter';
 import GridView from '../plugins/grid/View';
