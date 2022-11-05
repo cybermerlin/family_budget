@@ -310,7 +310,7 @@ module.exports = {
     ],
     'block-scoped-var': 'error',
     'block-spacing': ['error', 'always'],
-    'capitalized-comments': ['error'],
+    'capitalized-comments': ['error', {'ignoreInlineComments': true, "ignoreConsecutiveComments": true}],
     'class-methods-use-this': 'off',
     'curly': ['error', 'all'],
     'dot-notation': 'error',
@@ -387,7 +387,7 @@ module.exports = {
     'no-warning-comments': ['warn', {terms: ['fixme']}],
     'no-whitespace-before-property': 'error',
     'object-curly-spacing': ['error', 'always'],
-    'object-property-newline': 'error',
+    'object-property-newline': ['error', { "allowAllPropertiesOnSameLine": true }],
     'object-shorthand': ['off', 'consistent-as-needed'], // does not work yet. bitch
     'prefer-const': 'off',
     'prefer-destructuring': [

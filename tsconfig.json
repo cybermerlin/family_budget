@@ -39,7 +39,7 @@
 		"esModuleInterop": true,
     "skipLibCheck": true,
 		"jsx": "react-jsx",
-		"jsxFactory": "React.createElement"
+		"jsxImportSource": "react"
   },
 	"include": [
     "./src//*.ts",
