@@ -9,7 +9,7 @@ export function grey(value) {
     600: '#757575',
     700: '#616161',
     800: '#424242',
-    900: '#212121',
+    900: '#212121'
   };
 
   return reference[value];

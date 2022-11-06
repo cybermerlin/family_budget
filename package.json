@@ -30,8 +30,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false && react-scripts build",
     "test": "react-scripts test",
+    "lint": "eslint -c .eslintrc.js ./src",
+    "lint-fix": "eslint -c .eslintrc.js ./src -- fix",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -39,7 +41,9 @@
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:react/recommended",
+      "plugin:react-hooks/recommended"
     ],
     "overrides": [
       {
@@ -75,8 +79,31 @@
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/react": "^6.5.13",
     "@storybook/testing-library": "0.0.13",
-    "babel-plugin-named-exports-order": "0.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsonc": "^2.5.0",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-no-secrets": "^0.8.9",
+    "eslint-plugin-optimize-regex": "^1.2.1",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-security": "^1.5.0",
+    "jest": "^29.2.2",
+    "jest-config": "^29.2.2",
+    "jest-util": "^29.2.1",
+    "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
     "webpack": "^5.74.0"
+  },
+  "resolutions": {
+    "jest": "29.2.2",
+    "jest-config": "^29.2.2",
+    "jest-util": "29.2.1"
   }
 }

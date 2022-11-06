@@ -7,13 +7,16 @@ declare module '@faker-js/faker' {
   export default faker;
 }
 
+
 declare global {
   interface Console {
     log: ILog;
   }
 
+
   interface ILog {
     colors: boolean;
-    (...data: any []): any;
+
+    (...data: any[]): any;
   }
 }
