@@ -9,7 +9,7 @@ export function randomColor() {
   return `hsl(${Math.floor(Math.random() * 360)}, 95%, 90%)`;
 }
 
-export function makeData(count) {
+export function makeData(count: number) {
   let data = [];
   let options = [];
   for (let i = 0; i < count; i++) {

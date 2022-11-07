@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ReactNode } from 'react';
 import { usePopper } from 'react-popper';
 import { grey } from './colors';
 import ArrowUpIcon from './img/ArrowUp';
@@ -12,7 +12,7 @@ import HashIcon from './img/Hash';
 import PlusIcon from './img/Plus';
 import { ActionTypes, DataTypes, shortId } from './utils';
 
-function getPropertyIcon(dataType) {
+function getPropertyIcon(dataType: string) {
   switch (dataType) {
     case DataTypes.NUMBER:
       return <HashIcon />;
@@ -25,11 +25,26 @@ function getPropertyIcon(dataType) {
   }
 }
 
+type HeaderProps = {
+  column: HeaderColumn;
+  setSortBy: ([]) => void;
+  dataDispatch: ({}) => void;
+}
+type HeaderColumn = {
+  id: number;
+  created?: boolean;
+  label: string;
+  dataType: string;
+  getResizerProps: () => any[];
+  getHeaderProps: () => any[];
+}
+type TButtonEvent = React.MouseEvent<Element>;
+
 export default function Header({
   column: { id, created, label, dataType, getResizerProps, getHeaderProps },
   setSortBy,
   dataDispatch,
-}) {
+}: HeaderProps) {
   const [expanded, setExpanded] = useState(created || false);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
@@ -48,7 +63,7 @@ export default function Header({
   const [showType, setShowType] = useState(false);
   const buttons = [
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: ActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -61,7 +76,7 @@ export default function Header({
       label: 'Sort ascending',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: ActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -74,7 +89,7 @@ export default function Header({
       label: 'Sort descending',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: ActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -91,7 +106,7 @@ export default function Header({
       label: 'Insert left',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: ActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -108,7 +123,7 @@ export default function Header({
       label: 'Insert right',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: ActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -125,7 +140,7 @@ export default function Header({
 
   const types = [
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -138,7 +153,7 @@ export default function Header({
       label: 'Select',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -151,7 +166,7 @@ export default function Header({
       label: 'Text',
     },
     {
-      onClick: e => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -165,7 +180,7 @@ export default function Header({
     },
   ];
 
-  function handleKeyDown(e) {
+  function handleKeyDown(e: React.KeyboardEvent<Element>) {
     if (e.key === 'Enter') {
       dataDispatch({
         type: 'update_column_header',
@@ -176,11 +191,11 @@ export default function Header({
     }
   }
 
-  function handleChange(e) {
-    setHeader(e.target.value);
+  function handleChange(e: React.ChangeEvent<Element>) {
+    setHeader((e.target as HTMLInputElement).value);
   }
 
-  function handleBlur(e) {
+  function handleBlur(e: React.FocusEvent<Element>) {
     e.preventDefault();
     dataDispatch({ type: 'update_column_header', columnId: id, label: header });
   }

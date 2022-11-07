@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Trash() {
+export default function Trash(): JSX.Element {
   return (
     <svg
       width="44"
