@@ -11,6 +11,8 @@ import MultiIcon from './img/Multi';
 import HashIcon from './img/Hash';
 import PlusIcon from './img/Plus';
 import { ActionTypes, DataTypes, shortId } from './utils';
+import type { HeaderProps, TButtonEvent} from './types/typesHeader'
+
 
 function getPropertyIcon(dataType: string) {
   switch (dataType) {
@@ -24,21 +26,6 @@ function getPropertyIcon(dataType: string) {
       return null;
   }
 }
-
-type HeaderProps = {
-  column: HeaderColumn;
-  setSortBy: ([]) => void;
-  dataDispatch: ({}) => void;
-}
-type HeaderColumn = {
-  id: number;
-  created?: boolean;
-  label: string;
-  dataType: string;
-  getResizerProps: () => any[];
-  getHeaderProps: () => any[];
-}
-type TButtonEvent = React.MouseEvent<Element>;
 
 export default function Header({
   column: { id, created, label, dataType, getResizerProps, getHeaderProps },

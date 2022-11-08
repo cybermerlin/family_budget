@@ -12,6 +12,13 @@ import PlusIcon from './img/Plus';
 import { ActionTypes } from './utils';
 import { FixedSizeList } from 'react-window';
 import scrollbarWidth from './scrollbarWidth';
+import type {TableProps,
+  RenderRowProps,
+  TRow,
+  TRowCells,
+  TUseTableProps
+} from './types/typesTable'
+
 
 const defaultColumn = {
   minWidth: 50,
@@ -27,10 +34,13 @@ export default function Table({
   data,
   dispatch: dataDispatch,
   skipReset,
-}) {
+}: TableProps) {
+  
   const sortTypes = useMemo(
     () => ({
-      alphanumericFalsyLast(rowA, rowB, columnId, desc) {
+      alphanumericFalsyLast(rowA: TRow, rowB: TRow, columnId: string, desc: boolean): number | string{
+        
+              
         if (!rowA.values[columnId] && !rowB.values[columnId]) {
           return 0;
         }
@@ -58,7 +68,7 @@ export default function Table({
     rows,
     prepareRow,
     totalColumnsWidth,
-  } = useTable(
+  }: TUseTableProps = useTable(
     {
       columns,
       data,
@@ -75,9 +85,10 @@ export default function Table({
   );
 
   const RenderRow = React.useCallback(
-    ({ index, style }) => {
+    ({ index, style }: RenderRowProps) => {
       const row = rows[index];
       prepareRow(row);
+      
       return (
         <div {...row.getRowProps({ style })} className="tr">
           {row.cells.map(cell => (
@@ -112,7 +123,7 @@ export default function Table({
         <div>
           {headerGroups.map(headerGroup => (
             <div {...headerGroup.getHeaderGroupProps()} className="tr">
-              {headerGroup.headers.map(column => column.render('Header'))}
+              {headerGroup.headers.map((column: TRowCells) => column.render('Header'))}
             </div>
           ))}
         </div>

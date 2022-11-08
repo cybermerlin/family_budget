@@ -8,37 +8,11 @@ import {
   ActionTypes,
   DataTypes,
 } from './utils';
-import update, { Spec } from 'immutability-helper';
+import update from 'immutability-helper';
+import { TState, TAction } from './types/typesEditableGrid'
 
-type TState = {
-  columns: TCulumn[];
-  data: any[];
-  skipReset: boolean;
-}
-type TCulumn = {
-        id: string;
-        label: string;
-        accessor: string;
-        minWidth: number;
-        dataType: string;
-        options: any[];
-        width?: number;
-        maxWidth?: number;
-        disableResizing?: boolean;
-};
-type TAction = {
-  type: string;
-  value?: string;
-  columnId?: string;
-  option?: string;
-  backgroundColor?: string;
-  dataType?: string;
-  label?: string;
-  rowIndex?: number;
-  focus?: boolean;
-}
 
-function reducer(state, action: TAction) {
+function reducer(state: TState, action: TAction) {
   switch (action.type) {
     case ActionTypes.ADD_OPTION_TO_COLUMN:
       const optionIndex = state.columns.findIndex(
@@ -211,7 +185,7 @@ function reducer(state, action: TAction) {
       return state;
   }
 }
-type TDispatch = (arg: string) => void;
+
 function EditableGrid() {
   const [state, dispatch] = useReducer(reducer, makeData(1000));
 

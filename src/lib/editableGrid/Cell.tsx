@@ -6,14 +6,8 @@ import { grey } from './colors';
 import PlusIcon from './img/Plus';
 import { ActionTypes, DataTypes, randomColor } from './utils';
 import { createPortal } from 'react-dom';
+import type { CellProps, OptionsColumn } from './types/typesCell'
 
-type CellProps = {
-  value: string;
-  row: {index: number};
-  column: {id: string, dataType: string, options: OptionsColumn[]};
-  dataDispatch: any;
-}
-type OptionsColumn = {label: string, backgroundColor: string}
 
 export default function Cell({
   value: initialValue,
