@@ -65,7 +65,7 @@ export default function Cell({
   }
 
   /**
- * This function need for preventing saving unended fomulas (saves last etered formula in a cell)
+ * This function is needed to prevent the saving of incomplete formulas (saves the last entered formula in the cell)
  */
   function onBlur(e) {
     let formula = findFormula(e.target.parentNode.tabIndex);

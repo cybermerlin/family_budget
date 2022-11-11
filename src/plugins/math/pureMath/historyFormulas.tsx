@@ -15,7 +15,7 @@ export default function HistoryFormulas() {
       <h4>История формул:</h4>
       <ol>
         {history.split(",").map((elem) => (
-          <li>{elem}</li>
+          <li key={elem}>{elem}</li>
         ))}
       </ol>
     </div>
