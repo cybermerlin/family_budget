@@ -1,0 +1,52 @@
+name: 'Review'
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v3
+
+      - name: Set up NodeJS
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: '17'
+
+      - name: Test
+        run: |
+          npm i
+          npm run prod
+          npm test
+          npm run coverage
+
+      # - name: Build docker image
+      #   run: docker build -t local .
+      # - name: Run tests on Docker
+      #   run: |
+      #     docker run -t -v $PWD:/srv -w /srv local \
+      #       npm install && npm run prod && npm run test
+
+      - name: 'Dependency Review'
+        uses: actions/dependency-review-action@v2
+
+      - name: Analyze with SonarCloud
+        # You can pin the exact commit or the version.
+        # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
+        # uses: SonarSource/sonarcloud-github-action@156db6fef3e168e4972abb76de0b32bbce8ec77a
+        uses: SonarSource/sonarcloud-github-action@v1.7
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}   # Generate a token on Sonarcloud.io, add it to the secrets of this repo with the name SONAR_TOKEN (Settings > Secrets > Actions > add new repository secret)
+        with:
+          # Additional arguments for the sonarcloud scanner
+          args:
+            -Dsonar.projectKey=dm-rybalchenko_excel-app
+            -Dsonar.organization=dm-rybalchenko

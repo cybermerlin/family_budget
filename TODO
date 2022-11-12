@@ -9,7 +9,7 @@ Technical tasks:
 		☐ find Math components
 
 	☐ add floatable scrollbar to fix broken styles between header and body columns (arranges columns) (look at EditableGrid)
-	☐ add easy import from /src/lib (tsconfig?)
+	✔ add easy import from /src/lib (tsconfig?) @done(22-11-12 21:13)
 	☐ find Grid components and to get choice
 		☐ let's make some choice to use
 			✔ just for dev skills upgrade @done(22-10-16 22:25)
@@ -24,13 +24,12 @@ Technical tasks:
 	☐ debugging the trouble with the TS d.ts (try console.log.colored property)
 
 	☐ find some chart components
-		☐ make a choice and integrate some diagram into our Excel app
+		☐ make a choice and integrate some diagram into our Family budget
 
 	☐ https://github.com/gabrielbull/react-desktop
 
 
 Business tasks:
-	☐ find a server for the private git\hg repository
 	☐ study about starting business not in RF
 
 	☐ auth plugin

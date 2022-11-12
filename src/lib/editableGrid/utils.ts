@@ -1,24 +1,60 @@
 import { faker } from '@faker-js/faker/locale/ru';
 
 
-export function shortId() {
-  return `_${Math.random().toString(36).substr(2, 9)}`;
+//#region StringOfLength
+type StringOfLength<Min extends number, Max extends number> = string & {
+  readonly StringOfLength: unique symbol
+};
+
+// This is a type guard function which can be used to assert that a string
+// is of type StringOfLength<Min,Max>
+const isStringOfLength = <Min extends number, Max extends number>(
+  str: string,
+  min: Min,
+  max: Max
+): str is StringOfLength<Min, Max> => str.length >= min && str.length <= max;
+
+// Type constructor function
+export const stringOfLength = <Min extends number, Max extends number>(
+  input: unknown,
+  min: Min,
+  max: Max
+): StringOfLength<Min, Max> => {
+  if (typeof input !== "string") {
+    throw new Error("invalid input");
+  }
+
+  if (!isStringOfLength(input, min, max)) {
+    throw new Error("input is not between specified min and max");
+  }
+
+  return input;
+};
+//#endregion
+
+export function random(): number {
+  return parseInt(crypto.getRandomValues(new Uint32Array(2)).toString().replace(',', ''));
+}
+
+export function shortId(): StringOfLength<8, 8> {
+  return <StringOfLength<9, 9>>`_${random().toString(36).slice(0, 7)}`;
 }
 
 export function randomColor() {
-  return `hsl(${Math.floor(Math.random() * 360)}, 95%, 90%)`;
+  return `hsl(${Math.floor(random() * 360)}, 95%, 90%)`;
 }
 
 export function makeData(count) {
   let data = [];
   let options = [];
+
   for (let i = 0; i < count; i++) {
     let row = {
       ID: faker.mersenne.rand(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
       email: faker.internet.email(),
-      age: Math.floor(20 + Math.random() * 20),
+      age: Math.floor(20 + random() * 20),
       music: faker.music.genre()
     };
     options.push({ label: row.music, backgroundColor: randomColor() });

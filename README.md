@@ -1,4 +1,4 @@
-[![Review](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/dependency-review.yml)
+[![Develop health](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml)
 
 
 # Getting Started with Create React App
@@ -53,10 +53,10 @@ Run only the necessary commands.
 - Make Fork repository from GitHub (copy all branches).
 
 - Used to target an existing repository and create a clone, or copy of the target repository.
-```git clone https://github.com/dm-rybalchenko/excel-app``` 
+```git clone https://github.com/dm-rybalchenko/family_budget``` 
 
 - Go to the project folder.
-```cd ./excel-app```
+```cd ./family_budget```
 
 - Installs a package and any packages that it depends on.
 ```npm install```

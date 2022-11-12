@@ -9,6 +9,13 @@ declare module '@faker-js/faker' {
 
 
 declare global {
+  // let msCrypto: Crypto;
+
+  // interface Window {
+  //   msCrypto: Crypto;
+  //   crypto: Crypto;
+  // }
+
   interface Console {
     log: ILog;
   }

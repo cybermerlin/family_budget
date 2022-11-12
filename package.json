@@ -1,6 +1,6 @@
 {
   "name": "excel-app",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
@@ -30,8 +30,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "CI=false && react-scripts build",
+    "prod": "CI=false && react-scripts build",
+    "build": "react-scripts build",
     "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage",
     "lint": "eslint -c .eslintrc.js ./src",
     "lint-fix": "eslint -c .eslintrc.js ./src -- fix",
     "eject": "react-scripts eject",
@@ -99,6 +101,7 @@
     "jest-util": "^29.2.1",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
+    "sass": "^1.56.0",
     "webpack": "^5.74.0"
   },
   "resolutions": {
