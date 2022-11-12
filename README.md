@@ -1,4 +1,4 @@
-[![Develop health](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml)
+[![Develop health](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml)
 
 
 # Getting Started with Create React App
