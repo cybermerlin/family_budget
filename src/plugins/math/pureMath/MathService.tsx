@@ -23,6 +23,7 @@ function MathCalculator(formula: string): number | Error {
 
   if (!formula.slice(1).match(/[^0-9.+-/*()]/g)) {
     try {
+      // eslint-disable-next-line no-eval
       result = eval(formula.slice(1));
     } catch (err) {}
     if (!Number.isFinite(result)) {

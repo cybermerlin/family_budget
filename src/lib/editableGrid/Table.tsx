@@ -92,7 +92,7 @@ export default function Table({
         </div>
       );
     },
-    [prepareRow, rows]
+    [prepareRow, rows, tabidexCell]
   );
 
   function isTableResizing() {
