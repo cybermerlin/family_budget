@@ -1,17 +1,15 @@
-import React, { createContext } from "react";
-
+import React, { createContext } from 'react';
 
 export type THistoryFormulas = {
   history: string;
 };
 
-
 const ERROR_MESSAGES = Object.freeze({
-  formula: "Проверьте формулу, она некорректна",
+  formula: 'Проверьте формулу, она некорректна',
   symbols:
     "Некорректные символы в формуле!\n Допустимы цифры 0-9, -, +, *, /, (, ), . \n Формула должна начинаться с '='",
 });
-let historyFormulas = { history: "" };
+let historyFormulas = { history: '' };
 const MathServiceContext: React.Context<THistoryFormulas> = createContext(null);
 
 function MathServiceComponent(props: { children: JSX.Element }) {
@@ -29,11 +27,13 @@ function MathCalculator(formula: string): number | Error {
     if (!Number.isFinite(result)) {
       result = new Error(ERROR_MESSAGES.formula);
     } else {
-      let arr = historyFormulas.history.split(",");
+      let arr = historyFormulas.history.split(',');
 
-      if (arr.length > 5) arr.shift();
+      if (arr.length > 5) {
+        arr.shift();
+      }
       arr.push(formula);
-      historyFormulas.history = arr.join(",");
+      historyFormulas.history = arr.join(',');
     }
   }
 

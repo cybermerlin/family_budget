@@ -9,7 +9,7 @@ export type TFormulaObj = {
   result: string;
 };
 
-const ADD_FORMULA: string = 'ADD_FORMULA';
+const ADD_FORMULA = 'ADD_FORMULA';
 
 const storeMath = createStore(reducerMath);
 
