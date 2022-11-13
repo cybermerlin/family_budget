@@ -28,7 +28,7 @@ max_line_length = off
 [*.{vue,ts,js}]
 quote_type = single
 
-[*.{vue,ts,js,php,md,less,scss,saas,css,tsx,jsx}]
+[*.{yml,vue,ts,js,php,md,less,scss,saas,css,tsx,jsx}]
 indent_style = space
 
 

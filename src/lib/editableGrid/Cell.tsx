@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import ContentEditable from 'react-contenteditable';
-import Badge from './Badge';
 import { usePopper } from 'react-popper';
+import Badge from './Badge';
 import { grey } from './colors';
 import PlusIcon from './img/Plus';
-import { ActionTypes, DataTypes, randomColor } from './utils';
-import { createPortal } from 'react-dom';
+import { ACTION_TYPES, DATA_TYPES, randomColor } from './utils';
 import { findFormula } from "../../plugins/math/pureMath/handlersCountCellsData";
 
+
 export default function Cell({
-  value: initialValue,
-  row: { index },
-  column: { id, dataType, options },
-  dataDispatch,
-}) {
+                               value: initialValue,
+                               row: { index },
+                               column: { id, dataType, options },
+                               dataDispatch
+                             }) {
   const [value, setValue] = useState({ value: initialValue, update: false });
   const [selectRef, setSelectRef] = useState(null);
   const [selectPop, setSelectPop] = useState(null);
@@ -22,17 +23,17 @@ export default function Cell({
   const [addSelectRef, setAddSelectRef] = useState(null);
   const { styles, attributes } = usePopper(selectRef, selectPop, {
     placement: 'bottom-start',
-    strategy: 'fixed',
+    strategy: 'fixed'
   });
 
   function handleOptionKeyDown(e) {
     if (e.key === 'Enter') {
       if (e.target.value !== '') {
         dataDispatch({
-          type: ActionTypes.ADD_OPTION_TO_COLUMN,
+          type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
           option: e.target.value,
           backgroundColor: randomColor(),
-          columnId: id,
+          columnId: id
         });
       }
       setShowAdd(false);
@@ -46,10 +47,10 @@ export default function Cell({
   function handleOptionBlur(e) {
     if (e.target.value !== '') {
       dataDispatch({
-        type: ActionTypes.ADD_OPTION_TO_COLUMN,
+        type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
         option: e.target.value,
         backgroundColor: randomColor(),
-        columnId: id,
+        columnId: id
       });
     }
     setShowAdd(false);
@@ -83,7 +84,7 @@ export default function Cell({
 
   function getCellElement() {
     switch (dataType) {
-      case DataTypes.TEXT:
+      case DATA_TYPES.TEXT:
         return (
           <ContentEditable
             html={(value.value && value.value.toString()) || ''}
@@ -92,7 +93,7 @@ export default function Cell({
             className="data-input data-input-text"
           />
         );
-      case DataTypes.NUMBER:
+      case DATA_TYPES.NUMBER:
         return (
           <ContentEditable
             html={(value.value && value.value.toString()) || ''}
@@ -101,87 +102,88 @@ export default function Cell({
             className="data-input data-input-number text-align-right"
           />
         );
-      case DataTypes.SELECT:
+      case DATA_TYPES.SELECT:
         return (
-          <>
-            <div
-              ref={setSelectRef}
-              className="cell-padding d-flex cursor-default align-items-center flex-1"
-              onClick={() => setShowSelect(true)}
-            >
-              {value.value && (
-                <Badge value={value.value} backgroundColor={getColor()} />
+            <>
+              <div
+                  ref={setSelectRef}
+                  className="cell-padding d-flex cursor-default align-items-center flex-1"
+                  onClick={() => setShowSelect(true)}
+              >
+                {value.value && (
+                    <Badge value={value.value} backgroundColor={getColor()}/>
+                )}
+              </div>
+              {showSelect && (
+                  <div className="overlay" onClick={() => setShowSelect(false)}/>
               )}
-            </div>
-            {showSelect && (
-              <div className="overlay" onClick={() => setShowSelect(false)} />
-            )}
-            {showSelect &&
-              createPortal(
-                <div
-                  className="shadow-5 bg-white border-radius-md"
-                  ref={setSelectPop}
-                  {...attributes.popper}
-                  style={{
-                    ...styles.popper,
-                    zIndex: 4,
-                    minWidth: 200,
-                    maxWidth: 320,
-                    maxHeight: 400,
-                    padding: '0.75rem',
-                    overflow: 'auto',
-                  }}
-                >
-                  <div
-                    className="d-flex flex-wrap-wrap"
-                    style={{ marginTop: '-0.5rem' }}
-                  >
-                    {options.map(option => (
-                      <div
-                        className="cursor-pointer mr-5 mt-5"
-                        onClick={() => handleOptionClick(option)}
-                      >
-                        <Badge
-                          value={option.label}
-                          backgroundColor={option.backgroundColor}
-                        />
-                      </div>
-                    ))}
-                    {showAdd && (
-                      <div
-                        className="mr-5 mt-5 bg-grey-200 border-radius-sm"
-                        style={{
-                          width: 120,
-                          padding: '2px 4px',
-                        }}
-                      >
-                        <input
-                          type="text"
-                          className="option-input"
-                          onBlur={handleOptionBlur}
-                          ref={setAddSelectRef}
-                          onKeyDown={handleOptionKeyDown}
-                        />
-                      </div>
-                    )}
-                    <div
-                      className="cursor-pointer mr-5 mt-5"
-                      onClick={handleAddOption}
-                    >
-                      <Badge
-                        value={
-                          <span className="svg-icon-sm svg-text">
-                            <PlusIcon />
+              {showSelect &&
+               createPortal(
+                   <div
+                       className="shadow-5 bg-white border-radius-md"
+                       ref={setSelectPop}
+                       {...attributes.popper}
+                       style={{
+                         ...styles.popper,
+                         zIndex: 4,
+                         minWidth: 200,
+                         maxWidth: 320,
+                         maxHeight: 400,
+                         padding: '0.75rem',
+                         overflow: 'auto'
+                       }}
+                   >
+                     <div
+                         className="d-flex flex-wrap-wrap"
+                         style={{ marginTop: '-0.5rem' }}
+                     >
+                       {options.map((option, io) => (
+                           <div
+                               key={io}
+                               className="cursor-pointer mr-5 mt-5"
+                               onClick={() => handleOptionClick(option)}
+                           >
+                             <Badge
+                                 value={option.label}
+                                 backgroundColor={option.backgroundColor}
+                             />
+                           </div>
+                       ))}
+                       {showAdd && (
+                           <div
+                               className="mr-5 mt-5 bg-grey-200 border-radius-sm"
+                               style={{
+                                 width: 120,
+                                 padding: '2px 4px'
+                               }}
+                           >
+                             <input
+                                 type="text"
+                                 className="option-input"
+                                 onBlur={handleOptionBlur}
+                                 ref={setAddSelectRef}
+                                 onKeyDown={handleOptionKeyDown}
+                             />
+                           </div>
+                       )}
+                       <div
+                           className="cursor-pointer mr-5 mt-5"
+                           onClick={handleAddOption}
+                       >
+                         <Badge
+                             value={
+                               <span className="svg-icon-sm svg-text">
+                            <PlusIcon/>
                           </span>
-                        }
-                        backgroundColor={grey(200)}
-                      />
-                    </div>
-                  </div>
-                </div>,
-                document.querySelector('#popper-portal')
-              )}
-          </>
+                             }
+                             backgroundColor={grey(200)}
+                         />
+                       </div>
+                     </div>
+                   </div>,
+                   document.querySelector('#popper-portal')
+               )}
+            </>
         );
       default:
         return <span></span>;
@@ -201,10 +203,10 @@ export default function Cell({
   useEffect(() => {
     if (value.update) {
       dataDispatch({
-        type: ActionTypes.UPDATE_CELL,
+        type: ACTION_TYPES.UPDATE_CELL,
         columnId: id,
         rowIndex: index,
-        value: value.value,
+        value: value.value
       });
     }
   }, [value, dataDispatch, id, index]);

@@ -1,6 +1,13 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+
+    "paths": {
+      "@plugins/*": ["src/plugins/*"],
+      "@lib/*": ["src/lib/*"],
+      "@app/*": ["src/app/*"]
+    },
+
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
     "outDir": "./dist/out-tsc",
@@ -17,12 +24,12 @@
 		"isolatedModules": true,
     "noEmit": true,
     "importHelpers": true,
-    "target": "es2020",
-    "module": "es2020",
+    "target": "ES2022",
+    "module": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
-      "es2018"
+      "ES2021"
     ],
 		"typeRoots": [
 			"./src/lib/types",
@@ -31,7 +38,8 @@
 		"allowJs": true,
 		"esModuleInterop": true,
     "skipLibCheck": true,
-		"jsx": "react"
+		"jsx": "react-jsx",
+		"jsxImportSource": "react"
   },
 	"include": [
     "./src//*.ts",
@@ -39,17 +47,5 @@
     "src/lib/types/*.d.ts",
 		"src/app/App.test.tsx",
 		"src/app/App.tsx"
-	],
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": false,
-    "strictInputAccessModifiers": false,
-    "strictTemplates": false,
-		"paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
-    },
-  }
+	]
 }
