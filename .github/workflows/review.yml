@@ -34,8 +34,8 @@ jobs:
       #     docker run -t -v $PWD:/srv -w /srv local \
       #       npm install && npm run prod && npm run test
 
-      - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v3
+      # - name: 'Dependency Review'
+      #  uses: actions/dependency-review-action@v3
 
       - name: Analyze with SonarCloud
         # You can pin the exact commit or the version.
