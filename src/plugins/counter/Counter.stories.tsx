@@ -15,7 +15,7 @@ export default {
 } as ComponentMeta<typeof Counter>;
 
 
-const TEMPLATE: ComponentStory<typeof Counter> = () => <Provider store={store}><Counter /></Provider>;
+const TEMPLATE: ComponentStory<typeof Counter> = () => <Provider store={store}><Counter/></Provider>;
 
 
 export let StoryCounter = TEMPLATE.bind({});
