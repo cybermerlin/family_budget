@@ -295,7 +295,7 @@ module.exports = {
       'always',
       {
         line: {
-          markers: ['#region', '#endregion']
+          markers: ['#region', '#endregion', 'NOSONAR']
         },
       },
     ],
