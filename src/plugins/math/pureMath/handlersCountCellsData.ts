@@ -1,5 +1,5 @@
 import React from 'react';
-import { MathCalculator } from './MathService';
+import { MathCalculator } from './MathCalculator';
 import { storeMath, add_formula, TFormulaObj } from './storeMath';
 
 function handleKeyPress(e: React.KeyboardEvent) {
