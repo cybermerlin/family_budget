@@ -1,5 +1,5 @@
 import React from 'react';
-import { MathCalculator } from './MathCalculator';
+import MathCalculator from './MathCalculator';
 import { storeMath, add_formula, TFormulaObj } from './storeMath';
 
 function handleKeyPress(e: React.KeyboardEvent) {
@@ -25,6 +25,7 @@ function handleFocus(e: React.FocusEvent) {
 
   if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
     let result = findFormula(target.parentNode.tabIndex);
+
     if (result) { target.innerHTML = result.formula; }
   }
 }
@@ -34,12 +35,14 @@ function handleBlur(e: React.FocusEvent) {
 
   if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
     let result = findFormula(target.parentNode.tabIndex);
+
     if (result) { target.innerHTML = result.result; }
   }
 }
 
 function findFormula(tabIndex: number): TFormulaObj {
   let elem = storeMath.getState().find((item) => item.id === tabIndex);
+
   return elem;
 }
 

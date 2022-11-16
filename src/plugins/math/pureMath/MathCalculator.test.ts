@@ -1,4 +1,4 @@
-import { MathCalculator } from './MathCalculator';
+import MathCalculator from './MathCalculator';
 
 
 describe('plugins.math.pureMath.MathCalculator', () => {

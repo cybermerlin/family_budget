@@ -1,8 +1,8 @@
-import { historyFormulas } from './MathService'
+import { addFormulaToHistory } from './MathService'
 
 
 /**
- * Перевод\статичные фразы-ответов пользователю
+ * Redirection\static phrases-answers to the user
  */
 const ERROR_MESSAGES = Object.freeze({
   formula: 'Проверьте формулу, она некорректна',
@@ -12,42 +12,30 @@ const ERROR_MESSAGES = Object.freeze({
 
 
 /**
- * Функция вычисления любых формул переданных строкой через параметр
+ * The function of calculating any formulas passed as a string through a parameter
  */
-function MathCalculator(formula: string): number | Error {
+export default function MathCalculator(formula: string): number | Error {
   let result: number | Error = new Error(ERROR_MESSAGES.symbols);
 
-  //   Проверка корректности формулы
+  //   Formula validation
   if (!formula.slice(1).match(/[^0-9.+-/*()]/g)) {
-    //   Вычисление формулы
+    //   Formula calculation
     try {
       // eslint-disable-next-line no-eval
       result = eval(formula.slice(1)); //NOSONAR
     } catch (err) {}
 
-    //   Контроль успеха вычисления
+    //   Calculation success control
     if (!Number.isFinite(result)) {
-      //     Обработка НЕ успеха вычисления
+      //     Handling failure
       result = new Error(ERROR_MESSAGES.formula);
 
     } else {
-
-      //     Обработка успеха
-      //       Добавление в историю последних ис-ых формул
-      let arr = historyFormulas.history.split(',');
-
-      if (arr.length > 5) {
-        arr.shift();
-      }
-      arr.push(formula);
-      if (arr[0] === '') {
-        arr.shift();
-      }
-      historyFormulas.history = arr.join(',');
+      //     Handling success
+      //     Adding to recently used formulas history
+      addFormulaToHistory(formula);
     }
   }
 
   return result;
 }
-
-export { MathCalculator };

@@ -3,8 +3,7 @@ import { createRoot, Root } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
 
 import HistoryFormulas from './historyFormulas';
-import { MathServiceComponent } from './MathService';
-import { MathCalculator } from './MathCalculator'
+import { MathServiceComponent, addFormulaToHistory } from './MathService';
 
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -34,7 +33,7 @@ describe('plugins.math.pureMath.historyFormulas', () => {
     });
     
     act(() => {
-      MathCalculator('=2+2');
+      addFormulaToHistory('=2+2');
       document.body.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, keyCode: 13, key: 'Enter' }));
     });
 
@@ -52,7 +51,7 @@ describe('plugins.math.pureMath.historyFormulas', () => {
     
     act(() => {
       for (let i = 0; i < 10; i++){
-        MathCalculator(`=3+3+${i}`);
+        addFormulaToHistory(`=3+3+${i}`);
         document.body.dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, keyCode: 13, key: 'Enter' }));
       }
     });

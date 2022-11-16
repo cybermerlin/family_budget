@@ -1,8 +1,10 @@
 import React from 'react';
 import { createRoot, Root } from 'react-dom/client';
 import { act } from 'react-dom/test-utils';
+
 import { handleKeyPress, handleFocus, handleBlur, findFormula } from './handlersCountCellsData';
 import { TFormulaObj } from './storeMath';
+
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 let container: null | HTMLDivElement = null;
@@ -32,9 +34,9 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
       );
     });
 
-    const cell = document.querySelector("[data-testid='keypress']") as Element;
-    cell.innerHTML = '=2+2';
+    let cell = document.querySelector("[data-testid='keypress']") as HTMLElement;
 
+    cell.innerHTML = '=2+2';
     act(() => {
       cell.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
     });
@@ -46,38 +48,28 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
   it('On focus shows formula into the cell', () => {
     act(() => {
       root.render(
-        <>
         <div tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
-          <div tabIndex={44} className="data-input-number" data-testid="focus"></div>
+          <div tabIndex={44} className="data-input-number"></div>
         </div>
-        <div>
-          <div className="data-input-number" data-testid="change-focus"></div>
-        </div>
-        </>
       );
     });
 
-    const CELL: HTMLElement|null = document.querySelector("[data-testid='focus']"),
-      CELL_NEXT: HTMLElement|null = document.querySelector("[data-testid='change-focus']");
+    let cell = document.querySelector('.data-input-number') as HTMLElement;
 
-    expect(CELL && CELL_NEXT).not.toBeNull();
+    expect(cell).not.toBeNull();
+    cell.innerHTML = '=3+3';
 
-    (CELL as HTMLElement).innerHTML = '=3+3';
-    
     act(() => {
-      CELL?.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
+      cell.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
     });
+    expect(cell.innerHTML).toBe('6');
+
     act(() => {
-      CELL_NEXT?.click();
+      cell.focus();
     });
-    expect(CELL?.innerHTML).toBe('6');
-    
-    act(() => {
-      CELL?.focus();
-    });
-    
-    expect(CELL).toHaveFocus();
-    expect(CELL?.innerHTML).toEqual('=3+3');
+
+    expect(cell).toHaveFocus();
+    expect(cell.innerHTML).toEqual('=3+3');
   });
 
 
@@ -85,28 +77,27 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
     act(() => {
       root.render(
         <div tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
-          <div tabIndex={66} className="data-input-number" data-testid="blur"></div>
+          <div tabIndex={66} className="data-input-number"></div>
         </div>
       );
     });
 
-    const CELL: HTMLElement|null = document.querySelector("[data-testid='blur']");
+    let cell = document.querySelector('.data-input-number') as HTMLElement;
 
-    expect(CELL).not.toBeNull();
+    expect(cell).not.toBeNull();
+    cell.innerHTML = '=4+4';
 
-    (CELL as HTMLElement).innerHTML = '=4+4';
-    
     act(() => {
-      CELL?.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
+      cell.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
     });
-    expect(CELL?.innerHTML).toBe('8');
-    
+    expect(cell.innerHTML).toBe('8');
+
     act(() => {
-      CELL?.blur();
+      cell.blur();
     });
-    
-    expect(CELL).not.toHaveFocus();
-    expect(CELL?.innerHTML).toBe('8');
+
+    expect(cell).not.toHaveFocus();
+    expect(cell.innerHTML).toBe('8');
   });
 
 
@@ -114,27 +105,26 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
     act(() => {
       root.render(
         <div tabIndex={77} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
-          <div className="data-input-number" data-testid="blur"></div>
+          <div className="data-input-number"></div>
         </div>
       );
     });
 
-    const CELL: HTMLElement|null = document.querySelector("[data-testid='blur']");
-    let findFormulaElem: TFormulaObj = {formula: '', id: 0, result: ''};
+    let cell = document.querySelector('.data-input-number') as HTMLElement;
+    let findFormulaElem: TFormulaObj = { formula: '', id: 0, result: '' };
 
-    expect(CELL).not.toBeNull();
+    expect(cell).not.toBeNull();
+    cell.innerHTML = '=4+4';
 
-    (CELL as HTMLElement).innerHTML = '=4+4';
-    
     act(() => {
-      CELL?.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
+      cell.dispatchEvent(new KeyboardEvent('keypress', { bubbles: true, keyCode: 13 }));
     });
-    expect(CELL?.innerHTML).toBe('8');
-    
+    expect(cell.innerHTML).toBe('8');
+
     act(() => {
       findFormulaElem = findFormula(77);
     });
-    
-    expect({"formula": "=4+4", "id": 77, "result": "8"}).toEqual(findFormulaElem);
+
+    expect({ formula: '=4+4', id: 77, result: '8' }).toEqual(findFormulaElem);
   });
 });
