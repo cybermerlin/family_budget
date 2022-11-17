@@ -2,7 +2,7 @@ export type TableProps = {
   columns: TColumn[];
   data: any[];
   skipReset: boolean;
-  dispatch: (arg?: {}) => void;
+  dispatch: (arg?: {[key: string]: any}) => void;
 }
 export type RenderRowProps = {
   index: number,
@@ -31,7 +31,7 @@ export type TRow = {
   allCells: TRowCells[];
   cells: TRowCells[];
   depth: number;
-  getRowProps: (props?: {}) => {};
+  getRowProps: (props?: {[key: string]: any}) => {[key: string]: any};
   id: string;
   index: number;
   original: TRowOriginal;
@@ -43,8 +43,8 @@ export type TRowCells = {
   column: TColumn[];
   row: TRow[];
   value?: string | number;
-  getCellProps: () => {};
-  render: (type?: string, props?: {}) => any;
+  getCellProps: () => {[key: string]: any};
+  render: (type?: string, props?: {[key: string]: any}) => any;
 }
 export type TRowOriginal = {
   ID: number;
@@ -55,15 +55,15 @@ export type TRowOriginal = {
   music: string;
 }
 export type TUseTableProps = {
-  getTableProps: () => {};
-  getTableBodyProps: () => {};
+  getTableProps: () => {[key: string]: any};
+  getTableBodyProps: () => {[key: string]: any};
   headerGroups: THeaderGroups[],
   rows: TRow[],
   prepareRow: (row: TRow) => void,
   totalColumnsWidth: number,
 }
 export type THeaderGroups = {
-  getFooterGroupProps: (props?: {}) => any;
-  getHeaderGroupProps: (props?: {}) => any;
+  getFooterGroupProps: (props?: {[key: string]: any}) => any;
+  getHeaderGroupProps: (props?: {[key: string]: any}) => any;
   headers: {[key: string]: any}[];
 }

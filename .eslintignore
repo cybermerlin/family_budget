@@ -1,0 +1,9 @@
+/node_modules
+.eslintrc.js
+.idea
+.angular
+.vscode
+dist
+.*
+/src/stories
+*.d.ts

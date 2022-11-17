@@ -7,11 +7,15 @@
 
 # testing
 /coverage
+storybook-static
+.out
+.storybook-out
 
 # production
 /build
 
 # misc
+run.cmd
 package-lock.json
 .DS_Store
 .env.local

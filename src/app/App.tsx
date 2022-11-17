@@ -1,29 +1,26 @@
-import React from "react";
+import { Component } from 'react';
 
-// import logo from "./logo.svg";
 import "./App.css";
 import Counter from '../plugins/counter/Counter';
-import GridView from "../plugins/grid/View";
+import GridView from '../plugins/grid/View';
 
 
-type tAppProps = typeof App.defaultProps & {
-};
-
-type tAppState = {
-};
+type tAppProps = typeof App.defaultProps & Record<string, any>;
 
 
-class App extends React.Component<tAppProps, tAppState> {
+class App extends Component<tAppProps, Record<string, any>> {
   static defaultProps = {};
   state = {};
 
   render() {
     return (
-      <div>
-        <Counter />
-        <GridView />
-      </div>
+        <div>
+          <Counter/>
+          <GridView/>
+        </div>
     );
   }
 }
+
+
 export default App;
