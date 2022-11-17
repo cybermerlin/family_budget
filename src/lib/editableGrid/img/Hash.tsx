@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function Hash() {
+export default function Hash(): JSX.Element {
   return (
       <svg
           width="44"

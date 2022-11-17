@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function Arrow() {
+export default function Arrow(): JSX.Element {
   return (
       <svg
           width="44"

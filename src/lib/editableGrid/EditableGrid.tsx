@@ -10,9 +10,10 @@ import {
   ACTION_TYPES,
   DATA_TYPES
 } from './utils';
+import { TState, TAction } from './types/typesEditableGrid'
 
 
-function reducer(state, action) {
+function reducer(state: TState, action: TAction) {
   switch (action.type) {
     case ACTION_TYPES.ADD_OPTION_TO_COLUMN:
       let optionIndex = state.columns.findIndex(

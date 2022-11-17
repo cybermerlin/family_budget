@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
-
-interface IProps {
-  backgroundColor;
-  value;
+type BageProps = {
+  value: ReactNode | string;
+  backgroundColor: string;
 }
 
+export default function Badge({ value, backgroundColor }: BageProps) {
 
-export default function Badge({ value, backgroundColor }: IProps) {
   return (
       <span
           className="font-weight-400 d-inline-block color-grey-800 border-radius-sm text-transform-capitalize"

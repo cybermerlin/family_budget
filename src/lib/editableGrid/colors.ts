@@ -1,4 +1,4 @@
-export function grey(value) {
+export function grey(value: number): string {
   let reference = {
     50: '#fafafa',
     100: '#f5f5f5',

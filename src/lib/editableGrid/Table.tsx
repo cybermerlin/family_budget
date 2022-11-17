@@ -13,6 +13,13 @@ import Header from './Header';
 import PlusIcon from './img/Plus';
 import { ACTION_TYPES } from './utils';
 import scrollbarWidth from './scrollbarWidth';
+import type { TableProps,
+  RenderRowProps,
+  TRow,
+  TRowCells,
+  TUseTableProps
+} from './types/typesTable'
+
 
 
 const defaultColumn = {
@@ -34,17 +41,20 @@ interface IProps {
 
 
 export default function Table({
-                                columns,
-                                data,
-                                dispatch: dataDispatch,
-                                skipReset
-                              }: IProps) {
+  columns,
+  data,
+  dispatch: dataDispatch,
+  skipReset,
+}: TableProps) {
+
   const sortTypes = useMemo(
-      () => ({
-        alphanumericFalsyLast(rowA, rowB, columnId, desc) {
-          if (!rowA.values[columnId] && !rowB.values[columnId]) {
-            return 0;
-          }
+    () => ({
+      alphanumericFalsyLast(rowA: TRow, rowB: TRow, columnId: string, desc: boolean): number | string{
+
+
+        if (!rowA.values[columnId] && !rowB.values[columnId]) {
+          return 0;
+        }
 
           if (!rowA.values[columnId]) {
             return desc ? -1 : 1;
@@ -68,25 +78,25 @@ export default function Table({
     headerGroups,
     rows,
     prepareRow,
-    totalColumnsWidth
-  } = useTable(
-      {
-        columns,
-        data,
-        defaultColumn,
-        dataDispatch,
-        autoResetSortBy: !skipReset,
-        autoResetFilters: !skipReset,
-        autoResetRowState: !skipReset,
-        sortTypes
-      },
-      useBlockLayout,
-      useResizeColumns,
-      useSortBy
+    totalColumnsWidth,
+  }: TUseTableProps = useTable(
+    {
+      columns,
+      data,
+      defaultColumn,
+      dataDispatch,
+      autoResetSortBy: !skipReset,
+      autoResetFilters: !skipReset,
+      autoResetRowState: !skipReset,
+      sortTypes,
+    },
+    useBlockLayout,
+    useResizeColumns,
+    useSortBy
   );
 
   const RenderRow = useCallback(
-      ({ index, style }) => {
+      ({ index, style }: RenderRowProps) => {
         const row = rows[index];
 
         prepareRow(row);
@@ -131,7 +141,7 @@ export default function Table({
                     key={index}
                 >
                   <>
-                    {headerGroup.headers.map((column, icol) =>
+                    {headerGroup.headers.map((column: TRowCells, icol) =>
                         (<div key={icol}>{column.render('Header')}</div>))}
                   </>
                 </div>

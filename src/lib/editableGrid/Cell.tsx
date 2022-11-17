@@ -1,19 +1,21 @@
-import { useEffect, useState } from 'react';
-import ContentEditable from 'react-contenteditable';
+import React, { useEffect, useState } from 'react';
+import ContentEditable, { ContentEditableEvent } from 'react-contenteditable';
 import Badge from './Badge';
 import { usePopper } from 'react-popper';
 import { grey } from './colors';
 import PlusIcon from './img/Plus';
 import { ACTION_TYPES, DATA_TYPES, randomColor } from './utils';
 import { createPortal } from 'react-dom';
+import type { CellProps, OptionsColumn } from './types/typesCell'
+
 
 
 export default function Cell({
-                               value: initialValue,
-                               row: { index },
-                               column: { id, dataType, options },
-                               dataDispatch
-                             }) {
+  value: initialValue,
+  row: { index },
+  column: { id, dataType, options },
+  dataDispatch,
+}: CellProps) {
   const [value, setValue] = useState({ value: initialValue, update: false });
   const [selectRef, setSelectRef] = useState(null);
   const [selectPop, setSelectPop] = useState(null);
@@ -25,9 +27,34 @@ export default function Cell({
     strategy: 'fixed'
   });
 
-  function handleOptionKeyDown(e) {
-    if (e.key === 'Enter') {
-      if (e.target.value !== '') {
+
+  function handleOptionKeyDown(e: React.KeyboardEvent<Element>) {
+    if (e.target instanceof HTMLInputElement){
+      let target = e.target as HTMLInputElement;
+
+      if (e.key === 'Enter') {
+        if (target.value !== '') {
+          dataDispatch({
+            type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
+            option: e.target.value,
+            backgroundColor: randomColor(),
+            columnId: id,
+          });
+        }
+        setShowAdd(false);
+      }
+    }
+  }
+
+  function handleAddOption(e: React.MouseEvent<Element>) {
+    setShowAdd(true);
+  }
+
+  function handleOptionBlur(e: React.FocusEvent<Element>) {
+    if (e.target instanceof HTMLInputElement){
+      let target = e.target as HTMLInputElement;
+
+      if (target.value !== '') {
         dataDispatch({
           type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
           option: e.target.value,
@@ -39,32 +66,16 @@ export default function Cell({
     }
   }
 
-  function handleAddOption(e) {
-    setShowAdd(true);
-  }
-
-  function handleOptionBlur(e) {
-    if (e.target.value !== '') {
-      dataDispatch({
-        type: ACTION_TYPES.ADD_OPTION_TO_COLUMN,
-        option: e.target.value,
-        backgroundColor: randomColor(),
-        columnId: id
-      });
-    }
-    setShowAdd(false);
-  }
-
   function getColor() {
     let match = options.find(option => option.label === value.value);
     return (match && match.backgroundColor) || grey(200);
   }
 
-  function onChange(e) {
+  function onChange(e: ContentEditableEvent) {
     setValue({ value: e.target.value, update: false });
   }
 
-  function handleOptionClick(option) {
+  function handleOptionClick(option: OptionsColumn) {
     setValue({ value: option.label, update: true });
     setShowSelect(false);
   }
