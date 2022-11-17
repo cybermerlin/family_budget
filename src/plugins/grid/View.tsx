@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import EditableGrid from "../../lib/editableGrid/EditableGrid";
-import CountCellsData from "../calculationTry1/CountCellsData";
+import CountCellsData from "../calculationTry1/countCellsData";
 
 
 /**
