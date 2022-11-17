@@ -191,7 +191,7 @@ export default function Header({
     if (id !== 999999) {
       return (
           <>
-            <div key={crypto.randomUUID()} {...getHeaderProps()} className="th noselect d-inline-block">
+            <div key={id} {...getHeaderProps()} className="th noselect d-inline-block">
               <div
                   className="th-content"
                   onClick={() => setExpanded(true)}
@@ -208,7 +208,7 @@ export default function Header({
                 <div key={crypto.randomUUID()} className="overlay" onClick={() => setExpanded(false)}/>
             )}
             {expanded && (
-                <div key={crypto.randomUUID()}
+                <div key={id}
                      ref={setPopperElement}
                      style={{ ...styles.popper, zIndex: 3 }}
                      {...attributes.popper}
