@@ -1,7 +1,7 @@
 export type HeaderProps = {
   column: HeaderColumn;
-  setSortBy: ([]) => void;
-  dataDispatch: ({}) => void;
+  setSortBy: (arg: any[]) => void;
+  dataDispatch: (arg: {[key: string]: any}) => void;
 }
 export type HeaderColumn = {
   id: number;
