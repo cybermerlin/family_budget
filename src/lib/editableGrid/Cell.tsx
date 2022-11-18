@@ -15,13 +15,13 @@ export default function Cell({
                                column: { id, dataType, options },
                                dataDispatch
                              }) {
-  const [value, setValue] = useState({ value: initialValue, update: false });
-  const [selectRef, setSelectRef] = useState(null);
-  const [selectPop, setSelectPop] = useState(null);
-  const [showSelect, setShowSelect] = useState(false);
-  const [showAdd, setShowAdd] = useState(false);
-  const [addSelectRef, setAddSelectRef] = useState(null);
-  const { styles, attributes } = usePopper(selectRef, selectPop, {
+  let [value, setValue] = useState({ value: initialValue, update: false });
+  let [selectRef, setSelectRef] = useState(null);
+  let [selectPop, setSelectPop] = useState(null);
+  let [showSelect, setShowSelect] = useState(false);
+  let [showAdd, setShowAdd] = useState(false);
+  let [addSelectRef, setAddSelectRef] = useState(null);
+  let { styles, attributes } = usePopper(selectRef, selectPop, {
     placement: 'bottom-start',
     strategy: 'fixed'
   });

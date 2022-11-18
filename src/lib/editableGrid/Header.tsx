@@ -31,23 +31,23 @@ export default function Header({
                                  setSortBy,
                                  dataDispatch
                                }) {
-  const [expanded, setExpanded] = useState(created || false);
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [inputRef, setInputRef] = useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+  let [expanded, setExpanded] = useState(created || false);
+  let [referenceElement, setReferenceElement] = useState(null);
+  let [popperElement, setPopperElement] = useState(null);
+  let [inputRef, setInputRef] = useState(null);
+  let { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom',
     strategy: 'absolute'
   });
-  const [header, setHeader] = useState(label);
-  const [typeReferenceElement, setTypeReferenceElement] = useState(null);
-  const [typePopperElement, setTypePopperElement] = useState(null);
-  const typePopper = usePopper(typeReferenceElement, typePopperElement, {
+  let [header, setHeader] = useState(label);
+  let [typeReferenceElement, setTypeReferenceElement] = useState(null);
+  let [typePopperElement, setTypePopperElement] = useState(null);
+  let typePopper = usePopper(typeReferenceElement, typePopperElement, {
     placement: 'right',
     strategy: 'fixed'
   });
-  const [showType, setShowType] = useState(false);
-  const buttons = [
+  let [showType, setShowType] = useState(false);
+  let buttons = [
     {
       onClick: (e: any) => {
         dataDispatch({
@@ -122,9 +122,9 @@ export default function Header({
       label: 'Delete'
     }
   ];
-  const propertyIcon = getPropertyIcon(dataType);
+  let propertyIcon = getPropertyIcon(dataType);
 
-  const types = [
+  let types = [
     {
       onClick: (e: any) => {
         dataDispatch({

@@ -117,7 +117,7 @@ function reducer(state, action) {
           return state;
       }
     case ACTION_TYPES.UPDATE_COLUMN_HEADER:
-      const index = state.columns.findIndex(
+      let index = state.columns.findIndex(
           column => column.id === action.columnId
       );
 
@@ -133,7 +133,7 @@ function reducer(state, action) {
         }
       });
     case ACTION_TYPES.ADD_COLUMN_TO_LEFT:
-      const leftIndex = state.columns.findIndex(
+      let leftIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
       let leftId = shortId();
@@ -158,10 +158,10 @@ function reducer(state, action) {
         }
       });
     case ACTION_TYPES.ADD_COLUMN_TO_RIGHT:
-      const rightIndex = state.columns.findIndex(
+      let rightIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
-      const rightId = shortId();
+      let rightId = shortId();
 
       return update(state, {
         skipReset: { $set: true },
@@ -183,7 +183,7 @@ function reducer(state, action) {
         }
       });
     case ACTION_TYPES.DELETE_COLUMN:
-      const deleteIndex = state.columns.findIndex(
+      let deleteIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
 
@@ -199,7 +199,7 @@ function reducer(state, action) {
 }
 
 function EditableGrid() {
-  const [state, dispatch] = useReducer(reducer, makeData(1000));
+  let [state, dispatch] = useReducer(reducer, makeData(1000));
 
   useEffect(() => {
     dispatch({ type: ACTION_TYPES.ENABLE_RESET });

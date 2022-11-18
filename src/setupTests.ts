@@ -4,7 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
-const nodeCrypto = require('crypto');
+let nodeCrypto = require('crypto');
 
 window.crypto = {
   getRandomValues: function (buffer) {

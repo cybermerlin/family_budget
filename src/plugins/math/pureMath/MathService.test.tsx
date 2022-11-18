@@ -1,66 +1,46 @@
 import React, { useContext } from 'react';
-import { createRoot, Root } from 'react-dom/client';
-import { act } from 'react-dom/test-utils';
+import { render, screen } from '@testing-library/react';
 
 import { MathServiceContext, MathServiceComponent, addFormulaToHistory } from './MathService';
 
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
-let container: null | HTMLDivElement = null;
-let root: Root;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  root = createRoot(container);
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  if (container instanceof HTMLDivElement) {
-    act(() => root.unmount());
-    container.remove();
-    container = null;
-  }
-});
-
 function ComponentForContext() {
   let value = useContext(MathServiceContext);
 
-  return <div className="history-formulas">{value.history}</div>;
+  return (
+    <div className="history-formulas" data-testid="history">
+      {value.history}
+    </div>
+  );
 }
 
+
 describe('plugins.math.pureMath.MathService', () => {
-  it('Should provide empty context', () => {
-    act(() => {
-      root.render(
-        <MathServiceComponent>
-          <ComponentForContext />
-        </MathServiceComponent>
-      );
-    });
+  test('Should provide empty context', () => {
+    render(
+      <MathServiceComponent>
+        <ComponentForContext />
+      </MathServiceComponent>
+    );
 
-    let providedContext = document.querySelector('.history-formulas')?.innerHTML;
+    let providedContext = screen.getByTestId('history');
 
-    expect(providedContext).toBe('');
+    expect(providedContext.innerHTML).toBe('');
   });
 
 
-  it('Should provide context with formulas', () => {
-    act(() => {
-      addFormulaToHistory('=2+2');
-      addFormulaToHistory('=3+3');
-    });
+  test('Should provide context with formulas', () => {
+    addFormulaToHistory('=2+2');
+    addFormulaToHistory('=3+3');
 
-    act(() => {
-      root.render(
-        <MathServiceComponent>
-          <ComponentForContext />
-        </MathServiceComponent>
-      );
-    });
+    render(
+      <MathServiceComponent>
+        <ComponentForContext />
+      </MathServiceComponent>
+    );
 
-    let providedContext = document.querySelector('.history-formulas')?.innerHTML;
+    let providedContext = screen.getByTestId('history');
 
-    expect(providedContext).toBe('=2+2,=3+3');
+    expect(providedContext.innerHTML).toBe('=2+2,=3+3');
   });
 });

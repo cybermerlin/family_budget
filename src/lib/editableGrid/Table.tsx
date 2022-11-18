@@ -15,7 +15,7 @@ import { ACTION_TYPES } from './utils';
 import scrollbarWidth from './scrollbarWidth';
 
 
-const defaultColumn = {
+let defaultColumn = {
   minWidth: 50,
   width: 150,
   maxWidth: 400,
@@ -39,7 +39,7 @@ export default function Table({
                                 dispatch: dataDispatch,
                                 skipReset
                               }: IProps) {
-  const sortTypes = useMemo(
+  let sortTypes = useMemo(
       () => ({
         alphanumericFalsyLast(rowA, rowB, columnId, desc) {
           if (!rowA.values[columnId] && !rowB.values[columnId]) {
@@ -62,7 +62,7 @@ export default function Table({
       []
   );
 
-  const {
+  let {
     getTableProps,
     getTableBodyProps,
     headerGroups,
@@ -87,9 +87,9 @@ export default function Table({
 
   let tabindexCell = 0;
 
-  const RenderRow = useCallback(
+  let RenderRow = useCallback(
       ({ index, style }) => {
-        const row = rows[index];
+        let row = rows[index];
 
         prepareRow(row);
 

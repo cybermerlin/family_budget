@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { MathServiceContext } from "./MathService";
 
 
 export default function HistoryFormulas() {
   let value = useContext(MathServiceContext);
-  const [history, setHistory] = useState(value.history);
+  let [history, setHistory] = useState(value.history);
 
   document.addEventListener("keyup", (e) => {
     e.key === "Enter" && setHistory(value.history);

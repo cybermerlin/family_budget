@@ -1,35 +1,37 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { legacy_createStore as createStore } from 'redux';
 
-
-export type TFormulaObj = {
-  type?: string;
+export interface IFormulaObj {
   id: number;
   formula: string;
   result: string;
-};
+  type?: string;
+}
 
 const ADD_FORMULA = 'ADD_FORMULA';
 
-const storeMath = createStore(reducerMath);
+const STORE_MATH = createStore(reducerMath);
 
-function add_formula(formula: string, result: string, id: number): AnyAction {
+function addFormula(formula: string, result: string, id: number): AnyAction {
   return {
+    id,
+    formula,
+    result,
     type: ADD_FORMULA,
-    id: id,
-    formula: formula,
-    result: result,
   };
 }
 
-function reducerMath(state: TFormulaObj[] = [], action: AnyAction): TFormulaObj[] {
+/**
+ * This reduser is used only in Redux and change state of cells (fomula and result)
+ */
+function reducerMath(state: IFormulaObj[] = [], action: AnyAction): IFormulaObj[] {
   switch (action.type) {
     case ADD_FORMULA:
       state.push({ id: action.id, formula: action.formula, result: action.result });
-      return state;
-    default:
-      return state;
-  }
+      break;
+    }
+
+    return state;
 }
 
-export { storeMath, reducerMath, add_formula };
+export { STORE_MATH, reducerMath, addFormula };

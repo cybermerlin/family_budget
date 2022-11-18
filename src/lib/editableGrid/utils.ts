@@ -2,24 +2,24 @@ import { faker } from '@faker-js/faker/locale/ru';
 
 
 //#region StringOfLength
-type StringOfLength<Min extends number, Max extends number> = string & {
-  readonly StringOfLength: unique symbol
+type StringOfLength<TMin extends number, TMax extends number> = string & {
+  readonly STRING_OF_LENGTH: unique symbol
 };
 
 // This is a type guard function which can be used to assert that a string
 // is of type StringOfLength<Min,Max>
-const isStringOfLength = <Min extends number, Max extends number>(
+let isStringOfLength = <TMin extends number, TMax extends number>(
   str: string,
-  min: Min,
-  max: Max
-): str is StringOfLength<Min, Max> => str.length >= min && str.length <= max;
+  min: TMin,
+  max: TMax
+): str is StringOfLength<TMin, TMax> => str.length >= min && str.length <= max;
 
 // Type constructor function
-export const stringOfLength = <Min extends number, Max extends number>(
+export let stringOfLength = <TMin extends number, TMax extends number>(
   input: unknown,
-  min: Min,
-  max: Max
-): StringOfLength<Min, Max> => {
+  min: TMin,
+  max: TMax
+): StringOfLength<TMin, TMax> => {
   if (typeof input !== "string") {
     throw new Error("invalid input");
   }
@@ -114,7 +114,7 @@ export function makeData(count) {
   return { columns: columns, data: data, skipReset: false };
 }
 
-export const ACTION_TYPES = Object.freeze({
+export const ACTION_TYPES = {
   ADD_OPTION_TO_COLUMN: 'add_option_to_column',
   ADD_ROW: 'add_row',
   UPDATE_COLUMN_TYPE: 'update_column_type',
@@ -123,11 +123,11 @@ export const ACTION_TYPES = Object.freeze({
   ADD_COLUMN_TO_LEFT: 'add_column_to_left',
   ADD_COLUMN_TO_RIGHT: 'add_column_to_right',
   DELETE_COLUMN: 'delete_column',
-  ENABLE_RESET: 'enable_reset'
-});
+  ENABLE_RESET: 'enable_reset',
+}
 
-export const DATA_TYPES = Object.freeze({
+export const DATA_TYPES = {
   NUMBER: 'number',
   TEXT: 'text',
   SELECT: 'select'
-});
+}

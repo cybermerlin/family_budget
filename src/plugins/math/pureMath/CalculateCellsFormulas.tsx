@@ -1,4 +1,3 @@
-import React from "react";
 import { handleKeyPress, handleFocus, handleBlur } from "./handlersCountCellsData";
 import HistoryFormulas from "./historyFormulas";
 import { MathServiceComponent } from "./MathService";

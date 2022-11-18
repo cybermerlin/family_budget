@@ -58,7 +58,7 @@ module.exports = {
   rules: {
     //#region rules, which need to hard up (warn -> error | 1 -> 2) later ------
     '@typescript-eslint/naming-convention': [
-      'warn',
+      'error',
       {
         selector: 'interface',
         format: ['PascalCase'],
@@ -105,7 +105,7 @@ module.exports = {
       },
       {
         selector: 'property',
-        format: ['camelCase', 'PascalCase'],
+        format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
       },
       {
         selector: 'property',

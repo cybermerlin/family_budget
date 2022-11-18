@@ -1,6 +1,5 @@
-import React from 'react';
 import MathCalculator from './MathCalculator';
-import { storeMath, add_formula, TFormulaObj } from './storeMath';
+import { STORE_MATH, addFormula, IFormulaObj } from './storeMath';
 
 function handleKeyPress(e: React.KeyboardEvent) {
   if (e.target instanceof Element) {
@@ -11,9 +10,9 @@ function handleKeyPress(e: React.KeyboardEvent) {
       e.preventDefault();
       let result = MathCalculator(formula);
 
-      if (Number.isInteger(result) && target.parentNode instanceof HTMLElement) {
+      if (Number.isInteger(result)) {
         target.innerHTML = result.toString();
-        storeMath.dispatch(add_formula(formula, result.toString(), target.parentNode.tabIndex));
+        STORE_MATH.dispatch(addFormula(formula, result.toString(), target.parentElement.tabIndex));
       }
       if (result instanceof Error) { alert(result.message); }
     }
@@ -23,8 +22,8 @@ function handleKeyPress(e: React.KeyboardEvent) {
 function handleFocus(e: React.FocusEvent) {
   let target = e.target;
 
-  if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
-    let result = findFormula(target.parentNode.tabIndex);
+  if (target.classList.contains('data-input-number')) {
+    let result = findFormula(target.parentElement.tabIndex);
 
     if (result) { target.innerHTML = result.formula; }
   }
@@ -33,17 +32,16 @@ function handleFocus(e: React.FocusEvent) {
 function handleBlur(e: React.FocusEvent) {
   let target = e.target;
 
-  if (target.classList.contains('data-input-number') && target.parentNode instanceof HTMLElement) {
-    let result = findFormula(target.parentNode.tabIndex);
+  if (target.classList.contains('data-input-number')) {
+    let result = findFormula(target.parentElement.tabIndex);
 
     if (result) { target.innerHTML = result.result; }
   }
 }
 
-function findFormula(tabIndex: number): TFormulaObj {
-  let elem = storeMath.getState().find((item) => item.id === tabIndex);
+function findFormula(tabIndex: number): IFormulaObj {
 
-  return elem;
+  return STORE_MATH.getState().find(({ id }) => id === tabIndex);
 }
 
 export { handleKeyPress, handleFocus, handleBlur, findFormula };

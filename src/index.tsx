@@ -9,7 +9,7 @@ import App from "./app/App";
 import reportWebVitals from "./reportWebVitals";
 
 
-const root = ReactDOM.createRoot(
+let root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 

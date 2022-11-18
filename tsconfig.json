@@ -39,7 +39,8 @@
 		"esModuleInterop": true,
     "skipLibCheck": true,
 		"jsx": "react-jsx",
-		"jsxImportSource": "react"
+		"jsxImportSource": "react",
+		"types": ["react"]
   },
 	"include": [
     "./src//*.ts",

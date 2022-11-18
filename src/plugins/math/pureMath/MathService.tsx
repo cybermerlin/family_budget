@@ -1,12 +1,11 @@
-import React, { createContext } from 'react';
+import { createContext } from 'react';
 
-
-export type THistoryFormulas = {
+export interface IHistoryFormulas {
   history: string;
-};
+}
 
 let historyFormulas = { history: '' };
-const MathServiceContext: React.Context<THistoryFormulas> = createContext(null);
+let MathServiceContext: React.Context<IHistoryFormulas> = createContext(null);
 
 function MathServiceComponent(props: { children: JSX.Element }) {
   return <MathServiceContext.Provider value={historyFormulas}>{props.children}</MathServiceContext.Provider>;
@@ -14,13 +13,19 @@ function MathServiceComponent(props: { children: JSX.Element }) {
 
 function addFormulaToHistory(formula: string): void {
   let arr = historyFormulas.history.split(',');
-  let index = arr.findIndex(item => item === formula);
+  let index = arr.findIndex((item) => item === formula);
 
-  if (arr[0] === '') { arr.shift(); }
+  if (arr[0] === '') {
+    arr.shift();
+  }
 
-  if (index !== -1){ arr.splice(index, 1); }
+  if (index !== -1) {
+    arr.splice(index, 1);
+  }
 
-  if (arr.length > 5) { arr.shift(); }
+  if (arr.length > 5) {
+    arr.shift();
+  }
 
   arr.push(formula);
   historyFormulas.history = arr.join(',');

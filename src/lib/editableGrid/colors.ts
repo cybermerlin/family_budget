@@ -1,5 +1,6 @@
 export function grey(value) {
-  let reference = {
+  /* eslint-disable @typescript-eslint/naming-convention */
+  const REFERENCE = {
     50: '#fafafa',
     100: '#f5f5f5',
     200: '#eeeeee',
@@ -12,5 +13,6 @@ export function grey(value) {
     900: '#212121'
   };
 
-  return reference[value];
+
+  return REFERENCE[value];
 }

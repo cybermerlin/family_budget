@@ -10,7 +10,7 @@ test('Render App', () => {
     <App/>
   </Provider>);
 
-  const linkElement = screen.getByText(/Add Amount/i);
+  let linkElement = screen.getByText(/Add Amount/i);
 
   expect(linkElement).toBeInTheDocument();
 });

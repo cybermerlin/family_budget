@@ -14,11 +14,11 @@ import styles from './Counter.module.css';
 
 
 export default function Counter() {
-  const count = useAppSelector(selectCount);
-  const dispatch = useAppDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+  let count = useAppSelector(selectCount);
+  let dispatch = useAppDispatch();
+  let [incrementAmount, setIncrementAmount] = useState('2');
 
-  const incrementValue = Number(incrementAmount) || 0;
+  let incrementValue = Number(incrementAmount) || 0;
 
   return (
       <div>
