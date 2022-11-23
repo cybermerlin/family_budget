@@ -7,6 +7,7 @@ import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
 import scrollbarWidth from './scrollbarWidth';
+import type { RenderRowProps, TableProps, TRow, TRowCells, TUseTableProps } from './types/typesTable'
 import { EActionTypes } from './utils';
 
 
@@ -20,23 +21,17 @@ let defaultColumn = {
 };
 
 
-interface IProps {
-  columns;
-  data;
-  dispatch;
-  skipReset;
-}
-
-
 export default function Table({
                                 columns,
                                 data,
                                 dispatch: dataDispatch,
                                 skipReset
-                              }: IProps) {
+                              }: TableProps) {
+
   let sortTypes = useMemo(
       () => ({
-        alphanumericFalsyLast(rowA, rowB, columnId, desc) {
+        alphanumericFalsyLast(rowA: TRow, rowB: TRow, columnId: string, desc: boolean): number | string {
+
           if (!rowA.values[columnId] && !rowB.values[columnId]) {
             return 0;
           }
@@ -64,7 +59,7 @@ export default function Table({
     rows,
     prepareRow,
     totalColumnsWidth
-  } = useTable(
+  }: TUseTableProps = useTable(
       {
         columns,
         data,
@@ -83,7 +78,7 @@ export default function Table({
   let tabindexCell = 0;
 
   let RenderRow = useCallback(
-      ({ index, style }) => {
+      ({ index, style }: RenderRowProps) => {
         let row = rows[index];
 
         prepareRow(row);
@@ -128,7 +123,7 @@ export default function Table({
                     key={index}
                 >
                   <>
-                    {headerGroup.headers.map((column, icol) =>
+                    {headerGroup.headers.map((column: TRowCells, icol) =>
                         (<div key={icol}>{column.render('Header')}</div>))}
                   </>
                 </div>

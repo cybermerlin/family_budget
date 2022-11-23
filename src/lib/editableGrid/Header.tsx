@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
+
 import { grey } from './colors';
 import ArrowDownIcon from './img/ArrowDown';
 import ArrowLeftIcon from './img/ArrowLeft';
@@ -11,9 +12,10 @@ import PlusIcon from './img/Plus';
 import TextIcon from './img/Text';
 import TrashIcon from './img/Trash';
 import { EActionTypes, DATA_TYPES, shortId } from './utils';
+import type { HeaderProps, TButtonEvent } from './types/typesHeader'
 
 
-function getPropertyIcon(dataType: any) {
+function getPropertyIcon(dataType: string) {
   switch (dataType) {
     case DATA_TYPES.NUMBER:
       return <HashIcon/>;
@@ -27,10 +29,10 @@ function getPropertyIcon(dataType: any) {
 }
 
 export default function Header({
-                                 column: { id, created, label, dataType, getResizerProps, getHeaderProps },
-                                 setSortBy,
-                                 dataDispatch
-                               }) {
+  column: { id, created, label, dataType, getResizerProps, getHeaderProps },
+  setSortBy,
+  dataDispatch,
+}: HeaderProps) {
   let [expanded, setExpanded] = useState(created || false);
   let [referenceElement, setReferenceElement] = useState(null);
   let [popperElement, setPopperElement] = useState(null);
@@ -49,7 +51,7 @@ export default function Header({
   let [showType, setShowType] = useState(false);
   let buttons = [
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -62,7 +64,7 @@ export default function Header({
       label: 'Sort ascending'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -75,7 +77,7 @@ export default function Header({
       label: 'Sort descending'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -92,7 +94,7 @@ export default function Header({
       label: 'Insert left'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -109,7 +111,7 @@ export default function Header({
       label: 'Insert right'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
@@ -126,7 +128,7 @@ export default function Header({
 
   let types = [
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -139,7 +141,7 @@ export default function Header({
       label: 'Select'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -152,7 +154,7 @@ export default function Header({
       label: 'Text'
     },
     {
-      onClick: (e: any) => {
+      onClick: (e: TButtonEvent) => {
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
@@ -166,8 +168,7 @@ export default function Header({
     }
   ];
 
-
-  function handleKeyDown(e: { key: string; }) {
+  function handleKeyDown(e: React.KeyboardEvent<Element>) {
     if (e.key === 'Enter') {
       dataDispatch({
         type: 'update_column_header',
@@ -178,11 +179,11 @@ export default function Header({
     }
   }
 
-  function handleChange(e: { target: { value: any; }; }) {
-    setHeader(e.target.value);
+  function handleChange(e: React.ChangeEvent<Element>) {
+    setHeader((e.target as HTMLInputElement).value);
   }
 
-  function handleBlur(e: { preventDefault: () => void; }) {
+  function handleBlur(e: React.FocusEvent<Element>) {
     e.preventDefault();
     dataDispatch({ type: 'update_column_header', columnId: id, label: header });
   }

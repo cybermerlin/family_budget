@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function Text() {
+export default function Text(): JSX.Element {
   return (
       <svg
           width="44"

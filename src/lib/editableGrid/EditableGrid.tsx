@@ -4,9 +4,10 @@ import "./style.css";
 
 import Table from './Table';
 import { EActionTypes, DATA_TYPES, makeData, randomColor, shortId } from './utils';
+import { TState, TAction } from './types/typesEditableGrid'
 
 
-function reducer(state, action) {
+function reducer(state: TState, action: TAction) {
   switch (action.type) {
     case EActionTypes.ADD_OPTION_TO_COLUMN:
       let optionIndex = state.columns.findIndex(

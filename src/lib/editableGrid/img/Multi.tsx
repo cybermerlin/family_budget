@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default function Multi() {
+export default function Multi(): JSX.Element {
   return (
       <svg
           width="44"

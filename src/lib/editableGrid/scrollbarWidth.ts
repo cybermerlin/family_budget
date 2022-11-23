@@ -1,4 +1,4 @@
-let scrollbarWidth = () => {
+let scrollbarWidth = (): number => {
   let scrollDiv = document.createElement('div');
 
   scrollDiv.setAttribute(
