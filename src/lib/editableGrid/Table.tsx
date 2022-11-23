@@ -1,21 +1,16 @@
-import { useMemo, useCallback } from 'react';
 import clsx from 'clsx';
-import {
-  useTable,
-  useBlockLayout,
-  useResizeColumns,
-  useSortBy
-} from 'react-table';
+import { useCallback, useMemo } from 'react';
+import { useBlockLayout, useResizeColumns, useSortBy, useTable } from 'react-table';
 import { FixedSizeList } from 'react-window';
 
 import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
-import { ACTION_TYPES } from './utils';
 import scrollbarWidth from './scrollbarWidth';
+import { EActionTypes } from './utils';
 
 
-const defaultColumn = {
+let defaultColumn = {
   minWidth: 50,
   width: 150,
   maxWidth: 400,
@@ -39,7 +34,7 @@ export default function Table({
                                 dispatch: dataDispatch,
                                 skipReset
                               }: IProps) {
-  const sortTypes = useMemo(
+  let sortTypes = useMemo(
       () => ({
         alphanumericFalsyLast(rowA, rowB, columnId, desc) {
           if (!rowA.values[columnId] && !rowB.values[columnId]) {
@@ -62,7 +57,7 @@ export default function Table({
       []
   );
 
-  const {
+  let {
     getTableProps,
     getTableBodyProps,
     headerGroups,
@@ -85,23 +80,25 @@ export default function Table({
       useSortBy
   );
 
-  const RenderRow = useCallback(
+  let tabindexCell = 0;
+
+  let RenderRow = useCallback(
       ({ index, style }) => {
-        const row = rows[index];
+        let row = rows[index];
 
         prepareRow(row);
 
         return (
             <div {...row.getRowProps({ style })} className="tr" key={crypto.randomUUID()}>
               {row.cells.map((cell, icell) => (
-                  <div {...cell.getCellProps()} className="td" key={icell}>
+                  <div {...cell.getCellProps()} tabIndex={tabindexCell++} className="td" key={icell}>
                     {cell.render('Cell')}
                   </div>
               ))}
             </div>
         );
       },
-      [prepareRow, rows]
+      [prepareRow, rows, tabindexCell]
   );
 
   function isTableResizing() {
@@ -149,7 +146,7 @@ export default function Table({
             </FixedSizeList>
             <div
                 className="tr add-row"
-                onClick={() => dataDispatch({ type: ACTION_TYPES.ADD_ROW })}
+                onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
             >
             <span className="svg-icon svg-gray icon-margin">
               <PlusIcon/>

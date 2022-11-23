@@ -21,6 +21,10 @@ declare global {
   }
 
 
+  interface Window {
+    crypto: any;
+  }
+
   interface ILog {
     colors: boolean;
 

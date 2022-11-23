@@ -1,8 +1,9 @@
 import { Component } from 'react';
 
-import "./App.css";
 import Counter from '../plugins/counter/Counter';
 import GridView from '../plugins/grid/View';
+
+import './App.css';
 
 
 type tAppProps = typeof App.defaultProps & Record<string, any>;
