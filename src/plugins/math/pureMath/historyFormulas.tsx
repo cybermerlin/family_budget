@@ -11,13 +11,13 @@ export default function HistoryFormulas() {
   });
 
   return (
-    <div>
-      <h4>История формул:</h4>
-      <ol>
-        {history.split(",").map((elem) => (
-          <li key={elem}>{elem}</li>
-        ))}
-      </ol>
-    </div>
+      <div>
+        <h4>История формул:</h4>
+        <ol>
+          {history.split(",").map((elem) => (
+              <li key={elem}>{elem}</li>
+          ))}
+        </ol>
+      </div>
   );
 }

@@ -4,6 +4,7 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
+
 let nodeCrypto = require('crypto');
 
 window.crypto = {
@@ -12,4 +13,4 @@ window.crypto = {
   },
   randomUUID() { return nodeCrypto.randomUUID(); }
 } as Crypto;
-global.window = window;
+globalThis.window = window;

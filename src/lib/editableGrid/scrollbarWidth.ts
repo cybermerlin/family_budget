@@ -8,6 +8,7 @@ let scrollbarWidth = () => {
   document.body.appendChild(scrollDiv);
 
   let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
   document.body.removeChild(scrollDiv);
 
   return scrollbarWidth;

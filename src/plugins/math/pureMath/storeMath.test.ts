@@ -1,4 +1,4 @@
-import { reducerMath, addFormula, IFormulaObj } from './storeMath';
+import { addFormula, IFormulaObj, reducerMath } from './storeMath';
 
 
 describe('plugins.math.pureMath.StoreMath', () => {
@@ -21,7 +21,7 @@ describe('plugins.math.pureMath.StoreMath', () => {
 
     expect(reducerMath(previousState, addFormula('=4+4', '8', 3))).toEqual([
       { id: 2, formula: '=3+3', result: '6' },
-      { id: 3, formula: '=4+4', result: '8' },
+      { id: 3, formula: '=4+4', result: '8' }
     ]);
   });
 });

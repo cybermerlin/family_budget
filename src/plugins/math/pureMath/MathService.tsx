@@ -1,8 +1,10 @@
 import { createContext } from 'react';
 
+
 export interface IHistoryFormulas {
   history: string;
 }
+
 
 let historyFormulas = { history: '' };
 let MathServiceContext: React.Context<IHistoryFormulas> = createContext(null);

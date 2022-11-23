@@ -1,9 +1,10 @@
 import MathCalculator from './MathCalculator';
-import { STORE_MATH, addFormula, IFormulaObj } from './storeMath';
+import { addFormula, IFormulaObj, STORE_MATH } from './storeMath';
+
 
 function handleKeyPress(e: React.KeyboardEvent) {
   if (e.target instanceof Element) {
-    let target = e.target;
+    let { target } = e;
     let formula = target.innerHTML;
 
     if (e.key === 'Enter' && formula.startsWith('=') && target.classList.contains('data-input-number')) {
@@ -20,7 +21,7 @@ function handleKeyPress(e: React.KeyboardEvent) {
 }
 
 function handleFocus(e: React.FocusEvent) {
-  let target = e.target;
+  let { target } = e;
 
   if (target.classList.contains('data-input-number')) {
     let result = findFormula(target.parentElement.tabIndex);
@@ -30,7 +31,7 @@ function handleFocus(e: React.FocusEvent) {
 }
 
 function handleBlur(e: React.FocusEvent) {
-  let target = e.target;
+  let { target } = e;
 
   if (target.classList.contains('data-input-number')) {
     let result = findFormula(target.parentElement.tabIndex);

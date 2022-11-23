@@ -1,18 +1,13 @@
-import { useMemo, useCallback } from 'react';
 import clsx from 'clsx';
-import {
-  useTable,
-  useBlockLayout,
-  useResizeColumns,
-  useSortBy
-} from 'react-table';
+import { useCallback, useMemo } from 'react';
+import { useBlockLayout, useResizeColumns, useSortBy, useTable } from 'react-table';
 import { FixedSizeList } from 'react-window';
 
 import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
-import { ACTION_TYPES } from './utils';
 import scrollbarWidth from './scrollbarWidth';
+import { EActionTypes } from './utils';
 
 
 let defaultColumn = {
@@ -101,9 +96,9 @@ export default function Table({
                   </div>
               ))}
             </div>
-      );
-    },
-    [prepareRow, rows, tabindexCell]
+        );
+      },
+      [prepareRow, rows, tabindexCell]
   );
 
   function isTableResizing() {
@@ -151,7 +146,7 @@ export default function Table({
             </FixedSizeList>
             <div
                 className="tr add-row"
-                onClick={() => dataDispatch({ type: ACTION_TYPES.ADD_ROW })}
+                onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
             >
             <span className="svg-icon svg-gray icon-margin">
               <PlusIcon/>

@@ -1,16 +1,16 @@
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
 
-import { handleKeyPress, handleFocus, handleBlur, findFormula } from './handlersCountCellsData';
+import { findFormula, handleBlur, handleFocus, handleKeyPress } from './handlersCountCellsData';
 import { IFormulaObj } from './storeMath';
 
 
 describe('plugins.math.pureMath.handlersCountCellsData', () => {
   test('On "Enter" counts formula and set value to the cell', () => {
     render(
-      <div onKeyPress={handleKeyPress}>
-        <div className="data-input-number" data-testid="keypress"></div>
-      </div>
+        <div onKeyPress={handleKeyPress}>
+          <div className="data-input-number" data-testid="keypress"></div>
+        </div>
     );
 
     let cell = screen.getByTestId('keypress');
@@ -26,9 +26,9 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('On focus shows formula into the cell', () => {
     render(
-      <div tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
-        <div tabIndex={44} className="data-input-number" data-testid="focus"></div>
-      </div>
+        <div tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
+          <div tabIndex={44} className="data-input-number" data-testid="focus"></div>
+        </div>
     );
 
     let cell = screen.getByTestId('focus');
@@ -49,9 +49,9 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('On blur shows result of previous count formula into the cell', () => {
     render(
-      <div tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
-        <div tabIndex={66} className="data-input-number" data-testid="blur"></div>
-      </div>
+        <div tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
+          <div tabIndex={66} className="data-input-number" data-testid="blur"></div>
+        </div>
     );
 
     let cell = screen.getByTestId('blur');
@@ -72,9 +72,9 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('The function finds formula into the store', () => {
     render(
-      <div tabIndex={77} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
-        <div className="data-input-number" data-testid="find"></div>
-      </div>
+        <div tabIndex={77} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
+          <div className="data-input-number" data-testid="find"></div>
+        </div>
     );
 
     let cell = screen.getByTestId('find');

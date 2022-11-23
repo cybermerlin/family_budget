@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
 import { Button } from 'antd';
+import React, { useState } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount
-} from './counterSlice';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import styles from './Counter.module.css';
+import { decrement, increment, incrementAsync, incrementByAmount, incrementIfOdd, selectCount } from './counterSlice';
 
 
 export default function Counter() {

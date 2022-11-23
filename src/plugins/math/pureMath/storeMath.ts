@@ -1,12 +1,14 @@
 import { AnyAction } from '@reduxjs/toolkit';
 import { legacy_createStore as createStore } from 'redux';
 
+
 export interface IFormulaObj {
-  id: number;
   formula: string;
+  id: number;
   result: string;
   type?: string;
 }
+
 
 const ADD_FORMULA = 'ADD_FORMULA';
 
@@ -17,7 +19,7 @@ function addFormula(formula: string, result: string, id: number): AnyAction {
     id,
     formula,
     result,
-    type: ADD_FORMULA,
+    type: ADD_FORMULA
   };
 }
 
@@ -29,9 +31,9 @@ function reducerMath(state: IFormulaObj[] = [], action: AnyAction): IFormulaObj[
     case ADD_FORMULA:
       state.push({ id: action.id, formula: action.formula, result: action.result });
       break;
-    }
+  }
 
-    return state;
+  return state;
 }
 
 export { STORE_MATH, reducerMath, addFormula };

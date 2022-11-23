@@ -1,16 +1,16 @@
-import { useState, useEffect, createElement } from 'react';
+import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { grey } from './colors';
-import ArrowUpIcon from './img/ArrowUp';
 import ArrowDownIcon from './img/ArrowDown';
 import ArrowLeftIcon from './img/ArrowLeft';
 import ArrowRightIcon from './img/ArrowRight';
-import TrashIcon from './img/Trash';
-import TextIcon from './img/Text';
-import MultiIcon from './img/Multi';
+import ArrowUpIcon from './img/ArrowUp';
 import HashIcon from './img/Hash';
+import MultiIcon from './img/Multi';
 import PlusIcon from './img/Plus';
-import { ACTION_TYPES, DATA_TYPES, shortId } from './utils';
+import TextIcon from './img/Text';
+import TrashIcon from './img/Trash';
+import { EActionTypes, DATA_TYPES, shortId } from './utils';
 
 
 function getPropertyIcon(dataType: any) {
@@ -51,7 +51,7 @@ export default function Header({
     {
       onClick: (e: any) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
@@ -64,7 +64,7 @@ export default function Header({
     {
       onClick: (e: any) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
@@ -77,12 +77,12 @@ export default function Header({
     {
       onClick: (e: any) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
         dataDispatch({
-          type: ACTION_TYPES.ADD_COLUMN_TO_LEFT,
+          type: EActionTypes.ADD_COLUMN_TO_LEFT,
           columnId: id,
           focus: false
         });
@@ -94,12 +94,12 @@ export default function Header({
     {
       onClick: (e: any) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
         dataDispatch({
-          type: ACTION_TYPES.ADD_COLUMN_TO_RIGHT,
+          type: EActionTypes.ADD_COLUMN_TO_RIGHT,
           columnId: id,
           focus: false
         });
@@ -111,11 +111,11 @@ export default function Header({
     {
       onClick: (e: any) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
-        dataDispatch({ type: ACTION_TYPES.DELETE_COLUMN, columnId: id });
+        dataDispatch({ type: EActionTypes.DELETE_COLUMN, columnId: id });
         setExpanded(false);
       },
       icon: <TrashIcon/>,

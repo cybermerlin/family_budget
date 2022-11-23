@@ -1,17 +1,17 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import React from 'react';
 
 import HistoryFormulas from './historyFormulas';
-import { MathServiceComponent, addFormulaToHistory } from './MathService';
+import { addFormulaToHistory, MathServiceComponent } from './MathService';
 
 
 describe('plugins.math.pureMath.historyFormulas', () => {
   test('On "Enter" adds formula and render it to the history component', async () => {
     render(
-      <MathServiceComponent>
-        <HistoryFormulas />
-      </MathServiceComponent>
+        <MathServiceComponent>
+          <HistoryFormulas/>
+        </MathServiceComponent>
     );
 
     addFormulaToHistory('=2+2');
@@ -25,9 +25,9 @@ describe('plugins.math.pureMath.historyFormulas', () => {
 
   it('The length of the list should not be more than 6', async () => {
     render(
-      <MathServiceComponent>
-        <HistoryFormulas />
-      </MathServiceComponent>
+        <MathServiceComponent>
+          <HistoryFormulas/>
+        </MathServiceComponent>
     );
 
     for (let i = 0; i < 10; i++) {

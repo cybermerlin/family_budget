@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
 import { render, screen } from '@testing-library/react';
+import React, { useContext } from 'react';
 
-import { MathServiceContext, MathServiceComponent, addFormulaToHistory } from './MathService';
+import { addFormulaToHistory, MathServiceComponent, MathServiceContext } from './MathService';
 
 
 function ComponentForContext() {
   let value = useContext(MathServiceContext);
 
   return (
-    <div className="history-formulas" data-testid="history">
-      {value.history}
-    </div>
+      <div className="history-formulas" data-testid="history">
+        {value.history}
+      </div>
   );
 }
 
@@ -18,9 +18,9 @@ function ComponentForContext() {
 describe('plugins.math.pureMath.MathService', () => {
   test('Should provide empty context', () => {
     render(
-      <MathServiceComponent>
-        <ComponentForContext />
-      </MathServiceComponent>
+        <MathServiceComponent>
+          <ComponentForContext/>
+        </MathServiceComponent>
     );
 
     let providedContext = screen.getByTestId('history');
@@ -34,9 +34,9 @@ describe('plugins.math.pureMath.MathService', () => {
     addFormulaToHistory('=3+3');
 
     render(
-      <MathServiceComponent>
-        <ComponentForContext />
-      </MathServiceComponent>
+        <MathServiceComponent>
+          <ComponentForContext/>
+        </MathServiceComponent>
     );
 
     let providedContext = screen.getByTestId('history');

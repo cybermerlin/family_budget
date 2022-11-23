@@ -9,17 +9,14 @@ type StringOfLength<TMin extends number, TMax extends number> = string & {
 // This is a type guard function which can be used to assert that a string
 // is of type StringOfLength<Min,Max>
 let isStringOfLength = <TMin extends number, TMax extends number>(
-  str: string,
-  min: TMin,
-  max: TMax
+    str: string,
+    min: TMin,
+    max: TMax
 ): str is StringOfLength<TMin, TMax> => str.length >= min && str.length <= max;
 
 // Type constructor function
-export let stringOfLength = <TMin extends number, TMax extends number>(
-  input: unknown,
-  min: TMin,
-  max: TMax
-): StringOfLength<TMin, TMax> => {
+export function stringOfLength<TMin extends number, TMax extends number>(input: unknown, min: TMin, max: TMax)
+    : StringOfLength<TMin, TMax> {
   if (typeof input !== "string") {
     throw new Error("invalid input");
   }
@@ -29,7 +26,7 @@ export let stringOfLength = <TMin extends number, TMax extends number>(
   }
 
   return input;
-};
+}
 //#endregion
 
 export function random(): number {
@@ -57,6 +54,7 @@ export function makeData(count) {
       age: Math.floor(20 + random() * 20),
       music: faker.music.genre()
     };
+
     options.push({ label: row.music, backgroundColor: randomColor() });
 
     data.push(row);
@@ -111,20 +109,26 @@ export function makeData(count) {
       dataType: 'null'
     }
   ];
+
   return { columns: columns, data: data, skipReset: false };
 }
 
-export const ACTION_TYPES = {
-  ADD_OPTION_TO_COLUMN: 'add_option_to_column',
-  ADD_ROW: 'add_row',
-  UPDATE_COLUMN_TYPE: 'update_column_type',
-  UPDATE_COLUMN_HEADER: 'update_column_header',
-  UPDATE_CELL: 'update_cell',
-  ADD_COLUMN_TO_LEFT: 'add_column_to_left',
-  ADD_COLUMN_TO_RIGHT: 'add_column_to_right',
-  DELETE_COLUMN: 'delete_column',
-  ENABLE_RESET: 'enable_reset',
+
+/**
+ * For actions for the EditableGrid
+ */
+export enum EActionTypes {
+  ADD_OPTION_TO_COLUMN = 'add_option_to_column',
+  ADD_ROW = 'add_row',
+  UPDATE_COLUMN_TYPE = 'update_column_type',
+  UPDATE_COLUMN_HEADER = 'update_column_header',
+  UPDATE_CELL = 'update_cell',
+  ADD_COLUMN_TO_LEFT = 'add_column_to_left',
+  ADD_COLUMN_TO_RIGHT = 'add_column_to_right',
+  DELETE_COLUMN = 'delete_column',
+  ENABLE_RESET = 'enable_reset'
 }
+
 
 export const DATA_TYPES = {
   NUMBER: 'number',
