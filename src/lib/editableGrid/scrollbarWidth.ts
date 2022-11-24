@@ -1,12 +1,16 @@
-const scrollbarWidth = (): number => {
-  const scrollDiv = document.createElement('div');
+let scrollbarWidth = (): number => {
+  let scrollDiv = document.createElement('div');
+
   scrollDiv.setAttribute(
       'style',
       'width: 100px; height: 100px; overflow: scroll; position:absolute; top:-9999px;'
   );
   document.body.appendChild(scrollDiv);
-  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
+  let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
   document.body.removeChild(scrollDiv);
+
   return scrollbarWidth;
 };
 

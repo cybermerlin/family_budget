@@ -1,6 +1,7 @@
 import { Component } from 'react';
 
-import EditableGrid from "../../lib/editableGrid/EditableGrid";
+import EditableGrid from '../../lib/editableGrid/EditableGrid';
+import CalculateCellsFormulas from '../math/pureMath/CalculateCellsFormulas';
 
 
 /**
@@ -12,9 +13,9 @@ export default class View extends Component {
 
   render() {
     return (
-        <>
+        <CalculateCellsFormulas>
           <EditableGrid/>
-        </>
-    )
+        </CalculateCellsFormulas>
+    );
   }
 }

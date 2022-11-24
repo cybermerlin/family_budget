@@ -1,21 +1,15 @@
-import { useEffect, useReducer } from 'react';
 import update from 'immutability-helper';
+import { useEffect, useReducer } from 'react';
+import "./style.css";
 
 import Table from './Table';
-import "./style.css";
-import {
-  randomColor,
-  shortId,
-  makeData,
-  ACTION_TYPES,
-  DATA_TYPES
-} from './utils';
+import { EActionTypes, DATA_TYPES, makeData, randomColor, shortId } from './utils';
 import { TState, TAction } from './types/typesEditableGrid'
 
 
 function reducer(state: TState, action: TAction) {
   switch (action.type) {
-    case ACTION_TYPES.ADD_OPTION_TO_COLUMN:
+    case EActionTypes.ADD_OPTION_TO_COLUMN:
       let optionIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
@@ -35,12 +29,12 @@ function reducer(state: TState, action: TAction) {
           }
         }
       });
-    case ACTION_TYPES.ADD_ROW:
+    case EActionTypes.ADD_ROW:
       return update(state, {
         skipReset: { $set: true },
         data: { $push: [{}] }
       });
-    case ACTION_TYPES.UPDATE_COLUMN_TYPE:
+    case EActionTypes.UPDATE_COLUMN_TYPE:
       const TYPE_INDEX = state.columns.findIndex(
           column => column.id === action.columnId
       );
@@ -117,8 +111,8 @@ function reducer(state: TState, action: TAction) {
         default:
           return state;
       }
-    case ACTION_TYPES.UPDATE_COLUMN_HEADER:
-      const index = state.columns.findIndex(
+    case EActionTypes.UPDATE_COLUMN_HEADER:
+      let index = state.columns.findIndex(
           column => column.id === action.columnId
       );
 
@@ -126,15 +120,15 @@ function reducer(state: TState, action: TAction) {
         skipReset: { $set: true },
         columns: { [index]: { label: { $set: action.label } } }
       });
-    case ACTION_TYPES.UPDATE_CELL:
+    case EActionTypes.UPDATE_CELL:
       return update(state, {
         skipReset: { $set: true },
         data: {
           [action.rowIndex]: { [action.columnId]: { $set: action.value } }
         }
       });
-    case ACTION_TYPES.ADD_COLUMN_TO_LEFT:
-      const leftIndex = state.columns.findIndex(
+    case EActionTypes.ADD_COLUMN_TO_LEFT:
+      let leftIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
       let leftId = shortId();
@@ -158,11 +152,11 @@ function reducer(state: TState, action: TAction) {
           ]
         }
       });
-    case ACTION_TYPES.ADD_COLUMN_TO_RIGHT:
-      const rightIndex = state.columns.findIndex(
+    case EActionTypes.ADD_COLUMN_TO_RIGHT:
+      let rightIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
-      const rightId = shortId();
+      let rightId = shortId();
 
       return update(state, {
         skipReset: { $set: true },
@@ -183,8 +177,8 @@ function reducer(state: TState, action: TAction) {
           ]
         }
       });
-    case ACTION_TYPES.DELETE_COLUMN:
-      const deleteIndex = state.columns.findIndex(
+    case EActionTypes.DELETE_COLUMN:
+      let deleteIndex = state.columns.findIndex(
           column => column.id === action.columnId
       );
 
@@ -192,7 +186,7 @@ function reducer(state: TState, action: TAction) {
         skipReset: { $set: true },
         columns: { $splice: [[deleteIndex, 1]] }
       });
-    case ACTION_TYPES.ENABLE_RESET:
+    case EActionTypes.ENABLE_RESET:
       return update(state, { skipReset: { $set: true } });
     default:
       return state;
@@ -200,10 +194,10 @@ function reducer(state: TState, action: TAction) {
 }
 
 function EditableGrid() {
-  const [state, dispatch] = useReducer(reducer, makeData(1000));
+  let [state, dispatch] = useReducer(reducer, makeData(1000));
 
   useEffect(() => {
-    dispatch({ type: ACTION_TYPES.ENABLE_RESET });
+    dispatch({ type: EActionTypes.ENABLE_RESET });
   }, [state.data, state.columns]);
 
   return (

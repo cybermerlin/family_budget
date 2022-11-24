@@ -1,16 +1,17 @@
-import { useState, useEffect, createElement, ReactNode } from 'react';
+import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
+
 import { grey } from './colors';
-import ArrowUpIcon from './img/ArrowUp';
 import ArrowDownIcon from './img/ArrowDown';
 import ArrowLeftIcon from './img/ArrowLeft';
 import ArrowRightIcon from './img/ArrowRight';
-import TrashIcon from './img/Trash';
-import TextIcon from './img/Text';
-import MultiIcon from './img/Multi';
+import ArrowUpIcon from './img/ArrowUp';
 import HashIcon from './img/Hash';
+import MultiIcon from './img/Multi';
 import PlusIcon from './img/Plus';
-import { ACTION_TYPES, DATA_TYPES, shortId } from './utils';
+import TextIcon from './img/Text';
+import TrashIcon from './img/Trash';
+import { EActionTypes, DATA_TYPES, shortId } from './utils';
 import type { HeaderProps, TButtonEvent } from './types/typesHeader'
 
 
@@ -32,27 +33,27 @@ export default function Header({
   setSortBy,
   dataDispatch,
 }: HeaderProps) {
-  const [expanded, setExpanded] = useState(created || false);
-  const [referenceElement, setReferenceElement] = useState(null);
-  const [popperElement, setPopperElement] = useState(null);
-  const [inputRef, setInputRef] = useState(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+  let [expanded, setExpanded] = useState(created || false);
+  let [referenceElement, setReferenceElement] = useState(null);
+  let [popperElement, setPopperElement] = useState(null);
+  let [inputRef, setInputRef] = useState(null);
+  let { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom',
     strategy: 'absolute'
   });
-  const [header, setHeader] = useState(label);
-  const [typeReferenceElement, setTypeReferenceElement] = useState(null);
-  const [typePopperElement, setTypePopperElement] = useState(null);
-  const typePopper = usePopper(typeReferenceElement, typePopperElement, {
+  let [header, setHeader] = useState(label);
+  let [typeReferenceElement, setTypeReferenceElement] = useState(null);
+  let [typePopperElement, setTypePopperElement] = useState(null);
+  let typePopper = usePopper(typeReferenceElement, typePopperElement, {
     placement: 'right',
     strategy: 'fixed'
   });
-  const [showType, setShowType] = useState(false);
-  const buttons = [
+  let [showType, setShowType] = useState(false);
+  let buttons = [
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
@@ -65,7 +66,7 @@ export default function Header({
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
@@ -78,12 +79,12 @@ export default function Header({
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
         dataDispatch({
-          type: ACTION_TYPES.ADD_COLUMN_TO_LEFT,
+          type: EActionTypes.ADD_COLUMN_TO_LEFT,
           columnId: id,
           focus: false
         });
@@ -95,12 +96,12 @@ export default function Header({
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
         dataDispatch({
-          type: ACTION_TYPES.ADD_COLUMN_TO_RIGHT,
+          type: EActionTypes.ADD_COLUMN_TO_RIGHT,
           columnId: id,
           focus: false
         });
@@ -112,20 +113,20 @@ export default function Header({
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
-          type: ACTION_TYPES.UPDATE_COLUMN_HEADER,
+          type: EActionTypes.UPDATE_COLUMN_HEADER,
           columnId: id,
           label: header
         });
-        dataDispatch({ type: ACTION_TYPES.DELETE_COLUMN, columnId: id });
+        dataDispatch({ type: EActionTypes.DELETE_COLUMN, columnId: id });
         setExpanded(false);
       },
       icon: <TrashIcon/>,
       label: 'Delete'
     }
   ];
-  const propertyIcon = getPropertyIcon(dataType);
+  let propertyIcon = getPropertyIcon(dataType);
 
-  const types = [
+  let types = [
     {
       onClick: (e: TButtonEvent) => {
         dataDispatch({
