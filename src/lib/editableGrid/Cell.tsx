@@ -10,6 +10,7 @@ import PlusIcon from './img/Plus';
 import type { CellProps, OptionsColumn } from './types/typesCell'
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
+let selectCell = 0;
 
 export default function Cell({
                                value: initialValue,
@@ -79,14 +80,37 @@ export default function Cell({
   /**
    * This function is needed to prevent the saving of incomplete formulas (saves the last entered formula in the cell)
    */
-  function onBlur(e) {
-    let formula = findFormula(e.target.parentNode.tabIndex);
+  function onBlur(e: React.FocusEvent<Element>) {
+    let formula = findFormula((e.target.parentNode as HTMLElement).tabIndex);
 
     if (formula) {
       setValue({ value: formula.result, update: true });
     }
     else {
       setValue((old) => ({ value: old.value, update: true }));
+    }
+  }
+
+  /**
+   * This function is needed to select text in number-cells via first click on the cell
+   */
+  function onClick(e: React.MouseEvent<Element>) {
+    if (e.target instanceof HTMLDivElement && e.detail === 1) {
+      let idCell = (e.target.parentNode as HTMLElement).tabIndex;
+      let selection = window.getSelection().toString();
+
+      if (selectCell !== idCell && !selection) {
+        let range = document.createRange();
+        let select = window.getSelection();
+
+        range.selectNodeContents(e.target);
+        select.removeAllRanges();
+        select.addRange(range);
+
+      } else if (selectCell !== idCell && selection) {
+        window.getSelection().removeAllRanges();
+        selectCell = idCell;
+      }
     }
   }
 
@@ -110,6 +134,7 @@ export default function Cell({
         return (
             <ContentEditable
                 html={(value.value && value.value.toString()) || ''}
+                onClick={onClick}
                 onChange={onChange}
                 onBlur={onBlur}
                 className="data-input data-input-number text-align-right"
