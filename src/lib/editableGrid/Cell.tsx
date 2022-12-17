@@ -10,7 +10,7 @@ import PlusIcon from './img/Plus';
 import type { CellProps, OptionsColumn } from './types/typesCell'
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
-let selectCell = 0;
+let selectCell = '';
 
 export default function Cell({
                                value: initialValue,
@@ -96,7 +96,7 @@ export default function Cell({
    */
   function onClick(e: React.MouseEvent<Element>) {
     if (e.target instanceof HTMLDivElement && e.detail === 1) {
-      let idCell = (e.target.parentNode as HTMLElement).tabIndex;
+      let idCell = (e.target.parentNode as HTMLElement).id;
       let selection = window.getSelection().toString();
 
       if (selectCell !== idCell && !selection) {
@@ -106,10 +106,10 @@ export default function Cell({
         range.selectNodeContents(e.target);
         select.removeAllRanges();
         select.addRange(range);
+        selectCell = idCell;
 
       } else if (selectCell !== idCell && selection) {
         window.getSelection().removeAllRanges();
-        selectCell = idCell;
       }
     }
   }

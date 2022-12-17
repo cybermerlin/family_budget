@@ -19,7 +19,7 @@ let defaultColumn = {
   Header: Header,
   sortType: 'alphanumericFalsyLast'
 };
-
+let idRow = 0;
 
 export default function Table({
                                 columns,
@@ -75,25 +75,26 @@ export default function Table({
       useSortBy
   );
 
-  let tabindexCell = 0;
+  idRow = 0;
 
   let RenderRow = useCallback(
-      ({ index, style }: RenderRowProps) => {
-        let row = rows[index];
+    ({ index, style }: RenderRowProps) => {
+      let row = rows[index];
 
-        prepareRow(row);
+      prepareRow(row);
+      let idCell = 0;
 
         return (
-            <div {...row.getRowProps({ style })} className="tr" key={crypto.randomUUID()}>
+            <div {...row.getRowProps({ style })} id={`Row-${idRow++}`} className="tr" key={crypto.randomUUID()}>
               {row.cells.map((cell, icell) => (
-                  <div {...cell.getCellProps()} tabIndex={tabindexCell++} className="td" key={icell}>
+                  <div {...cell.getCellProps()} id={`Row-${idRow}-Cell-${idCell++}`} tabIndex={idRow + idCell} className="td" key={icell}>
                     {cell.render('Cell')}
                   </div>
-              ))}
+                ))}
             </div>
         );
       },
-      [prepareRow, rows, tabindexCell]
+      [prepareRow, rows]
   );
 
   function isTableResizing() {
