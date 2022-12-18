@@ -19,6 +19,9 @@ let defaultColumn = {
   Header: Header,
   sortType: 'alphanumericFalsyLast'
 };
+/**
+ * This variable is used to count and assign row id's
+ */
 let idRow = 0;
 
 export default function Table({
@@ -82,12 +85,12 @@ export default function Table({
       let row = rows[index];
 
       prepareRow(row);
-      let idCell = 0;
+      let idCol = 0;
 
         return (
             <div {...row.getRowProps({ style })} id={`Row-${idRow++}`} className="tr" key={crypto.randomUUID()}>
               {row.cells.map((cell, icell) => (
-                  <div {...cell.getCellProps()} id={`Row-${idRow}-Cell-${idCell++}`} tabIndex={idRow + idCell} className="td" key={icell}>
+                  <div {...cell.getCellProps()} id={`Row-${idRow}-Col-${idCol++}`} tabIndex={idRow + idCol} className="td" key={icell}>
                     {cell.render('Cell')}
                   </div>
                 ))}

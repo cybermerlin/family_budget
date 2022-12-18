@@ -26,8 +26,8 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('On focus shows formula into the cell', () => {
     render(
-        <div tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
-          <div tabIndex={44} className="data-input-number" data-testid="focus"></div>
+        <div id="cell-33" tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
+          <div id="cell-44" tabIndex={44} className="data-input-number" data-testid="focus"></div>
         </div>
     );
 
@@ -49,8 +49,8 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('On blur shows result of previous count formula into the cell', () => {
     render(
-        <div tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
-          <div tabIndex={66} className="data-input-number" data-testid="blur"></div>
+        <div id="cell-55" tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
+          <div id="cell-66" tabIndex={66} className="data-input-number" data-testid="blur"></div>
         </div>
     );
 
@@ -72,13 +72,13 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
   test('The function finds formula into the store', () => {
     render(
-        <div tabIndex={77} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
+        <div id="cell-77" tabIndex={77} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
           <div className="data-input-number" data-testid="find"></div>
         </div>
     );
 
     let cell = screen.getByTestId('find');
-    let findFormulaElem: IFormulaObj = { formula: '', id: 0, result: '' };
+    let findFormulaElem: IFormulaObj = { formula: '', id: '', result: '' };
 
     expect(cell).not.toBeNull();
 
@@ -87,8 +87,8 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
 
     expect(cell.innerHTML).toBe('10');
 
-    findFormulaElem = findFormula(77);
+    findFormulaElem = findFormula('cell-77');
 
-    expect({ formula: '=5+5', id: 77, result: '10' }).toEqual(findFormulaElem);
+    expect({ formula: '=5+5', id: 'cell-77', result: '10' }).toEqual(findFormulaElem);
   });
 });

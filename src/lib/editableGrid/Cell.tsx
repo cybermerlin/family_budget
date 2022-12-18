@@ -11,7 +11,9 @@ import type { CellProps, OptionsColumn } from './types/typesCell'
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
 /**
- * This variable is been using for remembering cell's ids and the function for selecting text into cells compares ids with this variable.
+ * This variable is used to remember the id of the cells.
+ * The function for selecting text inside cells compares the id of the current cell
+ * with the previous one selected by this variable.
  */
 let selectCell = '';
 
@@ -34,10 +36,10 @@ export default function Cell({
 
   function handleOptionKeyDown(e: React.KeyboardEvent<Element>) {
     if (e.target instanceof HTMLInputElement) {
-      let target = e.target as HTMLInputElement;
 
       if (e.key === 'Enter') {
-        if (target.value !== '') {
+        if (e.target.value !== '') {
+
           dataDispatch({
             type: EActionTypes.ADD_OPTION_TO_COLUMN,
             option: e.target.value,
@@ -55,10 +57,10 @@ export default function Cell({
   }
 
   function handleOptionBlur(e: React.FocusEvent<Element>) {
-    if (e.target instanceof HTMLInputElement) {
-      let target = e.target as HTMLInputElement;
 
-      if (target.value !== '') {
+    if (e.target instanceof HTMLInputElement) {
+      if (e.target.value !== '') {
+
         dataDispatch({
           type: EActionTypes.ADD_OPTION_TO_COLUMN,
           option: e.target.value,
@@ -84,7 +86,7 @@ export default function Cell({
    * This function is needed to prevent the saving of incomplete formulas (saves the last entered formula in the cell)
    */
   function onBlur(e: React.FocusEvent<Element>) {
-    let formula = findFormula((e.target.parentNode as HTMLElement).tabIndex);
+    let formula = findFormula((e.target.parentNode as HTMLElement).id);
 
     if (formula) {
       setValue({ value: formula.result, update: true });
@@ -97,7 +99,7 @@ export default function Cell({
   /**
    * This function is needed to select text in number-cells via first click on the cell
    */
-  function handleClick(e: React.MouseEvent<Element>) {
+  function onClick(e: React.MouseEvent<Element>) {
     if (e.target instanceof HTMLDivElement && e.detail === 1) {
       let idCell = (e.target.parentNode as HTMLElement).id;
       let selection = window.getSelection().toString();
@@ -135,7 +137,7 @@ export default function Cell({
         return (
             <ContentEditable
                 html={(value.value && value.value.toString()) || ''}
-                onClick={handleClick}
+                onClick={onClick}
                 onChange={onChange}
                 onBlur={onBlur}
                 className="data-input data-input-number text-align-right"

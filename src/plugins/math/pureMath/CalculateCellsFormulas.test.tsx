@@ -8,7 +8,7 @@ describe('plugins.math.pureMath.CalculateCellsFormulas', () => {
   test('Should counts formula on "Enter", set value to the cell and HistoryFormulas', () => {
     render(
         <CalculateCellsFormulas>
-          <div tabIndex={22}>
+          <div id="cell-22" tabIndex={22}>
             <div className="data-input-number" data-testid="keypress"></div>
           </div>
         </CalculateCellsFormulas>
@@ -28,8 +28,8 @@ describe('plugins.math.pureMath.CalculateCellsFormulas', () => {
   test('Should shows formula "on focus" and shows result "on blur" for lase entered ("on enter") formula', () => {
     render(
         <CalculateCellsFormulas>
-          <div tabIndex={33}>
-            <div tabIndex={55} className="data-input-number" data-testid="focus-blur"></div>
+          <div id="cell-33" tabIndex={33}>
+            <div id="cell-55" tabIndex={55} className="data-input-number" data-testid="focus-blur"></div>
           </div>
         </CalculateCellsFormulas>
     );
