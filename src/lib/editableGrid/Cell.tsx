@@ -10,6 +10,9 @@ import PlusIcon from './img/Plus';
 import type { CellProps, OptionsColumn } from './types/typesCell'
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
+/**
+ * This variable is been using for remembering cell's ids and the function for selecting text into cells compares ids with this variable.
+ */
 let selectCell = '';
 
 export default function Cell({
@@ -94,7 +97,7 @@ export default function Cell({
   /**
    * This function is needed to select text in number-cells via first click on the cell
    */
-  function onClick(e: React.MouseEvent<Element>) {
+  function handleClick(e: React.MouseEvent<Element>) {
     if (e.target instanceof HTMLDivElement && e.detail === 1) {
       let idCell = (e.target.parentNode as HTMLElement).id;
       let selection = window.getSelection().toString();
@@ -106,10 +109,8 @@ export default function Cell({
         range.selectNodeContents(e.target);
         select.removeAllRanges();
         select.addRange(range);
-        selectCell = idCell;
 
-      } else if (selectCell !== idCell && selection) {
-        window.getSelection().removeAllRanges();
+        selectCell = idCell;
       }
     }
   }
@@ -134,7 +135,7 @@ export default function Cell({
         return (
             <ContentEditable
                 html={(value.value && value.value.toString()) || ''}
-                onClick={onClick}
+                onClick={handleClick}
                 onChange={onChange}
                 onBlur={onBlur}
                 className="data-input data-input-number text-align-right"
