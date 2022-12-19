@@ -11,8 +11,7 @@ import MultiIcon from './img/Multi';
 import PlusIcon from './img/Plus';
 import TextIcon from './img/Text';
 import TrashIcon from './img/Trash';
-import { EActionTypes, DATA_TYPES, shortId } from './utils';
-import type { HeaderProps, TButtonEvent } from './types/typesHeader'
+import { DATA_TYPES, EActionTypes, shortId } from './utils';
 
 
 function getPropertyIcon(dataType: string) {
@@ -29,10 +28,10 @@ function getPropertyIcon(dataType: string) {
 }
 
 export default function Header({
-  column: { id, created, label, dataType, getResizerProps, getHeaderProps },
-  setSortBy,
-  dataDispatch,
-}: HeaderProps) {
+                                 column: { id, created, label, dataType, getResizerProps, getHeaderProps },
+                                 setSortBy,
+                                 dataDispatch
+                               }: HeaderProps) {
   let [expanded, setExpanded] = useState(created || false);
   let [referenceElement, setReferenceElement] = useState(null);
   let [popperElement, setPopperElement] = useState(null);

@@ -6,7 +6,6 @@ describe('plugins.math.pureMath.StoreMath', () => {
     expect(reducerMath(undefined, { type: undefined })).toEqual([]);
   });
 
-
   test('Should handle a formula being added to an empty list', () => {
     let previousState: IFormulaObj[] = [];
 
@@ -14,7 +13,6 @@ describe('plugins.math.pureMath.StoreMath', () => {
       { id: 1, formula: '=2+2', result: '4' }
     ]);
   });
-
 
   test('Should handle a formula being added to an existing list', () => {
     let previousState: IFormulaObj[] = [{ id: 2, formula: '=3+3', result: '6' }];

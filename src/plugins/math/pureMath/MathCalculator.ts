@@ -10,7 +10,6 @@ const ERROR_MESSAGES = Object.freeze({
       "Некорректные символы в формуле!\n Допустимы цифры 0-9, -, +, *, /, (, ), . \n Формула должна начинаться с '='"
 });
 
-
 /**
  * The function of calculating any formulas passed as a string through a parameter
  */

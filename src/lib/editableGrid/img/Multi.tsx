@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default function Multi(): JSX.Element {
   return (
       <svg
