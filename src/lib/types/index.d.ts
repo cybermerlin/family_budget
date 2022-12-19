@@ -7,27 +7,18 @@ declare module '@faker-js/faker' {
   export default faker;
 }
 
-
 declare global {
-  // let msCrypto: Crypto;
-
-  // interface Window {
-  //   msCrypto: Crypto;
-  //   crypto: Crypto;
-  // }
-
-  interface Console {
-    log: ILog;
-  }
+  let console: Console;
 
 
   interface Window {
+    DEBUG: boolean;
+    console: Console;
     crypto: any;
   }
 
-  interface ILog {
-    colors: boolean;
 
-    (...data: any[]): any;
+  interface Console {
+    colored: boolean;
   }
 }
