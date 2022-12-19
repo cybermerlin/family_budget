@@ -2,10 +2,10 @@ import { ApolloClient, ApolloProvider, gql, HttpLink, InMemoryCache } from '@apo
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
+
 import CONFIG from 'src/config.json';
 import App from './app/App';
 import { store } from './app/store';
-
 import './index.scss';
 import './lib/utils';
 import reportWebVitals from './reportWebVitals';
@@ -41,13 +41,13 @@ let root = ReactDOM.createRoot(
 );
 
 root.render(
-    <ApolloProvider client={CLIENT}>
-      <React.StrictMode>
-        <Provider store={store}>
+    <React.StrictMode>
+      <Provider store={store}>
+        <ApolloProvider client={CLIENT}>
           <App/>
-        </Provider>
-      </React.StrictMode>
-    </ApolloProvider>
+        </ApolloProvider>
+      </Provider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

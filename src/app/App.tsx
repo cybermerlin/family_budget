@@ -35,9 +35,7 @@ function Locations() {
   ));
 }
 
-export default function App(props) {
-  console.info('props >', props);
-
+export default function App() {
   return (
       <div className={'App'}>
         <Locations/>
