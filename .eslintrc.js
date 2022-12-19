@@ -18,7 +18,7 @@ module.exports = {
   },
 
   extends: [
-    'prettier',
+    // 'prettier',
     'plugin:security/recommended',
     'plugin:jsonc/base',
 
@@ -37,7 +37,7 @@ module.exports = {
 
   plugins: [
     'optimize-regex',
-    'prettier',
+    // 'prettier',
     '@typescript-eslint',
     // 'dollar-sign', 'jquery',
     'security',
@@ -242,12 +242,13 @@ module.exports = {
       }
     ],
     // turned off because have some conflicts with another rules
-    'prettier/prettier': [
-      0,
-      {
-        usePrettierrc: true
-      }
-    ],
+    // 'prettier/prettier': [
+    //   0,
+    //   {
+    //     usePrettierrc: true
+    //     'endOfLine': 'auto',
+    //   }
+    // ],
     /*'vue/no-v-model-argument': 'warn',
     'vue/no-deprecated-dollar-listeners-api': 'warn',
     'vue/component-tags-order': [1, {
@@ -285,6 +286,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     //#endregion
 
+    'import/newline-after-import': ['error', {count: 2}],
+    'new-parens': ['error', 'never'],
     'no-secrets/no-secrets': 'error',
     // 'no-secrets/no-secrets': ['error', {'tolerance': 3.2}],
     //                                    {'ignoreContent':'^ABCD'} // {'ignoreIdentifiers':['BASE64_CHARS']}
@@ -521,6 +524,25 @@ module.exports = {
       files: ['**/tests/**/*.{j,t}s?(x)', 'src/**/*.test.*', 'src/**/*.spec.*'],
       env: {
         jest: true
+      }
+    },
+    {
+      files: ['*.ts', '*.js'],
+      processor: '@graphql-eslint/graphql',
+      // extends: ['plugin:prettier/recommended']
+    },
+    {
+      files: ['*.graphql', '*.gql'],
+      // parser: '@graphql-eslint/eslint-plugin',
+      // plugins: ['@graphql-eslint'],
+      extends: 'plugin:@graphql-eslint/schema-recommended',
+      rules: {
+        // '@graphql-eslint/known-type-names': 'error'
+        // 'prettier/prettier': 'error'
+      },
+      parserOptions: {
+        operations: './src/**/*.graphql',
+        schema: './schema.graphql'
       }
     }
   ],
