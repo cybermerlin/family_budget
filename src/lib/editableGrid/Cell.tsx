@@ -86,14 +86,21 @@ export default function Cell({
    * This function is needed to prevent the saving of incomplete formulas (saves the last entered formula in the cell)
    */
   function onBlur(e: React.FocusEvent<Element>) {
-    let formula = findFormula((e.target.parentNode as HTMLElement).id);
+    setTimeout(() => {
+      let idCell = (e.target.parentNode as HTMLElement).id;
+      let formula = findFormula(idCell);
 
-    if (formula) {
-      setValue({ value: formula.result, update: true });
-    }
-    else {
-      setValue((old) => ({ value: old.value, update: true }));
-    }
+      if (selectCell === idCell) {
+        selectCell = null;
+      }
+
+      if (formula) {
+        setValue({ value: formula.result, update: true });
+      }
+      else {
+        setValue((old) => ({ value: old.value, update: true }));
+      }
+    }, 500)
   }
 
   /**
@@ -105,16 +112,19 @@ export default function Cell({
       let selection = window.getSelection().toString();
 
       if (selectCell !== idCell && !selection) {
-        let range = document.createRange();
-        let select = window.getSelection();
-
-        range.selectNodeContents(e.target);
-        select.removeAllRanges();
-        select.addRange(range);
-
+        selectInnerText(e.target);
         selectCell = idCell;
       }
     }
+  }
+
+  function selectInnerText(node: HTMLDivElement){
+    let range = document.createRange();
+    let select = window.getSelection();
+
+    range.selectNodeContents(node);
+    select.removeAllRanges();
+    select.addRange(range);
   }
 
   function handleOptionClick(option: OptionsColumn) {
@@ -230,6 +240,15 @@ export default function Cell({
         return <span></span>;
     }
   }
+
+  useEffect(() => {
+    if (selectCell){
+      let focusCell = (document.getElementById(selectCell).childNodes[0] as HTMLDivElement);
+
+      focusCell.focus();
+      selectInnerText(focusCell);
+    }
+  }, [])
 
   useEffect(() => {
     if (addSelectRef && showAdd) {
