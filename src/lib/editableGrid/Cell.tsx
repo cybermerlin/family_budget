@@ -73,7 +73,7 @@ export default function Cell({
   }
 
   function onChange(e: ContentEditableEvent) {
-    setValue({ value: el.current.el.current.value, update: false });
+    setValue({ value: (el.current.el.current?.value || e.target.value), update: false });
   }
 
   /**

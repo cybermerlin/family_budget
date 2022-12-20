@@ -97,12 +97,14 @@ module.exports = {
       },
       {
         selector: 'variable',
-        format: ['camelCase', 'snake_case', 'PascalCase']
+        format: ['camelCase', 'snake_case', 'PascalCase'],
+        leadingUnderscore: 'allow'
       },
       {
         selector: 'variable',
         modifiers: ['const'],
-        format: ['UPPER_CASE']
+        format: ['UPPER_CASE'],
+        leadingUnderscore: 'allow'
       },
       {
         selector: 'property',
@@ -286,6 +288,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     //#endregion
 
+    '@typescript-eslint/no-namespace': 'off',
     'import/newline-after-import': ['error', {count: 2}],
     'new-parens': ['error', 'never'],
     'no-secrets/no-secrets': 'error',

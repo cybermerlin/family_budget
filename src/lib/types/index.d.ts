@@ -22,3 +22,14 @@ declare global {
     colored: boolean;
   }
 }
+
+// region declarations of core
+declare namespace plugins {
+  declare namespace grid {
+  }
+}
+declare namespace lib {
+  declare namespace EditableGrid {
+  }
+}
+// endregion

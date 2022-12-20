@@ -1,4 +1,4 @@
-import { ApolloClient, ApolloProvider, gql, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -19,22 +19,6 @@ const CLIENT = new ApolloClient({
   }),
   cache: new InMemoryCache
 });
-
-const MISSIONS_QUERY = gql`
-  query GetLocations {
-    locations {
-      id
-      name
-      description
-      photo
-    }
-  }
-`;
-
-CLIENT.query({
-  query: MISSIONS_QUERY
-})
-      .then(console.info);
 
 let root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement

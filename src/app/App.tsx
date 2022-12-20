@@ -1,8 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
 import Counter from '../plugins/counter/Counter';
-import GridView from '../plugins/grid/View';
-
+import { plugins } from '../plugins/grid';
 import './App.scss';
 
 
@@ -40,7 +39,7 @@ export default function App() {
       <div className={'App'}>
         <Locations/>
         <Counter/>
-        <GridView/>
+        <plugins.grid.View/>
       </div>
   );
 }
