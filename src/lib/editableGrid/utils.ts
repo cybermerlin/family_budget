@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker/locale/ru';
 
-
 //#region StringOfLength
 type StringOfLength<TMin extends number, TMax extends number> = string & {
   readonly STRING_OF_LENGTH: unique symbol
@@ -27,6 +26,7 @@ export function stringOfLength<TMin extends number, TMax extends number>(input: 
 
   return input;
 }
+
 //#endregion
 
 export function random(): number {

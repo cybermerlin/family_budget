@@ -14,7 +14,6 @@ function ComponentForContext() {
   );
 }
 
-
 describe('plugins.math.pureMath.MathService', () => {
   test('Should provide empty context', () => {
     render(
@@ -27,7 +26,6 @@ describe('plugins.math.pureMath.MathService', () => {
 
     expect(providedContext.innerHTML).toBe('');
   });
-
 
   test('Should provide context with formulas', () => {
     addFormulaToHistory('=2+2');

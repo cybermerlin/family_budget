@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 
+
 type BageProps = {
   value: ReactNode | string;
   backgroundColor: string;

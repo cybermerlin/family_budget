@@ -3,8 +3,7 @@ import { useEffect, useReducer } from 'react';
 import './style.scss';
 
 import Table from './Table';
-import { EActionTypes, DATA_TYPES, makeData, randomColor, shortId } from './utils';
-import { TState, TAction } from './types/typesEditableGrid'
+import { DATA_TYPES, EActionTypes, makeData, randomColor, shortId } from './utils';
 
 
 function reducer(state: TState, action: TAction) {

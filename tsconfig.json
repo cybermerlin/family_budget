@@ -43,10 +43,8 @@
 		"types": ["react"]
   },
 	"include": [
-    "./src//*.ts",
-    "./src//*.tsx",
-    "src/lib/types/*.d.ts",
-		"src/app/App.test.tsx",
-		"src/app/App.tsx"
-	]
+      "src/**/*.ts",
+      "src/**/*.tsx",
+      "src/**/*.d.ts"
+    ]
 }

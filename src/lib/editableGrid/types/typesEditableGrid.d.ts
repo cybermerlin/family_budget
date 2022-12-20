@@ -1,9 +1,9 @@
-export type TState = {
+declare type TState = {
   columns: any[];
   data: any[];
   skipReset: boolean;
 }
-export type TAction = {
+declare type TAction = {
   type: string;
   value?: string;
   columnId?: string;

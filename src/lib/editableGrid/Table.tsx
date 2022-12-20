@@ -7,7 +7,6 @@ import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
 import scrollbarWidth from './scrollbarWidth';
-import type { RenderRowProps, TableProps, TRow, TRowCells, TUseTableProps } from './types/typesTable'
 import { EActionTypes } from './utils';
 
 
@@ -19,7 +18,6 @@ let defaultColumn = {
   Header: Header,
   sortType: 'alphanumericFalsyLast'
 };
-
 
 export default function Table({
                                 columns,
