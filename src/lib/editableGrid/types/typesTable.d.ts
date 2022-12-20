@@ -1,10 +1,10 @@
-export type TableProps = {
+declare type TableProps = {
   columns: TColumn[];
   data: any[];
   skipReset: boolean;
-  dispatch: (arg?: {[key: string]: any}) => void;
+  dispatch: (arg?: { [key: string]: any }) => void;
 }
-export type RenderRowProps = {
+declare type RenderRowProps = {
   index: number,
   style: {
     heigth: number,
@@ -15,7 +15,7 @@ export type RenderRowProps = {
     width: string,
   }
 }
-export type TColumn = {
+declare type TColumn = {
   id: string;
   label: string;
   accessor: string;
@@ -27,11 +27,11 @@ export type TColumn = {
   disableResizing?: boolean;
   isResizing?: boolean;
 }
-export type TRow = {
+declare type TRow = {
   allCells: TRowCells[];
   cells: TRowCells[];
   depth: number;
-  getRowProps: (props?: {[key: string]: any}) => {[key: string]: any};
+  getRowProps: (props?: { [key: string]: any }) => { [key: string]: any };
   id: string;
   index: number;
   original: TRowOriginal;
@@ -39,14 +39,14 @@ export type TRow = {
   subRows: any[];
   values?: string | number;
 }
-export type TRowCells = {
+declare type TRowCells = {
   column: TColumn[];
   row: TRow[];
   value?: string | number;
-  getCellProps: () => {[key: string]: any};
-  render: (type?: string, props?: {[key: string]: any}) => any;
+  getCellProps: () => { [key: string]: any };
+  render: (type?: string, props?: { [key: string]: any }) => any;
 }
-export type TRowOriginal = {
+declare type TRowOriginal = {
   ID: number;
   age: number;
   email: string;
@@ -54,16 +54,16 @@ export type TRowOriginal = {
   lastName: string;
   music: string;
 }
-export type TUseTableProps = {
-  getTableProps: () => {[key: string]: any};
-  getTableBodyProps: () => {[key: string]: any};
+declare type TUseTableProps = {
+  getTableProps: () => { [key: string]: any };
+  getTableBodyProps: () => { [key: string]: any };
   headerGroups: THeaderGroups[],
   rows: TRow[],
   prepareRow: (row: TRow) => void,
   totalColumnsWidth: number,
 }
-export type THeaderGroups = {
-  getFooterGroupProps: (props?: {[key: string]: any}) => any;
-  getHeaderGroupProps: (props?: {[key: string]: any}) => any;
-  headers: {[key: string]: any}[];
+declare type THeaderGroups = {
+  getFooterGroupProps: (props?: { [key: string]: any }) => any;
+  getHeaderGroupProps: (props?: { [key: string]: any }) => any;
+  headers: { [key: string]: any }[];
 }

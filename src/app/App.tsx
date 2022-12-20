@@ -1,27 +1,45 @@
-import { Component } from 'react';
+import { gql, useQuery } from '@apollo/client';
 
 import Counter from '../plugins/counter/Counter';
-import GridView from '../plugins/grid/View';
-
-import './App.css';
-
-
-type tAppProps = typeof App.defaultProps & Record<string, any>;
+import { plugins } from '../plugins/grid';
+import './App.scss';
 
 
-class App extends Component<tAppProps, Record<string, any>> {
-  static defaultProps = {};
-  state = {};
-
-  render() {
-    return (
-        <div>
-          <Counter/>
-          <GridView/>
-        </div>
-    );
+const MISSIONS_QUERY = gql`
+  query GetLocations {
+    locations {
+      id
+      name
+      description
+      photo
+    }
   }
+`;
+
+function Locations() {
+  let { loading, error, data } = useQuery(MISSIONS_QUERY);
+
+  if (loading) { return <p>Loading...</p>; }
+  if (error) { return <p>Error: {error.message}</p>; }
+
+  return data.locations.map(({ id, name, description, photo }) => (
+      <div key={id}>
+        <h3>{name}</h3>
+        <img width="400" height="250" alt="location-reference" src={`${photo}`}/>
+        <br/>
+        <b>About this location:</b>
+        <p>{description}</p>
+        <br/>
+      </div>
+  ));
 }
 
-
-export default App;
+export default function App() {
+  return (
+      <div className={'App'}>
+        <Locations/>
+        <Counter/>
+        <plugins.grid.View/>
+      </div>
+  );
+}

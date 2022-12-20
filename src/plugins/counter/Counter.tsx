@@ -2,7 +2,7 @@ import { Button } from 'antd';
 import React, { useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import styles from './Counter.module.css';
+import styles from './Counter.module.scss';
 import { decrement, increment, incrementAsync, incrementByAmount, incrementIfOdd, selectCount } from './counterSlice';
 
 

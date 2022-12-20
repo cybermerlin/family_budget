@@ -11,6 +11,8 @@ window.crypto = {
   getRandomValues: function (buffer) {
     return nodeCrypto.randomFillSync(buffer);
   },
-  randomUUID() { return nodeCrypto.randomUUID(); }
+  randomUUID() {
+    return nodeCrypto.randomUUID();
+  }
 } as Crypto;
 globalThis.window = window;

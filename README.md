@@ -1,13 +1,19 @@
-[![Develop health](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/excel-app/actions/workflows/review.yml)
+[![Develop health](https://github.com/dm-rybalchenko/family_budget/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/family_budget/actions/workflows/review.yml)
+[![Coverage Status](https://coveralls.io/repos/github/dm-rybalchenko/family_budget/badge.svg?branch=develop)](https://coveralls.io/github/dm-rybalchenko/family_budget?branch=develop)
+[![Visit docs](https://img.shields.io/badge/docs-visit%20site-orange)](https://formidable.com/open-source/family_budget/wiki/)
+[<img alt="GitHub Discussions: Chat With Us" src="https://badgen.net/badge/discussions/chat%20with%20us/purple" />](https://github.com/dm-rybalchenko/family_budget/discussions)
+[![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](LICENSE)
 
 
-# Getting Started with Create React App
+# Family Budget
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
 ## Available Scripts
 
-In the project directory, you can run:
+<details>
+<summary>In the project directory, you can run:</summary>
 
 ### `npm start`
 
@@ -42,9 +48,10 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-### npm run storybook
+### `npm run storybook`
 
-To start on localhost:6000 a server with a storybook project - list of ui components with a documentation and some user case scenarios.
+To start on localhost:6006 a server with a storybook project - list of ui components with a documentation and some user case scenarios.
+</details>
 
 
 ## For beginners: how to start a project
@@ -53,7 +60,8 @@ Run only the necessary commands.
 - Make Fork repository from GitHub (copy all branches).
 
 - Used to target an existing repository and create a clone, or copy of the target repository.
-```git clone https://github.com/dm-rybalchenko/family_budget``` 
+  - source of code ```git clone https://github.com/dm-rybalchenko/family_budget```
+  - source of **Wiki** ```git clone https://github.com/dm-rybalchenko/family_budget.wiki.git```
 
 - Go to the project folder.
 ```cd ./family_budget```
@@ -71,57 +79,7 @@ And then open the browser and enter the address that the system will write in th
 
 - [WYSYWING editor diagrams](https://app.diagrams.net/?src=about)
 
-## Documentaions
 
-### Learn More
+## [Documentaions](docs/index.md)
 
-- [how to make a Service](https://dev.to/dansolhan/simple-dependency-injection-functionality-for-react-518j)
-- You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-- To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-#### React
-
-- Метод render() должен оставаться чистой функцией, то есть не вызывать сайд-эффектов, в том числе изменения state компонента и вызова колбэков в родительском компоненте. Этот метод предназначен только для отрисовки содержимого.
-Методы стадии обновления не должны вызывать изменения state или способствовать изменению props. Это вводит вашу программу в бесконечную петлю выполнения и переполняет стек вызовов.
-- Метод shouldComponentUpdate() нужен для сравнения текущего состояния со следующим и отмены ненужной перерисовки компонента в зависимости от ваших условий (return false).
-- Метод componentDidUpdate() нужен для вызова сайд-эффектов после перерисовки компонента, например, вызова сторонних модулей для обработки обновленного списка.
-- Метод getSnapshotBeforeUpdate() используется как вспомогательный для componentDidUpdate().
-- Метод componentWillUnmount() не должен вызывать новые действия с компонентом, так как он будет уничтожен сразу после завершения выполнения этого метода. Если вы вызовете setState() в этом методе, консоль выдаст ошибку, ведь вы предложили изменить state компонента, который уже удалили.
-- Изменив состояние компонента `this.setState({param: 1})` мы не можем быть уверены, что в следующей функции запросив его значение мы получим именно то, что установили ранее, т.к. фактически состояние меняется асинхронно. НО есть 2 способа получить актуальное значение:
-  - вызвать следущую функцию отложенно `window.setTimeout(..., 0)`
-  - передавать в state не значение, а функцию, которая вернет значение. `setState({a: a + a})`
-
-
-### Components
-
-- [AntD components (base elements of this whole project)](https://ant.design/docs/react/introduce)
-- [Third-Party Libraries](https://ant.design/docs/react/recommendation)
-- [storybook](https://storybook.js.org/docs/react/get-started/introduction)
-    - [video instruction](https://www.youtube.com/watch?v=x-x47qHq3nY)
-    - [ru start page](https://www.conductor.com/nightlight/%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA%D0%B8-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%BE%D0%B2-%D1%81-%D0%B8%D1%81/)
-    - Storybook have some additions:
-        - [storyshots](https://github.com/storybooks/storybook/blob/master/addons/storyshots) — Snapshot testing
-        - [actions](https://github.com/storybooks/storybook/blob/master/addons/actions) — Actions logging. It's create a function, which have results of executions in an Action Logger's tab. This is a comfortable case for logging parameters by types onApply n onClick.
-        - [links](https://github.com/storybooks/storybook/blob/master/addons/links) — Making links between pages in the Storybook.
-        - [comments](https://github.com/storybooks/storybook/blob/master/addons/comments) — Commenting.
-        - [info](https://github.com/storybooks/storybook/blob/master/addons/info) — Annotating components.
-        - [knobs](https://github.com/storybooks/storybook/blob/master/addons/knobs) — Modifying properties of components.
-        - [options](https://github.com/storybooks/storybook/blob/master/addons/options) — Customizing UI Storybook’а
-
-
-### TypeScript Definitions
-
-To be able to use libraries written in JS, you need to use these same TypeScript Definitions for them. And there is even a whole open source project in which people write such definitions for popular projects. You can search and download them on the site, or you can put a console utility that will simplify this process:
-
-```npm install -g tsd```
-
-With this utility, we will load the definitions for React and store the TypeScript definition entry in the tsd.json file:
-
-```tsd query react --action install --save```
-
-### Links with documentations about libraries
-
-- [editable table example Source](https://github.com/archit-p/editable-react-table)
-- [Editable table example in Sandbox (live coding)](https://codesandbox.io/s/editable-react-table-gchwp?fontsize=14&hidenavigation=1&theme=dark)
-- [Editable table with math components Source](https://github.com/ruilisi/fortune-sheet)
+*look\click at the link of this header.*

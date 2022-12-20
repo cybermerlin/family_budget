@@ -1,12 +1,24 @@
+import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 
-import './index.scss';
+import CONFIG from 'src/config.json';
 import App from './app/App';
 import { store } from './app/store';
+import './index.scss';
+import './lib/utils';
 import reportWebVitals from './reportWebVitals';
 
+
+const CLIENT = new ApolloClient({
+  link: new HttpLink({
+    uri: CONFIG.GRAPHQL
+    // eslint-disable-next-line capitalized-comments
+    // headers: { authorizetion: `Bearer ${process.env.GITHUB_TOKEN}` }
+  }),
+  cache: new InMemoryCache
+});
 
 let root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -15,7 +27,9 @@ let root = ReactDOM.createRoot(
 root.render(
     <React.StrictMode>
       <Provider store={store}>
-        <App/>
+        <ApolloProvider client={CLIENT}>
+          <App/>
+        </ApolloProvider>
       </Provider>
     </React.StrictMode>
 );

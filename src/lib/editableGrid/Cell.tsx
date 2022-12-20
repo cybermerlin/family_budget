@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ContentEditable, { ContentEditableEvent } from 'react-contenteditable';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
@@ -7,7 +7,6 @@ import { findFormula } from '../../plugins/math/pureMath/handlersCountCellsData'
 import Badge from './Badge';
 import { grey } from './colors';
 import PlusIcon from './img/Plus';
-import type { CellProps, OptionsColumn } from './types/typesCell'
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
 /**
@@ -23,7 +22,8 @@ export default function Cell({
                                column: { id, dataType, options },
                                dataDispatch
                              }: CellProps) {
-  let [value, setValue] = useState({ value: initialValue, update: false });
+  let [value, setValue] = useState({ value: initialValue, update: false }),
+      el = useRef(null);
   let [selectRef, setSelectRef] = useState(null);
   let [selectPop, setSelectPop] = useState(null);
   let [showSelect, setShowSelect] = useState(false);
@@ -87,8 +87,8 @@ export default function Cell({
    */
   function onBlur(e: React.FocusEvent<Element>) {
     setTimeout(() => {
-      let idCell = (e.target.parentNode as HTMLElement).id;
-      let formula = findFormula(idCell);
+      let idCell = (el.current.el.current.parentNode as HTMLElement).id,
+          formula = findFormula(idCell);
 
       if (selectCell === idCell) {
         selectCell = null;
@@ -137,6 +137,7 @@ export default function Cell({
       case DATA_TYPES.TEXT:
         return (
             <ContentEditable
+                ref={el}
                 html={(value.value && value.value.toString()) || ''}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -146,6 +147,7 @@ export default function Cell({
       case DATA_TYPES.NUMBER:
         return (
             <ContentEditable
+                ref={el}
                 html={(value.value && value.value.toString()) || ''}
                 onClick={onClick}
                 onChange={onChange}

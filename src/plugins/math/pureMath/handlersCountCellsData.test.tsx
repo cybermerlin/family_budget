@@ -23,7 +23,6 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
     expect(cell.innerHTML).toBe('4');
   });
 
-
   test('On focus shows formula into the cell', () => {
     render(
         <div id="cell-33" tabIndex={33} onKeyPress={handleKeyPress} onFocus={handleFocus}>
@@ -46,7 +45,6 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
     expect(cell.innerHTML).toBe('=3+3');
   });
 
-
   test('On blur shows result of previous count formula into the cell', () => {
     render(
         <div id="cell-55" tabIndex={55} onKeyPress={handleKeyPress} onFocus={handleFocus} onBlur={handleBlur}>
@@ -68,7 +66,6 @@ describe('plugins.math.pureMath.handlersCountCellsData', () => {
     expect(cell).not.toHaveFocus();
     expect(cell.innerHTML).toBe('8');
   });
-
 
   test('The function finds formula into the store', () => {
     render(

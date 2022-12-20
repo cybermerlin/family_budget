@@ -1,33 +1,21 @@
 Technical tasks:
-	✔ integrade redux @done(22-10-19 00:16)
-	✔ find material components (Material-UI5, material,....) n make some choice @started(22-10-23 22:12) @done(22-10-24 00:33) @lasted(2h21m17s)
-	✔ add Storybook @started(22-10-28 09:25) @done(22-10-28 10:52) @lasted(1h27m18s)
 	☐ integrade layouts component (to place Navigator, Right panel, top-head panel, foot-panel)
-	☐ just for dev skills upgrade
-		✔ creating a Service to calculate math formulas @started(22-10-16 22:23) @done(22-11-21 10:52)
-		✔ studying events in cells and try to use it to integrate Math component to calculate
-		☐ find Math components
-
 	☐ add floatable scrollbar to fix broken styles between header and body columns (arranges columns) (look at EditableGrid)
 	✔ add easy import from /src/lib (tsconfig?) @done(22-11-12 21:13)
-	☐ find Grid components and to get choice
-		☐ let's make some choice to use
-			✔ just for dev skills upgrade @done(22-10-16 22:25)
-			☐ for production version
 	☐ integrate Grid into this project
-		✔ just for dev skills upgrade @done(22-10-16 22:25)
-		☐ for production version
-	☐ let's start 1st view with the Grid
-		✔ just for dev skills upgrade (plugins/grid)
-		☐ for production version
+		✔ find Grid components @done(22-12-12 10:57)
+			✔ just for dev skills upgrade @done(22-10-16 22:25)
+			✔ for production version @done(22-12-12 10:57)
+		☐ let's make some choice to use
 
-	☐ debugging the trouble with the TS d.ts (try console.log.colored property)
-
-	☐ find some chart components
-		☐ make a choice and integrate some diagram into our Family budget
+	☐ find Math components
+	☐ make a choice and integrate some diagram into our Family budget
+		☐ find some chart components for React
 
 	☐ https://github.com/gabrielbull/react-desktop
-
+	✔ move out all information about React from README into docs/react directory. @done(22-12-11 14:42)
+	☐ move out /docs into the Github's Wiki for 0 version of project and change this directory as submodule of Git.
+	☐ integrate https://github.com/changesets/changesets
 
 Business tasks:
 	✔ study about starting business not in RF
@@ -37,7 +25,7 @@ Business tasks:
 		☐ all changes of code should be covered by Unit and e2e tests
 	☐ after commit should be maded docker container and published into k8s for manual checking
 	☐ after successful checking the task's card should be moved into Done
-	☐ in parallel processes, the generator documentations should be started and the result should be committed with new version of documentation
+	☐ in parallel processes, __the generator documentations__ should be started and the result should be committed with new version of documentation
 	☐ On do date of milestone current stable develop branch should be merged into master and tagged with the version's name
 	☐ marked version commit should be packed and published on the k8s
 	☐ after publishing, the integration test should be runned
@@ -48,3 +36,10 @@ Completed tasks:
 	✓ try to use console Git commands
 	✓ npm i immutability-helper react-contenteditable
 	✓ npm i clsx
+	✔ integrade redux @done(22-10-19 00:16)
+	✔ find material components (Material-UI5, material,....) n make some choice @started(22-10-23 22:12) @done(22-10-24 00:33) @lasted(2h21m17s)
+	✔ add Storybook @started(22-10-28 09:25) @done(22-10-28 10:52) @lasted(1h27m18s)
+	✔ just for dev skills upgrade @done(22-12-12 11:00)
+		✔ creating a Service to calculate math formulas @started(22-10-16 22:23) @done(22-11-21 10:52)
+		✔ studying events in cells and try to use it to integrate Math component to calculate
+	✔ debugging the trouble with the TS d.ts (try console.log.colored property) @done(22-12-10 10:00)

@@ -1,9 +1,9 @@
-export type HeaderProps = {
+declare type HeaderProps = {
   column: HeaderColumn;
   setSortBy: (arg: any[]) => void;
-  dataDispatch: (arg: {[key: string]: any}) => void;
+  dataDispatch: (arg: { [key: string]: any }) => void;
 }
-export type HeaderColumn = {
+declare type HeaderColumn = {
   id: number;
   created?: boolean;
   label: string;
@@ -11,4 +11,4 @@ export type HeaderColumn = {
   getResizerProps: () => any[];
   getHeaderProps: () => any[];
 }
-export type TButtonEvent = React.MouseEvent<Element>;
+declare type TButtonEvent = React.MouseEvent<Element>;

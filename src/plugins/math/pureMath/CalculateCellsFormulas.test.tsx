@@ -24,7 +24,6 @@ describe('plugins.math.pureMath.CalculateCellsFormulas', () => {
     expect(cell.innerHTML).toBe('4');
   });
 
-
   test('Should shows formula "on focus" and shows result "on blur" for lase entered ("on enter") formula', () => {
     render(
         <CalculateCellsFormulas>

@@ -7,7 +7,6 @@ import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
 import scrollbarWidth from './scrollbarWidth';
-import type { RenderRowProps, TableProps, TRow, TRowCells, TUseTableProps } from './types/typesTable'
 import { EActionTypes } from './utils';
 
 
@@ -23,7 +22,6 @@ let defaultColumn = {
  * This variable is used to count and assign row id's
  */
 let idRow = 0;
-
 export default function Table({
                                 columns,
                                 data,

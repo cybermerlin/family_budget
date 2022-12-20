@@ -22,7 +22,6 @@ describe('plugins.math.pureMath.historyFormulas', () => {
     expect(formula.innerHTML).toBe('=2+2');
   });
 
-
   it('The length of the list should not be more than 6', async () => {
     render(
         <MathServiceComponent>
