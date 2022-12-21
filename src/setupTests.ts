@@ -7,6 +7,7 @@ import '@testing-library/jest-dom';
 
 let nodeCrypto = require('crypto');
 
+
 window.crypto = {
   getRandomValues: function (buffer) {
     return nodeCrypto.randomFillSync(buffer);

@@ -43,7 +43,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint -c .eslintrc.js ./src",
     "lint-fix": "eslint --fix -c .eslintrc.js ./src",
-    "lint-staged": "lint-staged",
+    "lint-staged": "lint-staged --verbose",
     "prepare": "husky install",
     "prod": "CI=false && react-scripts build",
     "start": "react-scripts start",
@@ -103,11 +103,7 @@
     "jest-util": "29.3.1"
   },
   "lint-staged": {
-    "*.(js|ts|tsx|gql|graphql|scss|css)": [
-      "git status",
-      "eslint -c .eslintrc.js",
-      "npm test"
-    ]
+    "src/**/*.{js,jsx,ts,tsx,gql,graphql,scss,css}": "eslint --color"
   },
   "release": {
     "analyzeCommits": "simple-commit-message"
@@ -123,6 +119,13 @@
       ],
 			"pre-commit": [
 				"npm run lint-staged"
+			],
+			"post-commit": [
+				"git status",
+				"git update-index --again"
+			],
+			"pre-push": [
+				"npm test"
 			]
     }
   }
