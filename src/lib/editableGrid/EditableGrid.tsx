@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 import { useEffect, useReducer } from 'react';
-import './style.scss';
 
+import './style.scss';
 import Table from './Table';
 import { DATA_TYPES, EActionTypes, makeData, randomColor, shortId } from './utils';
 

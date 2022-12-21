@@ -9,13 +9,18 @@ import { grey } from './colors';
 import PlusIcon from './img/Plus';
 import { DATA_TYPES, EActionTypes, randomColor } from './utils';
 
-/**
- * This variable is used to remember the id of the cells.
- * The function for selecting text inside cells compares the id of the current cell
- * with the previous one selected by this variable.
- */
-let selectCell = '';
 
+/**
+ * New template for Cell.
+ * @param {string} initialValue
+ * @param {number} index
+ * @param {string} id
+ * @param {string} dataType
+ * @param {OptionsColumn[]} options
+ * @param {(arg: {[p: string]: any}) => void} dataDispatch
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Cell({
                                value: initialValue,
                                row: { index },
@@ -52,7 +57,7 @@ export default function Cell({
     }
   }
 
-  function handleAddOption(e: React.MouseEvent<Element>) {
+  function handleAddOption() {
     setShowAdd(true);
   }
 
@@ -85,22 +90,18 @@ export default function Cell({
   /**
    * This function is needed to prevent the saving of incomplete formulas (saves the last entered formula in the cell)
    */
-  function onBlur(e: React.FocusEvent<Element>) {
-    setTimeout(() => {
-      let idCell = (el.current.el.current.parentNode as HTMLElement).id,
-          formula = findFormula(idCell);
+  function onBlur() {
+    if (value.value === el.current.lastHtml) { return; }
 
-      if (selectCell === idCell) {
-        selectCell = null;
-      }
+    let idCell = (el.current.el.current.parentNode as HTMLElement).id,
+        formula = findFormula(idCell);
 
-      if (formula) {
-        setValue({ value: formula.result, update: true });
-      }
-      else {
-        setValue((old) => ({ value: old.value, update: true }));
-      }
-    }, 500)
+    if (formula) {
+      setValue({ value: formula.result, update: true });
+    }
+    else {
+      setValue((old) => ({ value: old.value, update: true }));
+    }
   }
 
   /**
@@ -108,23 +109,21 @@ export default function Cell({
    */
   function onClick(e: React.MouseEvent<Element>) {
     if (e.target instanceof HTMLDivElement && e.detail === 1) {
-      let idCell = (e.target.parentNode as HTMLElement).id;
       let selection = window.getSelection().toString();
 
-      if (selectCell !== idCell && !selection) {
-        selectInnerText(e.target);
-        selectCell = idCell;
+      if (!selection) {
+        selectInnerText(el.current.el.current);
       }
     }
   }
 
-  function selectInnerText(node: HTMLDivElement){
-    let range = document.createRange();
-    let select = window.getSelection();
+  function selectInnerText(node: HTMLDivElement) {
+    let range = document.createRange(),
+        selection = window.getSelection();
 
+    selection.removeAllRanges();
     range.selectNodeContents(node);
-    select.removeAllRanges();
-    select.addRange(range);
+    selection.addRange(range);
   }
 
   function handleOptionClick(option: OptionsColumn) {
@@ -243,25 +242,19 @@ export default function Cell({
     }
   }
 
-  useEffect(() => {
-    if (selectCell){
-      let focusCell = (document.getElementById(selectCell).childNodes[0] as HTMLDivElement);
-
-      focusCell.focus();
-      selectInnerText(focusCell);
-    }
-  }, [])
-
+  // Focus Combobox on add?
   useEffect(() => {
     if (addSelectRef && showAdd) {
       addSelectRef.focus();
     }
   }, [addSelectRef, showAdd]);
 
+  // Preset initial value
   useEffect(() => {
     setValue({ value: initialValue, update: false });
   }, [initialValue]);
 
+  // Update value
   useEffect(() => {
     if (value.update) {
       dataDispatch({

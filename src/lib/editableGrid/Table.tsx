@@ -18,6 +18,7 @@ let defaultColumn = {
   Header: Header,
   sortType: 'alphanumericFalsyLast'
 };
+
 /**
  * This variable is used to count and assign row id's
  */
@@ -79,19 +80,20 @@ export default function Table({
   idRow = 0;
 
   let RenderRow = useCallback(
-    ({ index, style }: RenderRowProps) => {
-      let row = rows[index];
+      ({ index, style }: RenderRowProps) => {
+        prepareRow(rows[index]);
 
-      prepareRow(row);
-      let idCol = 0;
+        let row = rows[index],
+            idCol = 0;
 
         return (
             <div {...row.getRowProps({ style })} id={`Row-${idRow++}`} className="tr" key={crypto.randomUUID()}>
               {row.cells.map((cell, icell) => (
-                  <div {...cell.getCellProps()} id={`Row-${idRow}-Col-${idCol++}`} tabIndex={idRow + idCol} className="td" key={icell}>
+                  <div {...cell.getCellProps()} id={`Row-${idRow}-Col-${idCol++}`} tabIndex={idRow + idCol}
+                       className="td" key={icell}>
                     {cell.render('Cell')}
                   </div>
-                ))}
+              ))}
             </div>
         );
       },
@@ -112,10 +114,9 @@ export default function Table({
 
   return (
       <>
-        <div
-            key={crypto.randomUUID()}
-            {...getTableProps()}
-            className={clsx('table', isTableResizing() && 'noselect')}
+        <div key={crypto.randomUUID()}
+             {...getTableProps()}
+             className={clsx('table', isTableResizing() && 'noselect')}
         >
           <div key={crypto.randomUUID()}>
             {headerGroups.map((headerGroup, index) => (
@@ -141,13 +142,12 @@ export default function Table({
             >
               {RenderRow}
             </FixedSizeList>
-            <div
-                className="tr add-row"
-                onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
+            <div className="tr add-row"
+                 onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
             >
-            <span className="svg-icon svg-gray icon-margin">
-              <PlusIcon/>
-            </span>
+              <span className="svg-icon svg-gray icon-margin">
+                <PlusIcon/>
+              </span>
               New
             </div>
           </div>

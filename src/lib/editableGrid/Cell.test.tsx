@@ -10,7 +10,7 @@ describe('lib.math.editableGrid.Cell', () => {
     const USER = userEvent.setup();
 
     render(
-        <EditableGrid />
+        <EditableGrid/>
     );
 
     let cells = screen.getAllByText(/(?<![.-])\b\d+\b(?!\.\d)/);
@@ -24,18 +24,14 @@ describe('lib.math.editableGrid.Cell', () => {
   });
 
   test('Should remove the selection into the cell by second click', async () => {
-    const USER = userEvent.setup();
-
     render(
-        <EditableGrid />
+        <EditableGrid/>
     );
 
     let cells = screen.getAllByText(/(?<![.-])\b\d+\b(?!\.\d)/);
 
-    await USER.click(cells[0])
-    expect(cells[0]).toHaveFocus();
-
-    await USER.click(cells[0])
+    await userEvent.click(cells[0]);
+    await userEvent.click(cells[0]);
     expect(cells[0]).toHaveFocus();
 
     let selection = document.getSelection()?.toString();
@@ -47,7 +43,7 @@ describe('lib.math.editableGrid.Cell', () => {
     const USER = userEvent.setup();
 
     render(
-        <EditableGrid />
+        <EditableGrid/>
     );
 
     // Get all cells
