@@ -103,18 +103,8 @@ export default function Cell({
       setValue((old) => ({ value: old.value, update: true }));
     }
   }
-
-  /**
-   * This function is needed to select text in number-cells via first click on the cell
-   */
-  function onClick(e: React.MouseEvent<Element>) {
-    if (e.target instanceof HTMLDivElement && e.detail === 1) {
-      let selection = window.getSelection().toString();
-
-      if (!selection) {
-        selectInnerText(el.current.el.current);
-      }
-    }
+  function onFocus() {
+    selectInnerText(el.current.el.current);
   }
 
   function selectInnerText(node: HTMLDivElement) {
@@ -148,9 +138,9 @@ export default function Cell({
             <ContentEditable
                 ref={el}
                 html={(value.value && value.value.toString()) || ''}
-                onClick={onClick}
                 onChange={onChange}
                 onBlur={onBlur}
+                onFocus={onFocus}
                 className="data-input data-input-number text-align-right"
             />
         );
