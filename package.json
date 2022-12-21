@@ -44,7 +44,6 @@
     "lint": "eslint -c .eslintrc.js ./src",
     "lint-fix": "eslint --fix -c .eslintrc.js ./src",
     "lint-staged": "lint-staged --verbose",
-    "prepare": "husky install",
     "prod": "CI=false && react-scripts build",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 6006 -s public",
