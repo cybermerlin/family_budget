@@ -16,6 +16,11 @@ const MISSIONS_QUERY = gql`
   }
 `;
 
+/**
+ * Example to show how to work with a GraphQL queries.
+ * @returns {JSX.Element|JSX.Element[]}
+ * @constructor
+ */
 function Locations() {
   let { loading, error, data } = useQuery(MISSIONS_QUERY);
 

@@ -1,4 +1,5 @@
-*						@cybermerlin @dm-rybalchenko
-public/*		@cybermerlin
-docs/*			@cybermerlin
-.github/*		@cybermerlin
+*								@cybermerlin @dm-rybalchenko
+public/*				@cybermerlin
+docs/*					@cybermerlin
+.github/*				@cybermerlin
+.git/hooks/*		@cybermerlin
