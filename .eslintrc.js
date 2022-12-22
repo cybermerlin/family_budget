@@ -464,7 +464,7 @@ module.exports = {
     // {
     //   files: ['src/**/*.spec.ts', 'src/**/*.d.ts'],
     //   parserOptions: {
-    //     project: './src/tsconfig.spec.json',
+    //     project: './tsconfig.json',
     //   },
     //   // Правила для линтера
     //   extends: ['plugin:jasmine/recommended'],

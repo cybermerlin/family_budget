@@ -9,7 +9,7 @@
 This project can give you more power to control your financial state: increase money supply and grow up financial
 literacy, and teach you how to control using of money.
 
-## Available Scripts
+## Development
 
 <details>
 <summary>In the project directory, you can run:</summary>
@@ -59,8 +59,7 @@ To start on localhost:6006 a server with a storybook project - list of ui compon
 case scenarios.
 </details>
 
-## For beginners: how to start a project
-
+### For beginners: how to start a project
 Run only the necessary commands.
 
 - Make Fork repository from GitHub (copy all branches).

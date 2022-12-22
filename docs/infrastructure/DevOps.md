@@ -14,3 +14,7 @@ Ansible автоматизирует управление конфигураци
 
 #### PACKER
 Создает идентичные образы ВМ для множества платформ из единого набора конфигов.
+
+#### PULUMI
+
+Like an Terraform decision. [See](https://github.com/x-technology/x-technology/blob/main/pulumi.md#pulumi)

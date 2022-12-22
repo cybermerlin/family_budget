@@ -16,6 +16,11 @@ const MISSIONS_QUERY = gql`
   }
 `;
 
+/**
+ * Example to show how to work with a GraphQL queries.
+ * @returns {JSX.Element|JSX.Element[]}
+ * @constructor
+ */
 function Locations(): JSX.Element {
   let { loading, error, data } = useQuery(MISSIONS_QUERY, {
     variables: {
@@ -47,6 +52,36 @@ export default function App() {
         <Locations/>
         <Counter/>
         <plugins.grid.View/>
+
+        <div
+            style={{
+              width: "100%",
+              height: "600px"
+            }}
+        >
+          <div
+              style={{
+                display: "inline-block",
+                width: "50%",
+                height: "100%",
+                paddingRight: "12px",
+                boxSizing: "border-box"
+              }}
+          >
+            <plugins.grid.ExcelLikeView/>
+          </div>
+          <div
+              style={{
+                display: "inline-block",
+                width: "50%",
+                height: "100%",
+                paddingLeft: "12px",
+                boxSizing: "border-box"
+              }}
+          >
+            <plugins.grid.ExcelLikeView/>
+          </div>
+        </div>
       </div>
   );
 }
