@@ -10,7 +10,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 
-## Available Scripts
+## Development
 
 <details>
 <summary>In the project directory, you can run:</summary>
@@ -54,7 +54,7 @@ To start on localhost:6006 a server with a storybook project - list of ui compon
 </details>
 
 
-## For beginners: how to start a project
+### For beginners: how to start a project
 Run only the necessary commands.
 
 - Make Fork repository from GitHub (copy all branches).
