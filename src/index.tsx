@@ -12,11 +12,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 const CLIENT = new ApolloClient({
-  link: new HttpLink({
-    uri: CONFIG.GRAPHQL
-    // eslint-disable-next-line capitalized-comments
-    // headers: { authorizetion: `Bearer ${process.env.GITHUB_TOKEN}` }
-  }),
+  uri: CONFIG.GRAPHQL,
   cache: new InMemoryCache
 });
 
