@@ -45,6 +45,36 @@ export default function App() {
         <Locations/>
         <Counter/>
         <plugins.grid.View/>
+
+        <div
+            style={{
+              width: "100%",
+              height: "600px"
+            }}
+        >
+          <div
+              style={{
+                display: "inline-block",
+                width: "50%",
+                height: "100%",
+                paddingRight: "12px",
+                boxSizing: "border-box"
+              }}
+          >
+            <plugins.grid.ExcelLikeView/>
+          </div>
+          <div
+              style={{
+                display: "inline-block",
+                width: "50%",
+                height: "100%",
+                paddingLeft: "12px",
+                boxSizing: "border-box"
+              }}
+          >
+            <plugins.grid.ExcelLikeView/>
+          </div>
+        </div>
       </div>
   );
 }
