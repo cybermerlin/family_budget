@@ -7,7 +7,6 @@ import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
 import scrollbarWidth from './scrollbarWidth';
-import { EActionTypes } from './utils';
 
 
 let defaultColumn = {
@@ -28,7 +27,7 @@ export default function Table({
                                 data,
                                 dispatch: dataDispatch,
                                 skipReset
-                              }: TableProps) {
+                              }: TTableProps) {
 
   let sortTypes = useMemo(
       () => ({
@@ -80,7 +79,7 @@ export default function Table({
   idRow = 0;
 
   let RenderRow = useCallback(
-      ({ index, style }: RenderRowProps) => {
+      ({ index, style }: TRenderRowProps) => {
         prepareRow(rows[index]);
 
         let row = rows[index],

@@ -1,10 +1,10 @@
-declare type TableProps = {
+declare type TTableProps = {
   columns: TColumn[];
   data: any[];
   skipReset: boolean;
   dispatch: (arg?: { [key: string]: any }) => void;
 }
-declare type RenderRowProps = {
+declare type TRenderRowProps = {
   index: number,
   style: {
     heigth: number,
@@ -18,12 +18,12 @@ declare type RenderRowProps = {
 declare type TColumn = {
   id: string;
   label: string;
-  accessor: string;
-  minWidth: number;
-  dataType: string;
-  options: any[];
+  accessor?: string;
+  dataType: EDataTypes;
+  options?: TOptionsColumn[];
   width?: number;
   maxWidth?: number;
+  minWidth?: number;
   disableResizing?: boolean;
   isResizing?: boolean;
 }

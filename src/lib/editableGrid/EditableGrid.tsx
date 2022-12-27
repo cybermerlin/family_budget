@@ -3,7 +3,7 @@ import { useEffect, useReducer } from 'react';
 
 import './style.scss';
 import Table from './Table';
-import { DATA_TYPES, EActionTypes, makeData, randomColor, shortId } from './utils';
+import { makeData, randomColor, shortId } from './utils';
 
 
 function reducer(state: TState, action: TAction) {
@@ -39,8 +39,8 @@ function reducer(state: TState, action: TAction) {
       );
 
       switch (action.dataType) {
-        case DATA_TYPES.NUMBER:
-          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.NUMBER) {
+        case EDataTypes.NUMBER:
+          if (state.columns[TYPE_INDEX].dataType === EDataTypes.NUMBER) {
             return state;
           }
           else {
@@ -58,8 +58,8 @@ function reducer(state: TState, action: TAction) {
               }
             });
           }
-        case DATA_TYPES.SELECT:
-          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.SELECT) {
+        case EDataTypes.SELECT:
+          if (state.columns[TYPE_INDEX].dataType === EDataTypes.SELECT) {
             return state;
           }
           else {
@@ -84,11 +84,11 @@ function reducer(state: TState, action: TAction) {
               }
             });
           }
-        case DATA_TYPES.TEXT:
-          if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.TEXT) {
+        case EDataTypes.TEXT:
+          if (state.columns[TYPE_INDEX].dataType === EDataTypes.TEXT) {
             return state;
           }
-          else if (state.columns[TYPE_INDEX].dataType === DATA_TYPES.SELECT) {
+          else if (state.columns[TYPE_INDEX].dataType === EDataTypes.SELECT) {
             return update(state, {
               skipReset: { $set: true },
               columns: { [TYPE_INDEX]: { dataType: { $set: action.dataType } } }
@@ -143,7 +143,7 @@ function reducer(state: TState, action: TAction) {
                 id: leftId,
                 label: 'Column',
                 accessor: leftId,
-                dataType: DATA_TYPES.TEXT,
+                dataType: EDataTypes.TEXT,
                 created: action.focus && true,
                 options: []
               }
@@ -168,7 +168,7 @@ function reducer(state: TState, action: TAction) {
                 id: rightId,
                 label: 'Column',
                 accessor: rightId,
-                dataType: DATA_TYPES.TEXT,
+                dataType: EDataTypes.TEXT,
                 created: action.focus && true,
                 options: []
               }
@@ -193,7 +193,7 @@ function reducer(state: TState, action: TAction) {
 }
 
 function EditableGrid() {
-  let [state, dispatch] = useReducer(reducer, makeData(1000));
+  let [state, dispatch] = useReducer(reducer, makeData(10));
 
   useEffect(() => {
     dispatch({ type: EActionTypes.ENABLE_RESET });

@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
-import Counter from '../plugins/counter/Counter';
-import { plugins } from '../plugins/grid';
+import Counter from 'src/plugins/counter/Counter';
+import { plugins } from 'src/plugins/grid';
 import './App.scss';
 
 
@@ -55,28 +55,28 @@ export default function App() {
 
         <div
             style={{
-              width: "100%",
-              height: "600px"
+              width: '100%',
+              height: '600px'
             }}
         >
           <div
               style={{
-                display: "inline-block",
-                width: "50%",
-                height: "100%",
-                paddingRight: "12px",
-                boxSizing: "border-box"
+                display: 'inline-block',
+                width: '50%',
+                height: '100%',
+                paddingRight: '12px',
+                boxSizing: 'border-box'
               }}
           >
             <plugins.grid.ExcelLikeView/>
           </div>
           <div
               style={{
-                display: "inline-block",
-                width: "50%",
-                height: "100%",
-                paddingLeft: "12px",
-                boxSizing: "border-box"
+                display: 'inline-block',
+                width: '50%',
+                height: '100%',
+                paddingLeft: '12px',
+                boxSizing: 'border-box'
               }}
           >
             <plugins.grid.ExcelLikeView/>

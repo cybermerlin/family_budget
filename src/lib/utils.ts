@@ -1,6 +1,6 @@
 /* eslint-disable no-secrets/no-secrets */
 
-export {}
+export {};
 
 // To show additional information: window.localStorage.setItem('DEBUG', true);
 // If you want default console fnc: `window.localStorage.setItem('LOG_DEFAULT', true);`

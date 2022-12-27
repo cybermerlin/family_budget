@@ -1,6 +1,6 @@
-// The jest-dom adds custom jest matchers for asserting on DOM nodes.
-// allows you to do things like:
-// expect(element).toHaveTextContent(/react/i)
+// / <reference path="./lib/editableGrid/types/typesEditableGrid.d.ts" />
+
+// Allows you to do things like: `expect(element).toHaveTextContent(/react/i)`
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom';
 
@@ -17,3 +17,6 @@ window.crypto = {
   }
 } as Crypto;
 globalThis.window = window;
+debugger;
+console.log(EDataTypes.UNDEFINED);
+// https://github.com/kulshekhar/ts-jest/discussions/3936

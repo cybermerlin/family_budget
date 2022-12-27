@@ -1,13 +1,15 @@
-declare type HeaderProps = {
-  column: HeaderColumn;
+export {};
+
+declare type THeaderProps = {
+  column: THeaderColumn;
   setSortBy: (arg: any[]) => void;
-  dataDispatch: (arg: { [key: string]: any }) => void;
+  dataDispatch: (arg: { [key: EDataTypes]: any }) => void;
 }
-declare type HeaderColumn = {
-  id: number;
+declare type THeaderColumn = {
+  id: string;
   created?: boolean;
   label: string;
-  dataType: string;
+  dataType: EDataTypes;
   getResizerProps: () => any[];
   getHeaderProps: () => any[];
 }

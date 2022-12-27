@@ -42,11 +42,11 @@ export function randomColor() {
 }
 
 export function makeData(count: number) {
-  let data = [];
-  let options = [];
+  let data: TRowOriginal[] = [];
+  let options: TOptionsColumn[] = [];
 
   for (let i = 0; i < count; i++) {
-    let row = {
+    let row: TRowOriginal = {
       ID: faker.mersenne.rand(),
       firstName: faker.name.firstName(),
       lastName: faker.name.lastName(),
@@ -60,13 +60,13 @@ export function makeData(count: number) {
     data.push(row);
   }
 
-  let columns = [
+  let columns: TColumn[] = [
     {
       id: 'firstName',
       label: 'First Name',
       accessor: 'firstName',
       minWidth: 100,
-      dataType: DATA_TYPES.TEXT,
+      dataType: EDataTypes.TEXT,
       options: []
     },
     {
@@ -74,7 +74,7 @@ export function makeData(count: number) {
       label: 'Last Name',
       accessor: 'lastName',
       minWidth: 100,
-      dataType: DATA_TYPES.TEXT,
+      dataType: EDataTypes.TEXT,
       options: []
     },
     {
@@ -82,7 +82,7 @@ export function makeData(count: number) {
       label: 'Age',
       accessor: 'age',
       width: 80,
-      dataType: DATA_TYPES.NUMBER,
+      dataType: EDataTypes.NUMBER,
       options: []
     },
     {
@@ -90,48 +90,25 @@ export function makeData(count: number) {
       label: 'E-Mail',
       accessor: 'email',
       width: 300,
-      dataType: DATA_TYPES.TEXT,
+      dataType: EDataTypes.TEXT,
       options: []
     },
     {
+      options,
       id: 'music',
       label: 'Music Preference',
       accessor: 'music',
-      dataType: DATA_TYPES.SELECT,
-      width: 200,
-      options: options
+      dataType: EDataTypes.SELECT,
+      width: 200
     },
     {
-      id: 999999,
+      id: '999999',
       width: 20,
       label: '+',
       disableResizing: true,
-      dataType: 'null'
+      dataType: EDataTypes.UNDEFINED
     }
   ];
 
-  return { columns: columns, data: data, skipReset: false };
-}
-
-
-/**
- * For actions for the EditableGrid
- */
-export enum EActionTypes {
-  ADD_OPTION_TO_COLUMN = 'add_option_to_column',
-  ADD_ROW = 'add_row',
-  UPDATE_COLUMN_TYPE = 'update_column_type',
-  UPDATE_COLUMN_HEADER = 'update_column_header',
-  UPDATE_CELL = 'update_cell',
-  ADD_COLUMN_TO_LEFT = 'add_column_to_left',
-  ADD_COLUMN_TO_RIGHT = 'add_column_to_right',
-  DELETE_COLUMN = 'delete_column',
-  ENABLE_RESET = 'enable_reset'
-}
-
-
-export const DATA_TYPES = {
-  NUMBER: 'number',
-  TEXT: 'text',
-  SELECT: 'select'
+  return { columns, data, skipReset: false };
 }

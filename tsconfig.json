@@ -3,9 +3,7 @@
   "compilerOptions": {
 
     "paths": {
-      "@plugins/*": ["src/plugins/*"],
-      "@lib/*": ["src/lib/*"],
-      "@app/*": ["src/app/*"]
+      "src/*": ["src/*"]
     },
 
 		"allowSyntheticDefaultImports": true,
@@ -16,7 +14,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "declaration": false,
+    "declaration": true,
+		"declarationMap": true,
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "moduleResolution": "Node",
@@ -32,7 +31,7 @@
       "ES2021"
     ],
 		"typeRoots": [
-			"./src/lib/types",
+			"./src/**/*.d.ts",
 			"./node_modules/@types"
 		],
 		"allowJs": true,
@@ -41,7 +40,7 @@
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
 		"types": ["react"]
-  },
+	},
 	"include": [
       "src/**/*.ts",
       "src/**/*.tsx",

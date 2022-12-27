@@ -1,7 +1,8 @@
-declare type CellProps = {
+declare type TCellProps = {
   value: string;
   row: { index: number };
-  column: { id: string, dataType: string, options: OptionsColumn[] };
+  column: { id: string, dataType: EDataTypes, options: TOptionsColumn[] };
   dataDispatch: (arg: { [key: string]: any }) => void;
 }
-declare type OptionsColumn = { label: string, backgroundColor: string }
+
+declare type TOptionsColumn = { label: string, backgroundColor: string }
