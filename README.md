@@ -1,7 +1,7 @@
-[![Develop health](https://github.com/dm-rybalchenko/family_budget/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/dm-rybalchenko/family_budget/actions/workflows/review.yml)
-[![Coverage Status](https://coveralls.io/repos/github/dm-rybalchenko/family_budget/badge.svg?branch=develop)](https://coveralls.io/github/dm-rybalchenko/family_budget?branch=develop)
+[![Develop health](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml)
+[![Coverage Status](https://coveralls.io/repos/github/cybermerlin/family_budget/badge.svg?branch=develop)](https://coveralls.io/github/cybermerlin/family_budget?branch=develop)
 [![Visit docs](https://img.shields.io/badge/docs-visit%20site-orange)](https://formidable.com/open-source/family_budget/wiki/)
-[<img alt="GitHub Discussions: Chat With Us" src="https://badgen.net/badge/discussions/chat%20with%20us/purple" />](https://github.com/dm-rybalchenko/family_budget/discussions)
+[<img alt="GitHub Discussions: Chat With Us" src="https://badgen.net/badge/discussions/chat%20with%20us/purple" />](https://github.com/cybermerlin/family_budget/discussions)
 [![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](LICENSE)
 
 # Family Budget
@@ -65,8 +65,8 @@ Run only the necessary commands.
 - Make Fork repository from GitHub (copy all branches).
 
 - Used to target an existing repository and create a clone, or copy of the target repository.
-    - source of code ```git clone https://github.com/dm-rybalchenko/family_budget```
-    - source of **Wiki** ```git clone https://github.com/dm-rybalchenko/family_budget.wiki.git```
+    - source of code ```git clone https://github.com/cybermerlin/family_budget```
+    - source of **Wiki** ```git clone https://github.com/cybermerlin/family_budget.wiki.git```
 
 - Go to the project folder.
   ```cd ./family_budget```
@@ -85,4 +85,3 @@ And then open the browser and enter the address that the system will write in th
 
 ## [Documentaions](docs/index.md)
 
-*look\click at the link of this header.*

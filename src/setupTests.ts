@@ -17,6 +17,3 @@ window.crypto = {
   }
 } as Crypto;
 globalThis.window = window;
-debugger;
-console.log(EDataTypes.UNDEFINED);
-// https://github.com/kulshekhar/ts-jest/discussions/3936

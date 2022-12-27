@@ -1,32 +1,13 @@
-declare type TTableProps = {
-  columns: TColumn[];
+declare type TButtonEvent = React.MouseEvent<Element>;
+
+declare type TState = {
+  columns: any[];
   data: any[];
   skipReset: boolean;
-  dispatch: (arg?: { [key: string]: any }) => void;
 }
-declare type TRenderRowProps = {
-  index: number,
-  style: {
-    heigth: number,
-    left: number,
-    right?: number,
-    position: string,
-    top: number,
-    width: string,
-  }
-}
-declare type TColumn = {
-  id: string;
-  label: string;
-  accessor?: string;
-  dataType: EDataTypes;
-  options?: TOptionsColumn[];
-  width?: number;
-  maxWidth?: number;
-  minWidth?: number;
-  disableResizing?: boolean;
-  isResizing?: boolean;
-}
+
+declare type TOptionsColumn = { label: string, backgroundColor: string }
+
 declare type TRow = {
   allCells: TRowCells[];
   cells: TRowCells[];
@@ -38,13 +19,6 @@ declare type TRow = {
   originalSubRows: any[];
   subRows: any[];
   values?: string | number;
-}
-declare type TRowCells = {
-  column: TColumn[];
-  row: TRow[];
-  value?: string | number;
-  getCellProps: () => { [key: string]: any };
-  render: (type?: string, props?: { [key: string]: any }) => any;
 }
 declare type TRowOriginal = {
   ID: number;
@@ -65,5 +39,17 @@ declare type TUseTableProps = {
 declare type THeaderGroups = {
   getFooterGroupProps: (props?: { [key: string]: any }) => any;
   getHeaderGroupProps: (props?: { [key: string]: any }) => any;
-  headers: { [key: string]: any }[];
+  headers: Record<string, any>[];
+}
+
+declare type TRenderRowProps = {
+  index: number,
+  style: {
+    heigth: number,
+    left: number,
+    right?: number,
+    position: string,
+    top: number,
+    width: string,
+  }
 }

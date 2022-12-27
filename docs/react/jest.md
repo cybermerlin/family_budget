@@ -5,7 +5,6 @@
 - [React Testing Library Cheatsheet](https://testing-library.com/docs/react-testing-library/cheatsheet)
 - [Jest DOM matchers cheatsheet](https://github.com/testing-library/jest-dom)
 
-
 ##### Debugging
 
 1. Open in the Chrome browser: [Inspector](chrome://inspect/#devices)
@@ -26,20 +25,19 @@
       "testEnvironment": "jsdom",
       "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
       "moduleFileExtensions": [
-        "js",
-        "ts",
-        "jsx",
-        "tsx",
-        "json",
-        "node",
-        "web.js",
-        "web.ts",
-        "web.tsx",
-        "web.jsx"
+          "js",
+          "ts",
+          "jsx",
+          "tsx",
+          "json",
+          "node",
+          "web.js",
+          "web.ts",
+          "web.tsx",
+          "web.jsx"
       ],
       "setupFilesAfterEnv": [
-        "<rootDir>/src/setupTests.ts"
+          "<rootDir>/src/setupTests.ts"
       ]
     }
     ```
-

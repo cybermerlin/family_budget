@@ -43,7 +43,7 @@
 		"prod": "CI=false && react-scripts build",
 		"start": "react-scripts start",
 		"storybook": "start-storybook -p 6006 -s public",
-		"test": "react-scripts test",
+		"test": "react-scripts test --bail",
 		"test-dbg": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
 		"test-zero": "node ./node_modules/jest/bin/jest.js"
 	},
@@ -162,24 +162,6 @@
 		"transformIgnorePatterns": [
 			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
 			"^.+\\.module\\.(css|sass|scss)$"
-		],
-		"bail": true,
-		"testEnvironment": "jsdom",
-		"testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-		"moduleFileExtensions": [
-			"js",
-			"ts",
-			"jsx",
-			"tsx",
-			"json",
-			"node",
-			"web.js",
-			"web.ts",
-			"web.tsx",
-			"web.jsx"
-		],
-		"setupFilesAfterEnv": [
-			"<rootDir>/src/setupTests.ts"
 		]
 	}
 }

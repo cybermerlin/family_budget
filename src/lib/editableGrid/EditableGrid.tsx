@@ -3,6 +3,7 @@ import { useEffect, useReducer } from 'react';
 
 import './style.scss';
 import Table from './Table';
+import { EActionTypes, EDataTypes, TAction } from './types/EditableGrid';
 import { makeData, randomColor, shortId } from './utils';
 
 

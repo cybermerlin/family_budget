@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import ContentEditable from 'react-contenteditable';
 import { createPortal } from 'react-dom';
 import { usePopper } from 'react-popper';
+import { EActionTypes, EDataTypes, TCellProps } from 'src/lib/editableGrid/types/EditableGrid';
 import { findFormula } from 'src/plugins/math/pureMath/handlersCountCellsData';
 import Badge from './Badge';
 import { gray } from './colors';

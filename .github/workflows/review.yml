@@ -60,8 +60,8 @@ jobs:
         with:
           # Additional arguments for the sonarcloud scanner
           args:
-            -Dsonar.projectKey=dm-rybalchenko_excel-app
-            -Dsonar.organization=dm-rybalchenko
+            -Dsonar.projectKey=cybermerlin_family-budget
+            -Dsonar.organization=cybermerlin
 
   finish:
     needs: review

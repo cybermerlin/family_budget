@@ -1,10 +1,4 @@
-declare type TState = {
-  columns: any[];
-  data: any[];
-  skipReset: boolean;
-}
-
-declare type TAction = {
+export type TAction = {
   type: EActionTypes;
   value?: string;
   columnId?: string;
@@ -17,9 +11,9 @@ declare type TAction = {
 }
 
 /**
- * For actions for the EditableGrid
+ * For actions for the EditableGrid column's header
  */
-declare enum EActionTypes {
+export enum EActionTypes {
   ADD_OPTION_TO_COLUMN = 'add_option_to_column',
   ADD_ROW = 'add_row',
   UPDATE_COLUMN_TYPE = 'update_column_type',
@@ -31,9 +25,16 @@ declare enum EActionTypes {
   ENABLE_RESET = 'enable_reset'
 }
 
-declare enum EDataTypes {
+export enum EDataTypes {
   NUMBER = 'number',
   TEXT = 'text',
   SELECT = 'select',
   UNDEFINED = 'null'
 }
+
+export type TCellProps = {
+  value: string;
+  row: { index: number };
+  column: { id: string, dataType: EDataTypes, options: TOptionsColumn[] };
+  dataDispatch: (arg: { [key: string]: any }) => void;
+};

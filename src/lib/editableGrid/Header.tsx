@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
+import { EActionTypes, EDataTypes } from 'src/lib/editableGrid/types/EditableGrid';
+import { THeaderProps } from 'src/lib/editableGrid/types/Header';
 import { gray } from './colors';
 import ArrowDownIcon from './img/ArrowDown';
 import ArrowLeftIcon from './img/ArrowLeft';

@@ -1,14 +1,11 @@
 ### [Learn More](react/more.md)
 
-*click by header.*
 
 #### [React](react/index.md)
 
-*click by header.*
 
 ### [Components](react/components.md)
 
-*click by header.*
 
 ### TypeScript Definitions
 
@@ -31,14 +28,11 @@ file:
 
 ### [GraphQL](GraphQL/index.md)
 
-*click by header.*
 
 ### Infrastructure
 
 #### [DevOps](infrastructure/DevOps.md)
 
-*click by header.*
 
 #### [NodeJS](nodejs/index.md)
 
-*click by header.*

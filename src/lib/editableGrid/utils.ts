@@ -1,4 +1,6 @@
 import { faker } from '@faker-js/faker/locale/ru';
+import { EDataTypes } from 'src/lib/editableGrid/types/EditableGrid';
+import { TColumn } from 'src/lib/editableGrid/types/Table';
 
 //#region StringOfLength
 type StringOfLength<TMin extends number, TMax extends number> = string & {

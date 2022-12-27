@@ -2,7 +2,9 @@ import clsx from 'clsx';
 import { useCallback, useMemo } from 'react';
 import { useBlockLayout, useResizeColumns, useSortBy, useTable } from 'react-table';
 import { FixedSizeList } from 'react-window';
+import { EActionTypes } from 'src/lib/editableGrid/types/EditableGrid';
 
+import { TRowCells, TTableProps } from './types/Table';
 import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
@@ -22,6 +24,7 @@ let defaultColumn = {
  * This variable is used to count and assign row id's
  */
 let idRow = 0;
+
 export default function Table({
                                 columns,
                                 data,

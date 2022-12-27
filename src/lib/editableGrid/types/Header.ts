@@ -1,11 +1,13 @@
-export {};
+import { EDataTypes } from "./EditableGrid";
 
-declare type THeaderProps = {
+
+export declare type THeaderProps = {
   column: THeaderColumn;
   setSortBy: (arg: any[]) => void;
-  dataDispatch: (arg: { [key: EDataTypes]: any }) => void;
+  dataDispatch: (arg: Record<string, any>) => void;
 }
-declare type THeaderColumn = {
+
+export declare type THeaderColumn = {
   id: string;
   created?: boolean;
   label: string;
@@ -13,4 +15,3 @@ declare type THeaderColumn = {
   getResizerProps: () => any[];
   getHeaderProps: () => any[];
 }
-declare type TButtonEvent = React.MouseEvent<Element>;
