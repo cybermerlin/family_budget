@@ -140,10 +140,18 @@
 			"text-summary",
 			"lcov"
 		],
+		"collectCoverageFrom": [
+			"!src/**/*.stories.*",
+			"!src/**/*.d.ts",
+			"!src/**/*.json",
+			"!src/**/types"
+		],
 		"coveragePathIgnorePatterns": [
-			"./src/*/*.(types|d).{ts,tsx}",
+			"<rootDir>/src/*/types",
+			"<rootDir>/src/stories",
 			"./src/index.tsx",
-			"./src/serviceWorker.ts"
+			"./src/serviceWorker.ts",
+			"./src/reportWebVitals.ts"
 		],
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web",
