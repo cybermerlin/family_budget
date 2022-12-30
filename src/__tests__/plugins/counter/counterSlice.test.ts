@@ -1,4 +1,4 @@
-import counterReducer, { decrement, ICounterState, increment, incrementByAmount } from './counterSlice';
+import counterReducer, { decrement, ICounterState, increment, incrementByAmount } from 'src/plugins/counter/counterSlice';
 
 
 describe('counter reducer', () => {

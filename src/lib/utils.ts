@@ -21,7 +21,7 @@ if (!Object.prototype.hasOwnProperty.call(console, 'colored')
     console.colored = true;
 
     return function (...args) {
-      if (!DEBUG) {
+      if (!window.DEBUG) {
         return;
       }
       if (typeof args[0] === 'function') {

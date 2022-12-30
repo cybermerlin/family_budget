@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React, { useContext } from 'react';
 
-import { addFormulaToHistory, MathServiceComponent, MathServiceContext } from './MathService';
+import { addFormulaToHistory, MathServiceComponent, MathServiceContext } from 'src/plugins/math/pureMath/MathService';
 
 
 function ComponentForContext() {

@@ -1,8 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import { findFormula, handleBlur, handleFocus, handleKeyPress } from './handlersCountCellsData';
-import { IFormulaObj } from './storeMath';
+import { findFormula, handleBlur, handleFocus, handleKeyPress } from 'src/plugins/math/pureMath/handlersCountCellsData';
+import { IFormulaObj } from 'src/plugins/math/pureMath/storeMath';
 
 
 describe('plugins.math.pureMath.handlersCountCellsData', () => {

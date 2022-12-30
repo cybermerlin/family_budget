@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 
 import Counter from 'src/plugins/counter/Counter';
 import { plugins } from 'src/plugins/grid';
+import { default as GridDetails } from 'src/plugins/gridDetails/View';
 import './App.scss';
 
 
@@ -68,7 +69,7 @@ export default function App() {
                 boxSizing: 'border-box'
               }}
           >
-            <plugins.grid.ExcelLikeView/>
+            <GridDetails/>
           </div>
           <div
               style={{

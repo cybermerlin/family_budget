@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import EditableGrid from './EditableGrid';
+import EditableGrid from 'src/lib/editableGrid/EditableGrid';
 
 
 describe('lib.math.editableGrid.Cell', () => {

@@ -1,4 +1,4 @@
-import { addFormula, IFormulaObj, reducerMath } from './storeMath';
+import { addFormula, IFormulaObj, reducerMath } from 'src/plugins/math/pureMath/storeMath';
 
 
 describe('plugins.math.pureMath.StoreMath', () => {

@@ -2,8 +2,8 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 
-import HistoryFormulas from './historyFormulas';
-import { addFormulaToHistory, MathServiceComponent } from './MathService';
+import HistoryFormulas from 'src/plugins/math/pureMath/historyFormulas';
+import { addFormulaToHistory, MathServiceComponent } from 'src/plugins/math/pureMath/MathService';
 
 
 describe('plugins.math.pureMath.historyFormulas', () => {

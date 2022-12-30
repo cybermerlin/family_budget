@@ -1,4 +1,4 @@
-import { random, shortId } from './utils';
+import { random, shortId } from 'src/lib/editableGrid/utils';
 
 
 describe('lib.editableGrid.utils', () => {

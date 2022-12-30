@@ -12,7 +12,6 @@
 		"@fortune-sheet/react": "^0.11.0",
 		"@popperjs/core": "^2.11.6",
 		"@reduxjs/toolkit": "^1.8.6",
-		"@types/node": "^18.11.4",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
 		"@types/react-redux": "^7.1.24",
@@ -45,7 +44,8 @@
 		"storybook": "start-storybook -p 6006 -s public",
 		"test": "react-scripts test --bail",
 		"test-dbg": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand",
-		"test-zero": "node ./node_modules/jest/bin/jest.js"
+		"test-zero": "node ./node_modules/jest/bin/jest.js",
+		"trace-deprecation": "node --trace-deprecation"
 	},
 	"browserslist": {
 		"production": [
@@ -75,6 +75,7 @@
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^14.4.3",
 		"@types/jest": "^29.2.4",
+		"@types/node": "^18.11.18",
 		"@typescript-eslint/eslint-plugin": "^5.42.0",
 		"@typescript-eslint/parser": "^5.29.0",
 		"dts-jest": "^25.0.0",
@@ -84,6 +85,7 @@
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jsonc": "^2.5.0",
 		"eslint-plugin-jsx-a11y": "^6.6.1",
+		"eslint-plugin-markdown": "^3.0.0",
 		"eslint-plugin-no-secrets": "^0.8.9",
 		"eslint-plugin-optimize-regex": "^1.2.1",
 		"eslint-plugin-react": "^7.31.10",
@@ -107,7 +109,7 @@
 		"jest-util": "^29.3.1"
 	},
 	"lint-staged": {
-		"src/**/*.{js,jsx,ts,tsx,gql,graphql,scss,css}": "eslint --color"
+		"(src|docs)/**/*.{js,jsx,ts,tsx,gql,graphql,scss,css,md}": "eslint --color"
 	},
 	"release": {
 		"analyzeCommits": "simple-commit-message"
@@ -156,7 +158,8 @@
 		"moduleNameMapper": {
 			"^react-native$": "react-native-web",
 			"^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
-			"^@/": "<rootDir>/src/"
+			"^src/": "<rootDir>/src/",
+			"^tests/": "<rootDir>/tests/"
 		},
 		"transform": {
 			"^.+(.d)?\\.tsx?$": [
@@ -166,10 +169,6 @@
 					"diagnostics": true
 				}
 			]
-		},
-		"transformIgnorePatterns": [
-			"[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$",
-			"^.+\\.module\\.(css|sass|scss)$"
-		]
+		}
 	}
 }

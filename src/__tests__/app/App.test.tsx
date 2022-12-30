@@ -4,8 +4,8 @@ import { StrictMode } from 'react';
 import { Provider } from 'react-redux';
 
 import CONFIG from 'src/config.json';
-import App from './App';
-import { store } from './store';
+import App from 'src/app/App';
+import { store } from 'src/app/store';
 
 
 test('Render App', () => {

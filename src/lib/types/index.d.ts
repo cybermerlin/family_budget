@@ -1,22 +1,21 @@
-export {};
-
 declare module '@faker-js/faker' {
   import faker from 'faker';
   export default faker;
 }
 
 declare global {
-  let console: Console;
+  let console: Console,
+      window: Window;
 
 
-  interface Window {
+  interface Window extends Window {
     DEBUG: boolean;
     console: Console;
-    crypto: any;
+    crypto: Crypto | any;
   }
 
 
-  interface Console {
+  interface Console extends Console {
     colored: boolean;
   }
 }

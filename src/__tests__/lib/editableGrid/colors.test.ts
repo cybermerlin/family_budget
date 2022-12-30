@@ -1,4 +1,4 @@
-import { gray } from './colors';
+import { gray } from 'src/lib/editableGrid/colors';
 
 
 describe('lib.editableGrid.colors', () => {

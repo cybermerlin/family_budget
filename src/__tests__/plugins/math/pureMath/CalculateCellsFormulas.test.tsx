@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 
-import CalculateCellsFormulas from './CalculateCellsFormulas';
+import CalculateCellsFormulas from 'src/plugins/math/pureMath/CalculateCellsFormulas';
 
 
 describe('plugins.math.pureMath.CalculateCellsFormulas', () => {
