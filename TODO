@@ -14,21 +14,22 @@ Technical tasks:
 
 	☐ https://github.com/gabrielbull/react-desktop
 	✔ move out all information about React from README into docs/react directory. @done(22-12-11 14:42)
-	☐ move out /docs into the Github's Wiki for 0 version of project and change this directory as submodule of Git.
+	✔ move out /docs into the Github's Wiki for 0 version of project and change this directory as submodule of Git.
 	☐ integrate https://github.com/changesets/changesets
 
 Business tasks:
 	✔ study about starting business not in RF
 
 	before any commit:
-		☐ all changes of code should be checked with: Sonar, Linter, Code Styler
-		☐ all changes of code should be covered by Unit and e2e tests
+		✔ all changes of code should be checked with: Sonar, Linter, Code Styler
+		✔ all changes of code should be covered by Unit tests
+		☐ all changes of code should be covered by e2e tests
 	☐ after commit should be maded docker container and published into k8s for manual checking
 	☐ after successful checking the task's card should be moved into Done
 	☐ in parallel processes, __the generator documentations__ should be started and the result should be committed with new version of documentation
 	☐ On do date of milestone current stable develop branch should be merged into master and tagged with the version's name
 	☐ marked version commit should be packed and published on the k8s
-	☐ after publishing, the integration test should be runned
+	☐ after publishing, the integration test should be ran
 
 
 Completed tasks:
