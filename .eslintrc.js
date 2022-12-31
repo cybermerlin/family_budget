@@ -31,6 +31,7 @@ module.exports = {
     'plugin:jest/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
+    'plugin:markdown/recommended'
   ],
 
   parser: '@typescript-eslint/parser',
@@ -45,7 +46,8 @@ module.exports = {
     'html',
     'react',
     'react-hooks',
-    'jest'
+    'jest',
+    'markdown'
   ],
 
   parserOptions: {
@@ -288,6 +290,7 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'warn', // Checks effect dependencies
     //#endregion
 
+    '@typescript-eslint/triple-slash-reference': 0,
     '@typescript-eslint/no-namespace': 'off',
     'import/newline-after-import': ['error', {count: 2}],
     'new-parens': ['error', 'never'],
@@ -302,7 +305,7 @@ module.exports = {
       'always',
       {
         line: {
-          markers: ['#region', '#endregion', 'NOSONAR']
+          markers: ['///', '#region', '#endregion', 'NOSONAR']
         }
       }
     ],
@@ -330,7 +333,7 @@ module.exports = {
       {
         ignoreInlineComments: true,
         ignoreConsecutiveComments: true,
-        ignorePattern: '^(#| )(region|endregion).*'
+        ignorePattern: '^(///)|(#| )(region|endregion).*'
       }
     ],
     'class-methods-use-this': 'off',
@@ -408,7 +411,7 @@ module.exports = {
     'no-useless-return': 'error',
     'no-var': 'error',
     'no-void': 'off',
-    'no-warning-comments': ['warn', {terms: ['fixme']}],
+    'no-warning-comments': ['warn', {terms: ['fixme', 'TODO:']}],
     'no-whitespace-before-property': 'error',
     'object-curly-spacing': ['error', 'always'],
     'object-property-newline': ['error', {allowAllPropertiesOnSameLine: true}],
@@ -546,6 +549,22 @@ module.exports = {
       parserOptions: {
         operations: './src/**/*.graphql',
         schema: './schema.graphql'
+      }
+    },
+    {
+      files: ['docs/**/*.mdx?'],
+      processor: 'markdown/markdown'
+    },
+    {
+      files: ['**/*.md/*.js'],
+      parserOptions: {
+        ecmaFeatures: {
+          impliedStrict: true
+        }
+      },
+      rules: {
+        'no-console': 'off',
+        'import/no-unresolved': 'off'
       }
     }
   ],

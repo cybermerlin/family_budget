@@ -1,11 +1,11 @@
 /* eslint-disable import/prefer-default-export, @typescript-eslint/naming-convention */
 
 /**
- * Get grey color by a level.
+ * Get a gray color by a level.
  * @param {Number} level
  * @returns
  */
-export function grey(level: number): string {
+export function gray(level: number): string {
   const REFERENCE: Readonly<Record<number, string>> = Object.freeze({
     '50': '#fafafa',
     '100': '#f5f5f5',

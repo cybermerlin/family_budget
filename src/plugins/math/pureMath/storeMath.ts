@@ -4,7 +4,7 @@ import { legacy_createStore as createStore } from 'redux';
 
 export interface IFormulaObj {
   formula: string;
-  id: number;
+  id: string;
   result: string;
   type?: string;
 }
@@ -14,7 +14,7 @@ const ADD_FORMULA = 'ADD_FORMULA';
 
 const STORE_MATH = createStore(reducerMath);
 
-function addFormula(formula: string, result: string, id: number): AnyAction {
+function addFormula(formula: string, result: string, id: string): AnyAction {
   return {
     id,
     formula,

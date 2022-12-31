@@ -66,6 +66,7 @@
 }
 
 .data-input:focus {
+  background: rgba(112, 76, 182, 0.15);
   outline: none;
 }
 
@@ -177,10 +178,6 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-}
-
-.data-input:focus {
-  background: rgba(112, 76, 182, 0.15);
 }
 
 .td-content {

@@ -17,7 +17,6 @@ storybook-static
 # misc
 run.cmd
 package-lock.json
-.DS_Store
 .env.local
 .env.development.local
 .env.test.local
@@ -34,11 +33,6 @@ yarn-error.log*
 /tmp
 /out-tsc
 /bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -58,7 +52,6 @@ yarn-error.log
 /.angular
 .sass-cache/
 /connect.lock
-/coverage
 /libpeerconnection.log
 *.log
 /typings

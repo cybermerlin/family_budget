@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { usePopper } from 'react-popper';
 
-import { grey } from './colors';
+import { EActionTypes, EDataTypes } from 'src/lib/editableGrid/types/EditableGrid';
+import { THeaderProps } from 'src/lib/editableGrid/types/Header';
+import { gray } from './colors';
 import ArrowDownIcon from './img/ArrowDown';
 import ArrowLeftIcon from './img/ArrowLeft';
 import ArrowRightIcon from './img/ArrowRight';
@@ -11,16 +13,16 @@ import MultiIcon from './img/Multi';
 import PlusIcon from './img/Plus';
 import TextIcon from './img/Text';
 import TrashIcon from './img/Trash';
-import { DATA_TYPES, EActionTypes, shortId } from './utils';
+import { shortId } from './utils';
 
 
-function getPropertyIcon(dataType: string) {
+function getPropertyIcon(dataType: EDataTypes) {
   switch (dataType) {
-    case DATA_TYPES.NUMBER:
+    case EDataTypes.NUMBER:
       return <HashIcon/>;
-    case DATA_TYPES.TEXT:
+    case EDataTypes.TEXT:
       return <TextIcon/>;
-    case DATA_TYPES.SELECT:
+    case EDataTypes.SELECT:
       return <MultiIcon/>;
     default:
       return null;
@@ -31,7 +33,7 @@ export default function Header({
                                  column: { id, created, label, dataType, getResizerProps, getHeaderProps },
                                  setSortBy,
                                  dataDispatch
-                               }: HeaderProps) {
+                               }: THeaderProps) {
   let [expanded, setExpanded] = useState(created || false);
   let [referenceElement, setReferenceElement] = useState(null);
   let [popperElement, setPopperElement] = useState(null);
@@ -131,7 +133,7 @@ export default function Header({
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DATA_TYPES.SELECT
+          dataType: EDataTypes.SELECT
         });
         setShowType(false);
         setExpanded(false);
@@ -144,7 +146,7 @@ export default function Header({
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DATA_TYPES.TEXT
+          dataType: EDataTypes.TEXT
         });
         setShowType(false);
         setExpanded(false);
@@ -157,7 +159,7 @@ export default function Header({
         dataDispatch({
           type: 'update_column_type',
           columnId: id,
-          dataType: DATA_TYPES.NUMBER
+          dataType: EDataTypes.NUMBER
         });
         setShowType(false);
         setExpanded(false);
@@ -188,7 +190,7 @@ export default function Header({
   }
 
   function getHeader() {
-    if (id !== 999999) {
+    if (id !== '999999') {
       return (
           <>
             <div key={id} {...getHeaderProps()} className="th noselect d-inline-block">
@@ -286,7 +288,7 @@ export default function Header({
                         className="list-padding"
                         key={shortId()}
                         style={{
-                          borderTop: `2px solid ${grey(200)}`
+                          borderTop: `2px solid ${gray(200)}`
                         }}
                     >
                       {buttons.map(button => (
@@ -317,7 +319,7 @@ export default function Header({
               onClick={e =>
                   dataDispatch({
                     type: 'add_column_to_left',
-                    columnId: 999999,
+                    columnId: '999999',
                     focus: true
                   })
               }

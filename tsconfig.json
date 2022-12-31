@@ -1,50 +1,56 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-
-    "paths": {
-      "@plugins/*": ["src/plugins/*"],
-      "@lib/*": ["src/lib/*"],
-      "@app/*": ["src/app/*"]
-    },
-
+	"compileOnSave": false,
+	"compilerOptions": {
+		"types": [
+			"jest",
+			"node",
+			"react"
+		],
+		"paths": {
+			"src/*": [
+				"src/*"
+			],
+			"tests/*": [
+				"src/__tests__/*"
+			]
+		},
 		"allowSyntheticDefaultImports": true,
 		"baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": false,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "moduleResolution": "Node",
+		"outDir": "./dist/out-tsc",
+		"forceConsistentCasingInFileNames": true,
+		"strict": false,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"sourceMap": true,
+		"declaration": true,
+		"declarationMap": true,
+		"downlevelIteration": true,
+		"experimentalDecorators": true,
+		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-    "noEmit": true,
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "ES2021"
-    ],
+		"noEmit": true,
+		"importHelpers": true,
+		"target": "ES2022",
+		"module": "ES2022",
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"ES2021"
+		],
 		"typeRoots": [
-			"./src/lib/types",
+			"./src/**/*.d.ts",
 			"./node_modules/@types"
 		],
 		"allowJs": true,
 		"esModuleInterop": true,
-    "skipLibCheck": true,
+		"skipLibCheck": true,
 		"jsx": "react-jsx",
 		"jsxImportSource": "react",
-		"types": ["react"]
-  },
+	},
 	"include": [
-      "src/**/*.ts",
-      "src/**/*.tsx",
-      "src/**/*.d.ts"
-    ]
+		"(src|tests)/**/*.ts",
+		"(src|tests)/**/*.tsx",
+		"(src|tests)/**/*.d.ts"
+	]
 }

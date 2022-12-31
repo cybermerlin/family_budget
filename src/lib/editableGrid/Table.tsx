@@ -2,12 +2,13 @@ import clsx from 'clsx';
 import { useCallback, useMemo } from 'react';
 import { useBlockLayout, useResizeColumns, useSortBy, useTable } from 'react-table';
 import { FixedSizeList } from 'react-window';
+import { EActionTypes } from 'src/lib/editableGrid/types/EditableGrid';
 
+import { TRowCells, TTableProps } from './types/Table';
 import Cell from './Cell';
 import Header from './Header';
 import PlusIcon from './img/Plus';
 import scrollbarWidth from './scrollbarWidth';
-import { EActionTypes } from './utils';
 
 
 let defaultColumn = {
@@ -19,12 +20,17 @@ let defaultColumn = {
   sortType: 'alphanumericFalsyLast'
 };
 
+/**
+ * This variable is used to count and assign row id's
+ */
+let idRow = 0;
+
 export default function Table({
                                 columns,
                                 data,
                                 dispatch: dataDispatch,
                                 skipReset
-                              }: TableProps) {
+                              }: TTableProps) {
 
   let sortTypes = useMemo(
       () => ({
@@ -73,25 +79,27 @@ export default function Table({
       useSortBy
   );
 
-  let tabindexCell = 0;
+  idRow = 0;
 
   let RenderRow = useCallback(
-      ({ index, style }: RenderRowProps) => {
-        let row = rows[index];
+      ({ index, style }: TRenderRowProps) => {
+        prepareRow(rows[index]);
 
-        prepareRow(row);
+        let row = rows[index],
+            idCol = 0;
 
         return (
-            <div {...row.getRowProps({ style })} className="tr" key={crypto.randomUUID()}>
+            <div {...row.getRowProps({ style })} id={`Row-${idRow++}`} className="tr" key={crypto.randomUUID()}>
               {row.cells.map((cell, icell) => (
-                  <div {...cell.getCellProps()} tabIndex={tabindexCell++} className="td" key={icell}>
+                  <div {...cell.getCellProps()} id={`Row-${idRow}-Col-${idCol++}`} tabIndex={idRow + idCol}
+                       className="td" key={icell}>
                     {cell.render('Cell')}
                   </div>
               ))}
             </div>
         );
       },
-      [prepareRow, rows, tabindexCell]
+      [prepareRow, rows]
   );
 
   function isTableResizing() {
@@ -108,10 +116,9 @@ export default function Table({
 
   return (
       <>
-        <div
-            key={crypto.randomUUID()}
-            {...getTableProps()}
-            className={clsx('table', isTableResizing() && 'noselect')}
+        <div key={crypto.randomUUID()}
+             {...getTableProps()}
+             className={clsx('table', isTableResizing() && 'noselect')}
         >
           <div key={crypto.randomUUID()}>
             {headerGroups.map((headerGroup, index) => (
@@ -137,13 +144,12 @@ export default function Table({
             >
               {RenderRow}
             </FixedSizeList>
-            <div
-                className="tr add-row"
-                onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
+            <div className="tr add-row"
+                 onClick={() => dataDispatch({ type: EActionTypes.ADD_ROW })}
             >
-            <span className="svg-icon svg-gray icon-margin">
-              <PlusIcon/>
-            </span>
+              <span className="svg-icon svg-gray icon-margin">
+                <PlusIcon/>
+              </span>
               New
             </div>
           </div>
