@@ -85,8 +85,3 @@ And then open the browser and enter the address that the system will write in th
 - [WYSYWING editor diagrams](https://app.diagrams.net/?src=about)
 
 ## [Documentaions](docs/index.md)
-
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcybermerlin%2Ffamily_budget.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcybermerlin%2Ffamily_budget?ref=badge_large)
