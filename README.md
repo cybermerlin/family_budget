@@ -1,6 +1,7 @@
 [![Develop health](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml/badge.svg?branch=develop)](https://github.com/cybermerlin/family_budget/actions/workflows/review.yml)
 [![Coverage Status](https://coveralls.io/repos/github/cybermerlin/family_budget/badge.svg?branch=develop)](https://coveralls.io/github/cybermerlin/family_budget?branch=develop)
 [![Visit docs](https://img.shields.io/badge/docs-visit%20site-orange)](https://formidable.com/open-source/family_budget/wiki/)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fcybermerlin%2Ffamily_budget.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fcybermerlin%2Ffamily_budget?ref=badge_shield)
 [<img alt="GitHub Discussions: Chat With Us" src="https://badgen.net/badge/discussions/chat%20with%20us/purple" />](https://github.com/cybermerlin/family_budget/discussions)
 [![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](LICENSE)
 
@@ -84,4 +85,3 @@ And then open the browser and enter the address that the system will write in th
 - [WYSYWING editor diagrams](https://app.diagrams.net/?src=about)
 
 ## [Documentaions](docs/index.md)
-
