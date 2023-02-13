@@ -9,7 +9,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "@faker-js/faker": "^7.6.0",
-    "@fortune-sheet/react": "^0.12.3",
+    "@fortune-sheet/react": "^0.14.0",
     "@popperjs/core": "^2.11.6",
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.5",
